@@ -62,7 +62,6 @@ export default function RootLayout({
             <Content style={contentStyle}>{children}</Content>
           </Layout>
           <Footer style={footerStyle}>
-            {/* <Typography>&copy; Meesho </Typography> */}
             <FooterComponent/>
           </Footer>
         </Layout>
