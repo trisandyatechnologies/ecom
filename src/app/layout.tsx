@@ -3,6 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
+import FooterComponent from "./componentts/footer";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -26,8 +27,7 @@ const siderStyle: React.CSSProperties = {
 };
 
 const footerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
+  
 };
 
 const layoutStyle = {
@@ -62,7 +62,8 @@ export default function RootLayout({
             <Content style={contentStyle}>{children}</Content>
           </Layout>
           <Footer style={footerStyle}>
-            <Typography>&copy; Meesho </Typography>
+            {/* <Typography>&copy; Meesho </Typography> */}
+            <FooterComponent/>
           </Footer>
         </Layout>
       </body>
