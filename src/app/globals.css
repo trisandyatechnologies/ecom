@@ -105,3 +105,36 @@ a {
     color-scheme: dark;
   }
 }
+<<<<<<< Updated upstream
+=======
+
+
+
+/* footer responsive  */
+
+
+  @media (max-width: 600px) {
+  .gutter-row{
+      display: none;
+  }
+}
+
+
+
+@media only screen and (max-width:640px)
+{
+.ordersearch{
+  display: flex;
+  width: "15%";
+}  
+
+.myOrderItem{
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+}
+
+
+>>>>>>> Stashed changes
