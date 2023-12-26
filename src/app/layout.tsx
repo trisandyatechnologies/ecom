@@ -3,6 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
+import Headerr from "./Components/Header";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Headerr />
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
           <Header style={{ ...headerStyle, background: colorBgContainer }}>
             <Flex justify="space-between" align="center">
