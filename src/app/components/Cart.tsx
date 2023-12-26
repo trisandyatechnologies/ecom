@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Divider, Flex, Space, Typography } from "antd";
+import { Affix, Button, Divider, Flex, Space, Typography } from "antd";
 import { Col, Row } from "antd";
 import { Steps, theme } from "antd";
 import { Avatar, Card, Skeleton, Switch } from "antd";
@@ -47,25 +47,63 @@ const CartItem = [
     size: "large",
     Qty: 1,
   },
+  {
+    image: "https://images.meesho.com/images/products/308205375/cd8oh_400.webp",
+    name: "Kids baby sofa seat and sofa cum bed for 1 to 2 year ",
+    price: 100,
+    size: "large",
+    Qty: 1,
+  },
+  {
+    image: "https://images.meesho.com/images/products/222754448/ilwoy_400.webp",
+    name: "Kids Educational Velvet Learning Baby Pillow Cushion Soft Book",
+    price: 400,
+    size: "large",
+    Qty: 1,
+  },
+  {
+    image: "https://images.meesho.com/images/products/46618622/5bqvz_512.webp",
+    name: "Teddy Bear ",
+    price: 200,
+    size: "large",
+    Qty: 1,
+  },
+  {
+    image: "https://images.meesho.com/images/products/308205375/cd8oh_400.webp",
+    name: "Kids baby sofa seat and sofa cum bed for 1 to 2 year ",
+    price: 100,
+    size: "large",
+    Qty: 1,
+  },
+  {
+    image: "https://images.meesho.com/images/products/222754448/ilwoy_400.webp",
+    name: "Kids Educational Velvet Learning Baby Pillow Cushion Soft Book",
+    price: 400,
+    size: "large",
+    Qty: 1,
+  },
+  {
+    image: "https://images.meesho.com/images/products/46618622/5bqvz_512.webp",
+    name: "Teddy Bear ",
+    price: 200,
+    size: "large",
+    Qty: 1,
+  },
 ];
 const { Meta } = Card;
 export default function Cart() {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  const [price, setPrice] = useState([]);
-  let total = 0;
-  // const onChange1 = (e) => {
-  //   let amount = setPrice(e.target.value);
-  //   //  total += amount;
+  
+
+
+  // const next = () => {
+  //   setCurrent(current + 1);
   // };
 
-  const next = () => {
-    setCurrent(current + 1);
-  };
-
-  const prev = () => {
-    setCurrent(current - 1);
-  };
+  // const prev = () => {
+  //   setCurrent(current - 1);
+  // };
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
@@ -187,10 +225,7 @@ export default function Cart() {
             background: "white",
           }}
         >
-          <Space
-            direction="vertical"
-            style={{ position: "fixed", marginLeft: 10 }}
-          >
+          <Affix offsetTop={10}>
             <Typography style={{ fontSize: 20 }}>ProductDetails</Typography>
 
             <Row>
@@ -238,12 +273,29 @@ export default function Cart() {
                 <Typography>Order Total :</Typography>
               </Col>
               <Col span={12}>
-                <Typography> +800</Typography>
+                <Typography> 730</Typography>
               </Col>
             </Row>
-
-            <Button style={{ background: "violet" }}>Continue</Button>
-          </Space>
+            <Row>
+              <Col span={24}>
+                <Typography style={{ marginLeft: 40 }}>
+                  Clicking on ‘Continue’ will not deduct any money
+                </Typography>
+                <Button
+                  style={{
+                    background: "#832E71",
+                    marginLeft: 20,
+                    width: "60%",
+                    height: 50,
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Continue
+                </Button>
+              </Col>
+            </Row>
+          </Affix>
         </Col>
       </Row>
     </main>
