@@ -94,8 +94,6 @@ const { Meta } = Card;
 export default function Cart() {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
-  
-
 
   // const next = () => {
   //   setCurrent(current + 1);
@@ -199,7 +197,7 @@ export default function Cart() {
                 />
 
                 <Button
-                  style={{ border: "none", color: "violet", fontSize: 20 }}
+                  style={{ border: "none", color: "#741f62", fontSize: 20 }}
                 >
                   Edit
                 </Button>
