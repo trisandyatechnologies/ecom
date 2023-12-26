@@ -93,7 +93,7 @@ export default function Home() {
       </div>
       <Divider><h1>Top Categories to choose from</h1></Divider>
 
-      <div className="store">
+      <div className="store" >
         <div className="womenstore">
           <h2>Women's Store</h2>
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTEHXIF5_kOcFLtrGul4DmR4RIcVXElDk01Q&usqp=CAU" alt="" />
