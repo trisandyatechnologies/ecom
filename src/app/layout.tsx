@@ -3,7 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-import MyOrders from "./componentts/Orders";
+import MyOrders from "./components/Orders";
 
 const { Header, Footer, Sider, Content } = Layout;
 
