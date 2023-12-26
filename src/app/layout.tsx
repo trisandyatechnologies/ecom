@@ -7,20 +7,20 @@ import { Layout, Flex, Typography, theme } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
-  textAlign: "center",
+
   height: 64,
   paddingInline: 48,
   lineHeight: "64px",
 };
 
 const contentStyle: React.CSSProperties = {
-  textAlign: "center",
+
   minHeight: `calc(100vh - 128px)`,
   lineHeight: "120px",
 };
 
 const siderStyle: React.CSSProperties = {
-  textAlign: "center",
+ 
   lineHeight: "120px",
   maxWidth: "10%",
 };
