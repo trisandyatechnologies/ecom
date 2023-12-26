@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
 import { LineHeightOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import Link from 'next/link';
 
-const signup: React.FC = () => {
+const Signup: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
@@ -17,7 +17,7 @@ const signup: React.FC = () => {
       onFinish={onFinish}
       style={{padding:'100px 400px'}}
     >
-      <h1 style={{color:'blue',margin:'10px'}}>signup</h1>
+      <Typography style={{color:'blue',margin:'10px', fontSize:'20px'}}>Signup</Typography>
       <Form.Item
         name="name"
         rules={[{ required: true, message: 'Please input your Username!' }]}
@@ -58,7 +58,7 @@ const signup: React.FC = () => {
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-        <Link href="/signin">signup</Link>
+        <Link href="/signin">Signup</Link>
         </Button>
        
       </Form.Item>
@@ -66,4 +66,4 @@ const signup: React.FC = () => {
   );
 };
 
-export default signup;
+export default Signup;

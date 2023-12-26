@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import Link from 'next/link';
 
 
-const signin: React.FC = () => {
+const Signin: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
@@ -18,7 +18,7 @@ const signin: React.FC = () => {
       onFinish={onFinish}
       style={{padding:'100px 400px'}}
     >
-      <h1 style={{color:'blue',margin:'10px'}}>signin</h1>
+      <Typography  style={{color:'blue',margin:'10px',fontSize:'30px'}} >Signin</Typography>
       
       <Form.Item
         name="email"
@@ -36,24 +36,24 @@ const signin: React.FC = () => {
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
+      <Form.Item >
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href="">
+        <a style={{margin:'10px'}} className="login-form-forgot" href="">
           Forgot password
         </a>
       </Form.Item>
 
       <Form.Item>
        <Button type="primary" htmlType="submit" className="login-form-button">
-       <Link href='/cart' > signin </Link>
+       <Link href='/cart' > Signin </Link>
         </Button>
-       <Link style={{margin:'5px'}} href="/signup">  Or  signup</Link>
+       <Link style={{margin:'5px'}} href="/Signup">  Or  signup</Link>
       </Form.Item>
     </Form>
   );
 };
 
-export default signin;
+export default Signin;
