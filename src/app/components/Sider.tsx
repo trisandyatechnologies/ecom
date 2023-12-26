@@ -63,12 +63,12 @@ export default function Sider() {
         </section>
         <section>
           <Divider />
+
           <Space>
-            <Space>
-              <Typography>FILTERS</Typography>
-              <Typography>1000+ Products</Typography>
-            </Space>
+            <Typography>FILTERS</Typography>
+            <Typography>1000+ Products</Typography>
           </Space>
+
           <Divider />
 
           <Space>
@@ -94,7 +94,7 @@ export default function Sider() {
             style={{ borderTop: "1px solid grey", borderRadius: 0 }}
             ghost
           >
-            <Panel header={<Typography>color</Typography>} key="1">
+            <Panel header="color" key="1">
               <Space style={{ flexWrap: "wrap" }}>
                 <Button>Multicolor</Button>
                 <Button>purple</Button>
@@ -114,7 +114,7 @@ export default function Sider() {
             style={{ borderTop: "1px solid grey", borderRadius: 0 }}
             ghost
           >
-            <Panel header={<Typography>Price</Typography>} key="1">
+            <Panel header="Price" key="1">
               <Space style={{ flexWrap: "wrap" }}>
                 <Button>under $ 234</Button>
                 <Button>under $ 111</Button>
@@ -134,7 +134,7 @@ export default function Sider() {
               borderRadius: 0,
             }}
           >
-            <Panel header={<Typography>Combo</Typography>} key="1">
+            <Panel header="Combo" key="1">
               <Checkbox.Group
                 options={plainOptions}
                 defaultValue={["combos"]}
