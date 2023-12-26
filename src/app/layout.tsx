@@ -3,11 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-<<<<<<< Updated upstream
-=======
-import FooterComponent from "./componentts/Footer";
 import MyOrders from "./componentts/Orders";
->>>>>>> Stashed changes
 
 const { Header, Footer, Sider, Content } = Layout;
 

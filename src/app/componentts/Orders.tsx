@@ -47,7 +47,7 @@ export default function MyOrders() {
           <Button>Others</Button>
         </section>
       </section>
-      <Flex  align="center" vertical gap={20} style={{marginTop:20}} >
+      <Flex  align="center" vertical gap={20} style={{ma}} >
       {Orders.map(({orderId,soldTo,supplier,image,title,description},i)=>
         <div style={{border: "1px solid gray",width:"100%",maxWidth:650,}}>
           <div>
