@@ -4,7 +4,7 @@ import { LineHeightOutlined, LockOutlined, UserOutlined } from '@ant-design/icon
 import { Button, Checkbox, Form, Input } from 'antd';
 import Link from 'next/link';
 
-const App: React.FC = () => {
+const signup: React.FC = () => {
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
@@ -66,4 +66,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default signup;
