@@ -3,7 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-import FooterComponent from "./componentts/footer";
+import FooterComponent from "./components/footer";
 
 const { Header, Footer, Sider, Content } = Layout;
 

@@ -112,9 +112,14 @@ a {
 
 
   @media (max-width: 600px) {
-  .gutter-row{
+  /* .footer_col{
       display: none;
-  }
+  } */
+  /* .footerstyle{
+    
+    flex-direction:row;
+    flex-wrap: wrap;
+  } */
 }
 
 
