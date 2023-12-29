@@ -23,7 +23,6 @@ const contentStyle: React.CSSProperties = {
 const siderStyle: React.CSSProperties = {
   textAlign: "center",
   maxWidth: "10%",
-  
 };
 
 const footerStyle: React.CSSProperties = {
@@ -55,15 +54,19 @@ export default function RootLayout({
               <Link href="/cart">Cart</Link>
             </Flex>
           </Header>
+
           <Layout>
-            <Layout.Sider
-              width="15%"
-              style={{ ...siderStyle, background: colorBgContainer }}
-            >
-              <Sider/>
-            </Layout.Sider>
-            <Content style={contentStyle}>{children}</Content>
+            <Flex className="siderView">
+              <Layout.Sider
+                width="35%"
+                style={{ ...siderStyle, background: colorBgContainer }}
+              >
+                <Sider />
+              </Layout.Sider>
+              <Content style={contentStyle}>{children}</Content>
+            </Flex>
           </Layout>
+
           <Footer style={footerStyle}>
             <Typography>&copy; Meesho </Typography>
           </Footer>

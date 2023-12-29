@@ -47,7 +47,7 @@ export default function Sider() {
           <Space wrap>
             <Select
               defaultValue="Sort by :"
-              style={{ width: 200 }}
+              style={{ width: 90}}
               onChange={handleChange}
               options={[
                 { value: "Relevance", label: "Sort by: Relevance" },
