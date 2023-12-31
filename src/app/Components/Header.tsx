@@ -1,14 +1,14 @@
 'use client';
-import Image from 'next/image'
+
 import '../globals.css'
 import React from 'react';
 import { SearchProps } from 'antd/es/input/Search';
 import { Button, Divider, Dropdown, Flex, Input, List, Popover, Space, Typography } from 'antd';
 import type { MenuProps } from 'antd';
 const { Search } = Input;
-
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { DownOutlined, MobileOutlined, ShoppingCartOutlined, ShoppingFilled, UserOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { useToken } = theme;
@@ -23,9 +23,9 @@ const items2: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 1st menu item
-            </a>
+            </Link>
         ),
     }
 ]
@@ -33,25 +33,25 @@ const Downloadapp: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 Download From
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 <img src='https://images.meesho.com/images/pow/playstore-icon-big.png' style={{ width: "178px", height: "50px" }} />
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 <img src='https://images.meesho.com/images/pow/appstore-icon-big.png' style={{ width: "178px", height: "50px" }} />
-            </a>
+            </Link>
         ),
     },
 ]
@@ -60,25 +60,25 @@ const Profile: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 <h4>Hello User</h4>
                 <Typography>To accesses your meesho account</Typography>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 <Button style={{ width: "100%", background: "purple", color: "white", height: "48px", borderRadius: "5px", fontSize: "20px" }}>Sign Up</Button>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                <Typography style={{ display: "flex", justifyContent: "center", gap: "20px" }}><ShoppingFilled />My Orders</Typography>            </a>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                <Typography style={{ display: "flex", justifyContent: "center", gap: "20px" }}><ShoppingFilled />My Orders</Typography>            </Link>
         ),
     },
 ]
@@ -88,7 +88,7 @@ const Electronics: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "25vw" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "5%" }}>
                     <List header="Mobile & Accessories" style={{ color: "purple" }}>
@@ -98,13 +98,13 @@ const Electronics: MenuProps['items'] = [
                         <List.Item> Mobile cases and covers</List.Item>
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "45vw" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header="Appliences" style={{ color: "purple" }}>
@@ -113,7 +113,7 @@ const Electronics: MenuProps['items'] = [
                         <List.Item> Home Appliences</List.Item>
                         <List.Item> Mobile cases and covers</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -123,10 +123,10 @@ const Jewellery: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex" }}>
 
                 <Flex dir='column' style={{}}>
-                    <List header="Jewellery" style={{ color: "purple" }}>              
+                    <List header="Jewellery" style={{ color: "purple" }}>
                         <List.Item> Jewellery Set</List.Item>
                         <List.Item> Earrings</List.Item>
                         <List.Item>Mangalsutras</List.Item>
@@ -137,7 +137,7 @@ const Jewellery: MenuProps['items'] = [
                         <List.Item> Anklets</List.Item>
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
@@ -153,7 +153,9 @@ const Jewellery: MenuProps['items'] = [
                         <List.Item> Sunglasses</List.Item>
                         <List.Item> Socks</List.Item>
                     </List>
-                </Flex></a>
+                </Flex>
+            </a>
+
         ),
     },
 
@@ -169,7 +171,7 @@ const items: MenuProps['items'] = [
     { key: "Newsroom", label: "Newsroom" },
     {
         key: "profile", label: <Flex style={{ display: "flex", gap: "10px" }}><Dropdown menu={{ items: Profile }} >
-            <Typography style={{ display: "flex", gap: "5px", flexDirection: "column" }}><UserOutlined />Profile</Typography></Dropdown> </Flex>
+            <Typography style={{ display: "flex", gap: "5px", flexDirection: "column", alignItems: "center" }}><UserOutlined />Profile</Typography></Dropdown> </Flex>
     },
     {
         key: "shoppingcart", label: <Flex style={{ display: "flex", gap: "5px", flexDirection: "column", alignItems: "center" }}>
@@ -183,9 +185,9 @@ const items1: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
                 1st menu item
-            </a>
+            </Link>
         ),
     }
 ]
@@ -195,7 +197,7 @@ const Beauty: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header="Make up" style={{ color: "purple" }}>
@@ -205,13 +207,13 @@ const Beauty: MenuProps['items'] = [
                         <List.Item> Nails</List.Item>
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header="Wellness" style={{ color: "purple" }}>
@@ -219,19 +221,19 @@ const Beauty: MenuProps['items'] = [
                         <List.Item>Oral Care</List.Item>
                         <List.Item> Feminine Hygiene</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Skincare' style={{ color: "purple" }}>
                         <List.Item> Deodrants</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -241,7 +243,7 @@ const Bags: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header='Women Bags' style={{ color: "purple" }}>
@@ -251,26 +253,26 @@ const Bags: MenuProps['items'] = [
                         <List.Item> Slingbags</List.Item>
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header='Men Bags' style={{ color: "purple" }}>
                         <List.Item> All Men Bags</List.Item>
                         <List.Item>Men Wallets</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Men Footwear' style={{ color: "purple" }}>
@@ -279,13 +281,13 @@ const Bags: MenuProps['items'] = [
                         <List.Item> Formal Shoes</List.Item>
                         <List.Item> Sandals</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '4 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Women Footwear' style={{ color: "purple" }}>
@@ -293,7 +295,7 @@ const Bags: MenuProps['items'] = [
                         <List.Item> Bellies</List.Item>
                         <List.Item> Juttis</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -303,7 +305,7 @@ const Kitchen: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header='Home Furnishing' style={{ color: "purple" }}>
@@ -314,13 +316,13 @@ const Kitchen: MenuProps['items'] = [
                         <List.Item>Mattress Protectors</List.Item>
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header='Home Decor' style={{ color: "purple" }}>
@@ -329,20 +331,20 @@ const Kitchen: MenuProps['items'] = [
                         <List.Item> Clocks</List.Item>
                         <List.Item> Showpieces</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Kitchen & Dining' style={{ color: "purple" }}>
                         <List.Item> Kitchen Storage</List.Item>
                         <List.Item> Cookware & Bakeware</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -352,7 +354,7 @@ const Kids: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header='Boys & Girls 2+ Years' style={{ color: "purple" }}>
@@ -360,26 +362,26 @@ const Kids: MenuProps['items'] = [
 
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header='Infant 0-2 years' style={{ color: "purple" }}>
                         <List.Item> Rompers</List.Item>
 
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Toys & Accessories' style={{ color: "purple" }}>
@@ -389,13 +391,13 @@ const Kids: MenuProps['items'] = [
                         <List.Item> Watches</List.Item>
                         <List.Item> Bags & Backpacks</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '4 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Baby Care' style={{ color: "purple" }}>
@@ -403,7 +405,7 @@ const Kids: MenuProps['items'] = [
                         <List.Item> All Baby Care</List.Item>
 
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -413,7 +415,7 @@ const WomenWestern: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header='Topwear' style={{ color: "purple" }}>
@@ -424,13 +426,13 @@ const WomenWestern: MenuProps['items'] = [
 
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header='Bottomwear' style={{ color: "purple" }}>
@@ -440,33 +442,33 @@ const WomenWestern: MenuProps['items'] = [
                         <List.Item> Shorts</List.Item>
                         <List.Item> Skirts</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Innerwear' style={{ color: "purple" }}>
                         <List.Item> Bra</List.Item>
                         <List.Item> Briefs</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '4 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Sleepwear' style={{ color: "purple" }}>
                         <List.Item> Nightsuits</List.Item>
                         <List.Item> Babydolls</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -477,7 +479,7 @@ const WomenEthnic: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header='All Women Ethnic' style={{ color: "purple" }}>
@@ -485,13 +487,13 @@ const WomenEthnic: MenuProps['items'] = [
 
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header='Sarees' style={{ color: "purple" }}>
@@ -504,13 +506,13 @@ const WomenEthnic: MenuProps['items'] = [
                         <List.Item> Satin Sarees</List.Item>
                         <List.Item> Embroidered Sarees</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Kurtis' style={{ color: "purple" }}>
@@ -520,26 +522,26 @@ const WomenEthnic: MenuProps['items'] = [
                         <List.Item> Cotton Kurtis</List.Item>
                         <List.Item> Embroidered Kurtis</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '4 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Kurta Sets' style={{ color: "purple" }}>
                         <List.Item> All Kurta Sets</List.Item>
 
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '5 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Suits & Dress Material' style={{ color: "purple" }}>
@@ -548,13 +550,13 @@ const WomenEthnic: MenuProps['items'] = [
                         <List.Item> Embroidred Suits</List.Item>
                         <List.Item> Chanderi Suits</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '6 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Other Ethnic' style={{ color: "purple" }}>
@@ -564,7 +566,7 @@ const WomenEthnic: MenuProps['items'] = [
                         <List.Item> Gown</List.Item>
                         <List.Item> Ethnic Bottomwear</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -574,7 +576,7 @@ const Men: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column'>
                     <List header='Top Wear' style={{ color: "purple" }}>
@@ -584,13 +586,13 @@ const Men: MenuProps['items'] = [
 
                     </List>
                 </Flex>
-            </a>
+            </Link>
         ),
     },
     {
         key: '2',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "" }}>
                     <List header='Bottom Wear' style={{ color: "purple" }}>
@@ -599,13 +601,13 @@ const Men: MenuProps['items'] = [
                         <List.Item> Trousers</List.Item>
 
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '3',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Men Accessories' style={{ color: "purple" }}>
@@ -617,13 +619,13 @@ const Men: MenuProps['items'] = [
                         <List.Item> Sunglasses</List.Item>
                         <List.Item> Bags</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '4 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Men Footwear' style={{ color: "purple" }}>
@@ -632,13 +634,13 @@ const Men: MenuProps['items'] = [
                         <List.Item> Sandals</List.Item>
                         <List.Item> Formal Shoes</List.Item>
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '5 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Ethnic Wear' style={{ color: "purple" }}>
@@ -646,13 +648,13 @@ const Men: MenuProps['items'] = [
                         <List.Item> Ethnic Jackets</List.Item>
 
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
     {
         key: '6 ',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
+            <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com" style={{ display: "flex", width: "" }}>
 
                 <Flex dir='column' style={{ minWidth: "1%" }}>
                     <List header='Inner & Sleep Wear' style={{ color: "purple" }}>
@@ -660,7 +662,7 @@ const Men: MenuProps['items'] = [
                         <List.Item> Vests</List.Item>
 
                     </List>
-                </Flex></a>
+                </Flex></Link>
         ),
     },
 
@@ -776,12 +778,7 @@ const Headerr: React.FC = () => {
                         </Space>
                     </a>
                 </Dropdown>
-
-
-
-
             </Flex>
-
             <ul className='header-list'>
                 <li>
                     <Flex>
@@ -861,11 +858,6 @@ const Headerr: React.FC = () => {
                         </Dropdown>
                     </Flex>
                 </li>
-                {/* <li>
-                    <Popover content={items} title="Title" >
-                        <Button type="primary">Hover me</Button>
-                    </Popover>
-                </li> */}
 
                 <li>
                     <Flex>
@@ -959,10 +951,7 @@ const Headerr: React.FC = () => {
                                     {contentStyle}
                                 >
                                     {React.cloneElement(menu as React.ReactElement, { style: menuStyle })}
-                                    {/* <Divider style={{ margin: 0 }} />
-                                    <Space style={{ padding: 8 }}>
-                                    
-                                    </Space> */}
+
                                 </div>
                             )}
 
@@ -972,8 +961,6 @@ const Headerr: React.FC = () => {
                         </Dropdown>
                     </Flex>
                 </li>
-
-
             </ul>
         </main >
     );
