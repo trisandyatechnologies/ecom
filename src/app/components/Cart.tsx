@@ -113,11 +113,11 @@ export default function Cart() {
   return (
     <main style={{ background: "white" }}>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={8}>
+        <Col span={12}>
           <Typography.Title>meesho</Typography.Title>
         </Col>
 
-        <Col span={4}>
+        <Col span={12}>
           <Steps
             current={current}
             size="small"
@@ -126,7 +126,6 @@ export default function Cart() {
             style={{ marginTop: 15 }}
           />
         </Col>
-        <Col span={4}></Col>
       </Row>
 
       <Divider />
