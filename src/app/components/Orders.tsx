@@ -48,14 +48,16 @@ export default function MyOrders() {
                 width: "100%",
                 maxWidth: 650,
                 marginTop: 40,
+  
               }}
             >
               <Flex vertical>
-                <Flex style={{ justifyContent: "space-between" }}>
-                  <Typography>Ordered ID:{orderId}</Typography>
-                  <Typography>Sold to:{soldTo}</Typography>
+                <Flex style={{ justifyContent: "space-between",padding:10}}>
+                  <Typography>Ordered ID  {orderId}</Typography>
+                  <Typography>Sold to <b style={{fontSize:15}}> {soldTo}</b></Typography>
                 </Flex>
-                <Typography>Supplier:{supplier}</Typography>
+                <hr/>
+                <Typography style={{display:"flex",alignItems:"flex-start",padding:10}} >Supplier : <b style={{fontSize:15}}>{supplier} </b></Typography>
               </Flex>
               <Flex className="myOrderItem">
                 <Card
@@ -63,11 +65,12 @@ export default function MyOrders() {
                     borderTop: "1px solid gray",
                     width: "100%",
                     maxWidth: 650,
+                    padding:10
                   }}
                   actions={[
                     <Flex style={{ justifyContent: "space-between" }}>
                       <Flex vertical>
-                        <Typography>How was the product</Typography>
+                        <Typography>How was the product ?</Typography>
                         <Rate />
                       </Flex>
                       <Button>Add photos/videos</Button>
@@ -75,7 +78,7 @@ export default function MyOrders() {
                   ]}
                 >
                   <Meta
-                    avatar={<Avatar src={image} />}
+                    avatar={<Avatar src={image}  style={{borderRadius:0,width:"80px",height:"80px"}}/>}
                     title={title}
                     description={description}
                   />
