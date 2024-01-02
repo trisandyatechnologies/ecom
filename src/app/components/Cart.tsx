@@ -123,7 +123,10 @@ export default function Cart() {
       {/* <Space style={{ position: "fixed" }}> */}
       <Row>
         <Col span={4}>
-          <Typography style={{ fontSize: 43 }}> meesho</Typography>
+          <Typography style={{ fontSize: 43,color:"violet" }}>
+            {" "}
+            meesho
+          </Typography>
         </Col>
         <Col span={4}></Col>
         <Col span={4}>
