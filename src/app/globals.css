@@ -104,4 +104,10 @@ a {
   html {
     color-scheme: dark;
   }
+  
+}
+@media only screen and (max-width:400px) {
+  .cartview{
+    display: none;
+  }
 }

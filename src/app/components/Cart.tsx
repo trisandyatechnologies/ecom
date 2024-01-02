@@ -120,10 +120,9 @@ export default function Cart() {
 
   return (
     <main style={{ background: "white" }}>
-      {/* <Space style={{ position: "fixed" }}> */}
-      <Row>
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col span={4}>
-          <Typography style={{ fontSize: 43,color:"violet" }}>
+          <Typography style={{ fontSize: 43, color: "#832E71" }}>
             {" "}
             meesho
           </Typography>
@@ -137,34 +136,13 @@ export default function Cart() {
             items={items}
             style={{ marginTop: 15 }}
           />
-          {/* <div style={contentStyle}>{steps[current].content}</div>
-              <div style={{ marginTop: 24 }}>
-                {current < steps.length - 1 && (
-                  <Button type="primary" onClick={() => next()}>
-                    Next
-                  </Button>
-                )}
-                {current === steps.length - 1 && (
-                  <Button
-                    type="primary"
-                    onClick={() => message.success("Processing complete!")}
-                  >
-                    Done
-                  </Button>
-                )}
-                {current > 0 && (
-                  <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-                    Previous
-                  </Button>
-                )}
-              </div> */}
         </Col>
         <Col span={4}></Col>
       </Row>
 
       <Divider />
-      {/* </Space> */}
-      <Row>
+
+      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col span={12}>
           <Flex>
             <Typography>Cart</Typography>
@@ -221,6 +199,7 @@ export default function Cart() {
         </Col>
         <Col
           span={12}
+          className="cartview"
           style={{
             borderLeft: "1px solid gray",
             background: "white",
