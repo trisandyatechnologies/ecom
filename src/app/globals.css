@@ -9,6 +9,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
+ 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -87,12 +88,9 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 a {
@@ -104,4 +102,164 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.meesho-promotion {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-height: 47vh;
+  margin: 25px;
+  max-width: 100%;
+
+}
+
+.meesho-services div {
+  border: 1px solid black;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  text-align: center;
+}
+
+.meesho-services {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: 5px;
+}
+
+.meesho-services div {
+  background-color: white;
+  width: 200px;
+  height: 100px;
+
+}
+
+.meesho-media div button {
+  padding: 16px;
+  width: 300px;
+  background-color: purple;
+  color: white;
+  border-radius: 10px;
+}
+
+.meesho-benefits h1 {
+  font-weight: 900;
+
+}
+
+.store {
+  width: 100%;
+  height: fit-content;
+  border: 1px solid lightcoral;
+}
+
+.womenstore {
+  width: 30%;
+  background-color: white;
+  margin: 20px;
+  height: fit-content;
+
+}
+
+.womenstore h2 {
+  text-align: center;
+}
+
+.womenstore img {
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+}
+
+.mensstore {
+  width: 300px;
+  height: 400px;
+  border: 1px solid lightcoral;
+  margin: 20px;
+  background-color: white;
+ 
+}
+
+.mensstore img {
+  width: 100px;
+  height: 100px;
+padding: 6px;
+
+}
+
+.mensstore h2 {
+  text-align: center;
+}
+
+
+
+.kidsstore {
+  width: 300px;
+  height: 400px;
+  border: 1px solid lightcoral;
+  margin: 20px;
+  background-color: white;
+}
+
+.kidsstore img {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+.kidsstore h2 {
+  text-align: center;
+}
+.store{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(212, 70, 92);
+}
+.menkid{
+  display: flex;
+  flex-direction: row;
+}
+
+.fashionhead h1{
+  text-align: center;
+}
+.homedecor-images{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  width: fit-content;
+background-color: white;
+}
+.homedecor-images img {
+  padding: 26px;
+  height: 180px;
+}
+.homedecor-button button{
+   background-color: black;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+}
+.essentials{
+  display: flex;
+  flex-direction: column;
+  
+}
+.essentials button{
+  width: 150px;
+ 
+  background-color: lightpink;
+  color: white;
+}
+#bg{
+background-image: url("/sofa2.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+#bg1{
+  background-color: rgb(212, 137, 146);
 }
