@@ -95,14 +95,6 @@ export default function Cart() {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
 
-  // const next = () => {
-  //   setCurrent(current + 1);
-  // };
-
-  // const prev = () => {
-  //   setCurrent(current - 1);
-  // };
-
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
   const contentStyle: React.CSSProperties = {
@@ -121,13 +113,10 @@ export default function Cart() {
   return (
     <main style={{ background: "white" }}>
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={4}>
-          <Typography style={{ fontSize: 43, color: "#832E71" }}>
-            {" "}
-            meesho
-          </Typography>
+        <Col span={8}>
+          <Typography.Title>meesho</Typography.Title>
         </Col>
-        <Col span={4}></Col>
+
         <Col span={4}>
           <Steps
             current={current}
@@ -143,7 +132,7 @@ export default function Cart() {
       <Divider />
 
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col span={12}>
+        <Col lg={12} xs={24}>
           <Flex>
             <Typography>Cart</Typography>
             <Divider
@@ -164,9 +153,13 @@ export default function Cart() {
                 <Typography>Free Delivery</Typography>,
               ]}
             >
-              <Flex>
+              <Flex vertical>
                 <Meta
-                  style={{ background: "white", width: 400 }}
+                  style={{
+                    background: "white",
+                    display: "flex",
+                    flexWrap: "wrap",
+                  }}
                   avatar={
                     <Avatar
                       src={image}
@@ -176,30 +169,28 @@ export default function Cart() {
                   title={name}
                   description={price}
                 />
-
-                <Button
-                  style={{ border: "none", color: "#741f62", fontSize: 20 }}
-                >
-                  Edit
-                </Button>
+              </Flex>
+              <Typography
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                Edit
+              </Typography>
+              <Typography>All issue easy returns allowed</Typography>
+              <Flex gap={10}>
+                <Typography> Size:{size}</Typography>
+                <Typography>Qty:{Qty}</Typography>
               </Flex>
               {
                 <Button style={{ border: "none", fontSize: 20 }}>
                   x Remove
                 </Button>
               }
-              <Flex style={{ justifyContent: "space-around" }}>
-                <Typography>Qty:{Qty}</Typography>
-
-                <Typography> Size:{size}</Typography>
-              </Flex>
-              <Typography>All issue easy returns allowed</Typography>
             </Card>
           ))}
         </Col>
         <Col
-          span={12}
-          className="cartview"
+          lg={12}
+          xs={24}
           style={{
             borderLeft: "1px solid gray",
             background: "white",
