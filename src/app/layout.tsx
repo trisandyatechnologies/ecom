@@ -3,9 +3,10 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-import FooterComponent from "./components/footer";
+import Footer from "./components/Footer";
 
-const { Header, Footer, Sider, Content } = Layout;
+
+const { Header, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
@@ -61,9 +62,9 @@ export default function RootLayout({
             ></Sider>
             <Content style={contentStyle}>{children}</Content>
           </Layout>
-          <Footer style={footerStyle}>
-            <FooterComponent/>
-          </Footer>
+          <Layout.Footer style={footerStyle}>
+            <Footer/>
+          </Layout.Footer>
         </Layout>
       </body>
     </html>
