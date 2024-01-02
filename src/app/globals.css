@@ -180,12 +180,13 @@ a {
   border: 1px solid lightcoral;
   margin: 20px;
   background-color: white;
+ 
 }
 
 .mensstore img {
   width: 100px;
   height: 100px;
-  margin: 8px;
+padding: 6px;
 
 }
 
@@ -224,4 +225,41 @@ a {
 
 .fashionhead h1{
   text-align: center;
+}
+.homedecor-images{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  width: fit-content;
+background-color: white;
+}
+.homedecor-images img {
+  padding: 26px;
+  height: 180px;
+}
+.homedecor-button button{
+   background-color: black;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+}
+.essentials{
+  display: flex;
+  flex-direction: column;
+  
+}
+.essentials button{
+  width: 150px;
+ 
+  background-color: lightpink;
+  color: white;
+}
+#bg{
+background-image: url("/sofa2.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+#bg1{
+  background-color: rgb(212, 137, 146);
 }

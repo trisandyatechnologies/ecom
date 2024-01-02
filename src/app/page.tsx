@@ -1,13 +1,99 @@
 "use client";
 
+
 import { addCartItem, getItems } from "@/lib/api";
 import { AlignCenterOutlined, PlaySquareTwoTone, RocketTwoTone, TabletTwoTone, ThunderboltTwoTone } from "@ant-design/icons";
 import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme } from "antd";
 import { useEffect, useState } from "react";
 import { Divider } from 'antd';
+import { url } from "inspector";
+
+
 
 const userId = "6582d402c4e753141edcd9be";
+
+function Essentials(){
+  return(
+    <div style={{display:"flex",justifyContent:"space-evenly",border:"1px solid lightgray",padding:"26px"} } id="bg">
+      <div className="essentials">
+        <h1>Essentials</h1>
+        <Button>View All</Button>
+      </div>
+      <div style={{display:"flex",gap:"5px"}}>
+      <div>
+       <div className="homedecor-images">
+        <img src="/home-decor.jpg" alt="" width={200}/>
+        <img src="/download.jpg" alt="" width={200} />
+       </div>
+       <div className="homedecor-button">
+        <Button >Home Decor</Button>
+       </div>
+      </div>
+      <div>
+       <div className="homedecor-images">
+        <img src="/p.jpg" alt="" width={200} />
+        <img src="/images.jpg" alt="" width={200} />
+       </div>
+       <div className="homedecor-button">
+        <Button >Kitchen Appliances</Button>
+       </div>
+      </div>
+      <div>
+       <div className="homedecor-images">
+        <img src="/health.jpg" alt="" width={200}/>
+        <img src="/health1.jpg" alt="" width={200} />
+       </div>
+       <div className="homedecor-button">
+        <Button >Health care</Button>
+       </div>
+      </div>
+      </div>
+    </div>
+  )
+}
+
+function NewStyles(){
+  return(
+    <div style={{display:"flex",justifyContent:"space-evenly",border:"1px solid lightgray",padding:"26px"} } id="bg1">
+    <div className="essentials">
+      <h1>New Styles</h1>
+      <Button style={{border:"none"}}>View All</Button>
+    </div>
+    <div style={{display:"flex",gap:"5px"}}>
+    <div>
+     <div className="homedecor-images">
+      <img src="/bag.jpg" alt="" width={200}/>
+      <img src="/sun.jpg" alt="" width={200} />
+     </div>
+     <div className="homedecor-button">
+      <Button >Accesories</Button>
+     </div>
+    </div>
+    <div>
+     <div className="homedecor-images">
+      <img src="/foot1.jpg" alt="" width={200} />
+      <img src="/foot.jpg" alt="" width={200} />
+     </div>
+     <div className="homedecor-button">
+      <Button >Foot Wear</Button>
+     </div>
+    </div>
+    <div>
+     <div className="homedecor-images">
+      <img src="/mobile.jpg" alt="" width={200}/>
+      <img src="/trimmer.jpg" alt="" width={200} />
+     </div>
+     <div className="homedecor-button">
+      <Button >Electronics</Button>
+     </div>
+    </div>
+    </div>
+  </div>
+  )
+}
+
+
 
 export default function Home() {
   const {
@@ -120,7 +206,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+<Essentials />
+<NewStyles/>
     </main >
   );
 }
