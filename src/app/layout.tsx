@@ -62,9 +62,9 @@ export default function RootLayout({
             ></Sider>
             <Content style={contentStyle}>{children}</Content>
           </Layout>
-          <Layout.Footer style={footerStyle}>
+          
             <Footer/>
-          </Layout.Footer>
+        
         </Layout>
       </body>
     </html>

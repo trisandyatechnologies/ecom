@@ -8,6 +8,7 @@ import {
 import {
   Col,
   Flex,
+  Layout,
   Row,
   Typography,
 } from "antd";
@@ -25,7 +26,7 @@ function FooterLink({ name, href }: { name: string; href: string }) {
 
 export default function Footer() {
   return (
-    
+    <Layout.Footer>
       <Row
         className="footerstyle" 
         gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
@@ -111,6 +112,7 @@ export default function Footer() {
           </Flex>
         </Col>
       </Row>
+      </Layout.Footer>
     
   );
 }
