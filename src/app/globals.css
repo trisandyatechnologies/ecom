@@ -94,11 +94,21 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  .first_column {
+  #first_column {
     margin: 0;
     gap: 0;
     width: 100%;
     /* max-width: 100%; */
+  }
+  #sideImages{
+    flex-direction: row;
+  }
+  #product_details {
+
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   #rating {

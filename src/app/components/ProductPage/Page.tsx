@@ -6,9 +6,9 @@ const ProductPage: React.FC = () => {
     return (
         <main className="meesho-promotion" style={{ background: "white" }} >
             <Row justify={"space-around"}>
-                <Col span={3}></Col>
+                
                 <Col span={1} style={{ marginTop: "30px" }}>
-                    <Flex style={{ flexDirection: "column", gap: "10px" }}>
+                    <Flex id="sideImages" style={{ flexDirection: "column", gap: "10px" }}>
                         <img src="https://images.meesho.com/images/products/33133883/qqsw2_64.webp" />
                         <img src="https://images.meesho.com/images/products/33133883/5is5o_64.webp" />
                         <img src="https://images.meesho.com/images/products/33133883/zhzlo_64.webp" />
@@ -16,7 +16,7 @@ const ProductPage: React.FC = () => {
                     </Flex>
                 </Col>
 
-                <Col span={6} style={{ maxWidth: "100%", margin: "30px" }}>
+                <Col lg={6} xs={24} style={{ maxWidth: "100%", margin: "30px" }}>
                     <Space>
                         <img src="https://images.meesho.com/images/products/21914499/83fac_512.webp" style={{ width: "100%" }} />
                     </Space>
@@ -26,8 +26,8 @@ const ProductPage: React.FC = () => {
                     </Flex>
                 </Col>
 
-                <Col span={8} style={{ margin: "30px" }} className="product_details">
-                    <Flex className="first_column" style={{ flexDirection: "column", border: "0.5px solid gray", background: "white", borderRadius: "5px", gap: "10px", padding: "30px" }}>
+                <Col lg={8} xs={24} style={{ margin: "30px" }} id="product_details">
+                    <Flex id="first_column" style={{ flexDirection: "column", border: "0.5px solid gray", background: "white", borderRadius: "5px", gap: "10px", padding: "30px" }}>
                         <Typography>STLYZ Polyresin Baby Hat Monk Buddha Idols Standard Multicolour, 4 Pieces-Home Decor</Typography>
                         <Typography style={{ display: "flex", gap: "5px" }} id="rate"><Typography style={{ fontSize: "24px" }}>₹ 278 </Typography><InfoCircleOutlined /></Typography>
                         <Typography style={{ display: "flex", gap: "10px" }} id="rating">
@@ -37,7 +37,7 @@ const ProductPage: React.FC = () => {
                         <Typography id="free_delivery" style={{ display: "flex", marginTop: "10px", justifyContent: "center", borderRadius: "10px",maxWidth: "130px", background: "rgb(245 245 245)", color: "black", gap: "4px" }}>Free Delivery  </Typography>
 
                     </Flex>
-                    <Flex className="secoend_column" style={{ flexDirection: "column", border: "0.5px solid gray", background: "white", borderRadius: "5px", gap: "10px", padding: "30px", margin: "15px auto" }}>
+                    <Flex flex={1} className="secoend_column" style={{ flexDirection: "column", border: "0.5px solid gray", background: "white", borderRadius: "5px", gap: "10px", padding: "30px", margin: "15px auto" }}>
                         <Typography style={{ fontSize: "24px" }}>Select Size</Typography>
 
                         <Typography style={{ display: "flex", marginTop: "10px", border: "1px solid rgb(159, 32, 137)", borderRadius: "10px", width: "100px", justifyContent: "center", background: "rgb(255, 231, 251)", color: "rgb(159, 32, 137)", gap: "4px" }}>Free Size  </Typography>
