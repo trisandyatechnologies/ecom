@@ -4,7 +4,7 @@ import { addCartItem, getItems } from "@/lib/api";
 import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme, App } from "antd";
 import { Component, useEffect, useState } from "react";
-import Rating from "./components/Rating";
+
 
 
 const userId = "6582d402c4e753141edcd9be";
@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <main>
-      {/* <List
+      <List
         grid={{
           gutter: 16,
           xs: 1,
@@ -67,8 +67,8 @@ export default function Home() {
             </Card>
           </List.Item>
         )}
-      /> */}
-      <Rating/>
+      />
+      
       
     </main>
   );
