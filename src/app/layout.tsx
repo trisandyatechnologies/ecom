@@ -17,9 +17,9 @@ const headerStyle: React.CSSProperties = {
 };
 
 const contentStyle: React.CSSProperties = {
-  textAlign: "center",
+  
   minHeight: `calc(100vh - 128px)`,
-  lineHeight: "120px",
+  width: '100%'
 };
 
 const siderStyle: React.CSSProperties = {
@@ -55,10 +55,8 @@ export default function RootLayout({
           </Header>
 
           <Layout>
-            <Flex className="siderView">
               <Sider />
               <Content style={contentStyle}>{children}</Content>
-            </Flex>
           </Layout>
           <Footer />
         </Layout>
