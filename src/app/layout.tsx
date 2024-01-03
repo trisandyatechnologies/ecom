@@ -18,7 +18,7 @@ const headerStyle: React.CSSProperties = {
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
   minHeight: `calc(100vh - 128px)`,
-  lineHeight: "120px",
+  // lineHeight: "120px",
 };
 
 const siderStyle: React.CSSProperties = {
