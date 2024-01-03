@@ -48,7 +48,7 @@ export default function RootLayout({
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
           <Header style={{ ...headerStyle, background: colorBgContainer }}>
             <Flex justify="space-between" align="center">
-              {/* <Typography.Title level={4}>Meesho</Typography.Title> */}
+              <Typography.Title level={4}>Meesho</Typography.Title>
               <Link href="/cart">Cart</Link>
             </Flex>
           </Header>

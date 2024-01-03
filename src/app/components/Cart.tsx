@@ -5,8 +5,6 @@ import { Col, Row } from "antd";
 import { Steps, theme } from "antd";
 import { Avatar, Card, Skeleton, Switch } from "antd";
 
-import { List } from "antd";
-
 const steps = [
   {
     title: "Cart",
@@ -105,10 +103,6 @@ export default function Cart() {
     marginTop: 16,
   };
   const [loading, setLoading] = useState(true);
-
-  const onChange = (checked: boolean) => {
-    setLoading(!checked);
-  };
 
   return (
     <main style={{ background: "white" }}>
