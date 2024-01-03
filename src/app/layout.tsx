@@ -4,7 +4,7 @@ import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
 import Headerr from "./Components/Header";
-import ProductPage from "./ProductPage/Page";
+
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -50,7 +50,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Headerr />
-        <ProductPage/>
+        
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
           <Header style={{ ...headerStyle, background: colorBgContainer }}>
             <Flex justify="space-between" align="center">
