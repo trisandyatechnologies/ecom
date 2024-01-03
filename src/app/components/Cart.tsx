@@ -142,7 +142,7 @@ export default function Cart() {
                 margin: 20,
               }}
               actions={[
-                <Typography>Sold by : </Typography>,
+                <Typography>Sold by : Srinu Enterprises</Typography>,
                 <Typography>Free Delivery</Typography>,
               ]}
             >
@@ -170,8 +170,8 @@ export default function Cart() {
               </Typography>
               <Typography>All issue easy returns allowed</Typography>
               <Flex gap={10}>
-                <Typography> Size:{size}</Typography>
-                <Typography>Qty:{Qty}</Typography>
+                <Typography> Size : {size}</Typography>
+                <Typography>Qty : {Qty}</Typography>
               </Flex>
               {
                 <Button style={{ border: "none", fontSize: 20 }}>
