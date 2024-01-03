@@ -43,7 +43,7 @@ export default function Sider() {
 
       <Select
         defaultValue="Sort by :"
-        style={{ width: 120 }}
+        style={{ width: "100%", padding: "0 10px" }}
         onChange={handleChange}
         options={[
           { value: "Relevance", label: "Sort by: Relevance" },
@@ -56,13 +56,15 @@ export default function Sider() {
         ]}
       />
 
-      <Divider />
+      <Divider style={{ margin: "10px auto" }} />
 
-      <Space>
-        <Typography>FILTERS</Typography>
+      <Flex vertical style={{ textAlign: "start", padding: "0 25px" }}>
+        <Typography>
+          <b>FILTERS</b>
+        </Typography>
         <Typography>1000+ Products</Typography>
-      </Space>
-
+      </Flex>
+      <Divider style={{ margin: "10px auto" }} />
       <Space>
         <Typography>Category</Typography>
       </Space>
@@ -89,13 +91,13 @@ export default function Sider() {
         >
           <Panel header="color" key="1">
             <Space style={{ flexWrap: "wrap" }}>
-              <Button>Multicolor</Button>
-              <Button>purple</Button>
-              <Button>white</Button>
-              <Button>Black</Button>
-              <Button>orange</Button>
-              <Button>red</Button>
-              <Button>Blue</Button>
+              <Button style={{ borderRadius: "22px" }}>Multicolor</Button>
+              <Button style={{ borderRadius: "22px" }}>purple</Button>
+              <Button style={{ borderRadius: "22px" }}>white</Button>
+              <Button style={{ borderRadius: "22px" }}>Black</Button>
+              <Button style={{ borderRadius: "22px" }}>orange</Button>
+              <Button style={{ borderRadius: "22px" }}>red</Button>
+              <Button style={{ borderRadius: "22px" }}>Blue</Button>
             </Space>
           </Panel>
         </Collapse>
@@ -108,10 +110,10 @@ export default function Sider() {
       >
         <Panel header="Price" key="1">
           <Space style={{ flexWrap: "wrap" }}>
-            <Button>under $ 234</Button>
-            <Button>under $ 111</Button>
-            <Button>under $ 456</Button>
-            <Button>under $ 150</Button>
+            <Button style={{ borderRadius: "22px" }}>under $ 234</Button>
+            <Button style={{ borderRadius: "22px" }}>under $ 111</Button>
+            <Button style={{ borderRadius: "22px" }}>under $ 456</Button>
+            <Button style={{ borderRadius: "22px" }}>under $ 150</Button>
           </Space>
         </Panel>
       </Collapse>
