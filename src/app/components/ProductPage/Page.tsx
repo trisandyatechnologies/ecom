@@ -24,7 +24,7 @@ const ProductPage: React.FC = () => {
                         <Button style={{ background: "purple", width: "200px", borderRadius: "5px", color: "white", fontSize: "18px", height: "50px" }}><DoubleRightOutlined />Buy Now</Button>
                     </Flex>
                 </Col>
-                {/* <Col span={1}></Col> */}
+                
                 <Col span={8} style={{ margin: "30px" }}>
                     <Flex style={{ flexDirection: "column", border: "0.5px solid gray", background: "white", borderRadius: "5px", gap: "10px", padding: "30px" }}>
                         <Typography>STLYZ Polyresin Baby Hat Monk Buddha Idols Standard Multicolour, 4 Pieces-Home Decor</Typography>
