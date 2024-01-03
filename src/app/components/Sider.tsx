@@ -36,10 +36,6 @@ export default function Sider() {
     console.log("checked = ", checkedValues);
   };
 
-  function callback() {
-    // console.log(key);
-  }
-
   const { Panel } = Collapse;
   return (
     <main className="sideresponsive">
@@ -67,46 +63,46 @@ export default function Sider() {
         <Typography>1000+ Products</Typography>
       </Space>
 
-      <Divider />
-
       <Space>
         <Typography>Category</Typography>
       </Space>
       <Flex>
         <Select
           mode="multiple"
-          style={{ width: "100%" }}
+          style={{ width: "100%", margin: "auto 5px" }}
           placeholder="search"
           onChange={onChange}
           optionLabelProp="label"
           options={options}
         />
       </Flex>
-
+      <Space>
+        <Collapse
+          expandIconPosition="right"
+          defaultActiveKey={["1"]}
+          style={{
+            borderTop: "1px solid grey",
+            borderRadius: 0,
+            marginTop: "15px",
+          }}
+          ghost
+        >
+          <Panel header="color" key="1">
+            <Space style={{ flexWrap: "wrap" }}>
+              <Button>Multicolor</Button>
+              <Button>purple</Button>
+              <Button>white</Button>
+              <Button>Black</Button>
+              <Button>orange</Button>
+              <Button>red</Button>
+              <Button>Blue</Button>
+            </Space>
+          </Panel>
+        </Collapse>
+      </Space>
       <Collapse
         expandIconPosition="right"
         defaultActiveKey={["1"]}
-        onChange={callback}
-        style={{ borderTop: "1px solid grey", borderRadius: 0 }}
-        ghost
-      >
-        <Panel header="color" key="1">
-          <Space style={{ flexWrap: "wrap" }}>
-            <Button>Multicolor</Button>
-            <Button>purple</Button>
-            <Button>white</Button>
-            <Button>Black</Button>
-            <Button>orange</Button>
-            <Button>red</Button>
-            <Button>Blue</Button>
-          </Space>
-        </Panel>
-      </Collapse>
-
-      <Collapse
-        expandIconPosition="right"
-        defaultActiveKey={["1"]}
-        onChange={callback}
         style={{ borderTop: "1px solid grey", borderRadius: 0 }}
         ghost
       >
@@ -123,7 +119,6 @@ export default function Sider() {
       <Collapse
         expandIconPosition="right"
         defaultActiveKey={["1"]}
-        onChange={callback}
         ghost
         style={{
           borderTop: "1px solid grey",
