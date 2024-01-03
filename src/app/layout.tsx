@@ -3,6 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
+import ProductPage from "./components/ProductPage/Page";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -48,18 +49,21 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header style={{ ...headerStyle, background: colorBgContainer }}>
+          {/* <Header style={{ ...headerStyle, background: colorBgContainer }}>
             <Flex justify="space-between" align="center">
               <Typography.Title level={4}>Meesho</Typography.Title>
               <Link href="/cart">Cart</Link>
             </Flex>
-          </Header>
+          </Header> */}
           <Layout>
-            <Sider
+            {/* <Sider
               width="15%"
               style={{ ...siderStyle, background: colorBgContainer }}
-            ></Sider>
-            <Content style={contentStyle}>{children}</Content>
+            ></Sider> */}
+            <ProductPage />
+            <Content style={contentStyle}>{children}
+              
+            </Content>
           </Layout>
           <Footer style={footerStyle}>
             <Typography>&copy; Meesho </Typography>
