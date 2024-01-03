@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import "./globals.css";
+// import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
 import MyOrders from "./components/Orders";
+import Sider from "./components/Sider";
+import Footer from "./components/Footer";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
@@ -22,14 +24,10 @@ const contentStyle: React.CSSProperties = {
 
 const siderStyle: React.CSSProperties = {
   textAlign: "center",
-  lineHeight: "120px",
   maxWidth: "10%",
 };
 
-const footerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-};
+const footerStyle: React.CSSProperties = {};
 
 const layoutStyle = {
   borderRadius: 8,
@@ -55,16 +53,14 @@ export default function RootLayout({
               <Link href="/cart">Cart</Link>
             </Flex>
           </Header>
+
           <Layout>
-            <Sider
-              width="15%"
-              style={{ ...siderStyle, background: colorBgContainer }}
-            ></Sider>
-            <Content style={contentStyle}><MyOrders/></Content>
+            <Flex className="siderView">
+              <Sider />
+              <Content style={contentStyle}>{children}</Content>
+            </Flex>
           </Layout>
-          <Footer style={footerStyle}>
-            <Typography>&copy; Meesho </Typography>
-          </Footer>
+          <Footer />
         </Layout>
       </body>
     </html>
