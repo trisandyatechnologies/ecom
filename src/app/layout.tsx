@@ -5,6 +5,8 @@ import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
 import ProductPage from "./components/ProductPage/Page";
 
+
+
 const { Header, Footer, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -18,6 +20,7 @@ const contentStyle: React.CSSProperties = {
   textAlign: "center",
   minHeight: `calc(100vh - 128px)`,
   lineHeight: "120px",
+  display:"none",
 };
 
 const siderStyle: React.CSSProperties = {
@@ -49,10 +52,25 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+          <Header style={{ ...headerStyle, background: colorBgContainer }}>
+            <Flex justify="space-between" align="center">
+              <Typography.Title level={4}>Meesho</Typography.Title>
+              <Link href="/cart">Cart</Link>
+            </Flex>
+          </Header>
+          <Layout>
+            <Sider
+              width="15%"
+              style={{ ...siderStyle, background: colorBgContainer }}
+            ></Sider>
+            <Content style={contentStyle}>{children}</Content>
+          </Layout>
           <ProductPage />
-          <Content style={contentStyle}>{children}
-          </Content>
+          <Footer style={footerStyle}>
+            <Typography>&copy; Meesho </Typography>
+          </Footer>
         </Layout>
+
       </body>
     </html>
   );
