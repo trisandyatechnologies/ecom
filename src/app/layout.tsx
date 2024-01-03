@@ -3,6 +3,7 @@
 import Link from "next/link";
 // import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
+import MyOrders from "./components/Orders";
 import Sider from "./components/Sider";
 import Footer from "./components/Footer";
 
