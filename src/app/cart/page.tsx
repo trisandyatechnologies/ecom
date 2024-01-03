@@ -3,8 +3,10 @@
 import { getCartItems, updateCartItemQuantity } from "@/lib/api";
 import { CartItem } from "@prisma/client";
 import { Avatar, Button, List, Skeleton, Typography } from "antd";
+import { Main } from "next/document";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Cart from "../components/Cart";
 
 export default function Home() {
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
@@ -31,42 +33,45 @@ export default function Home() {
   }, []);
 
   return (
+    // <main>
+    //   <List
+    //     className="demo-loadmore-list"
+    //     itemLayout="vertical"
+    //     dataSource={cartItems}
+    //     renderItem={(cartItem) => (
+    //       <List.Item
+    //         actions={[
+    //           <a
+    //             key="list-loadmore-edit"
+    //             onClick={() => {
+    //               handleQuantity(cartItem.id, cartItem.quantity - 1);
+    //             }}
+    //           >
+    //             -
+    //           </a>,
+    //           <Typography key="count">{cartItem.quantity}</Typography>,
+    //           <a
+    //             key="list-loadmore-more"
+    //             onClick={() => {
+    //               handleQuantity(cartItem.id, cartItem.quantity + 1);
+    //             }}
+    //           >
+    //             +
+    //           </a>,
+    //         ]}
+    //       >
+    //         <List.Item.Meta
+    //           avatar={<Avatar src={cartItem.item.image} />}
+    //           title={<Link href={"/"}>{cartItem.item.name}</Link>}
+    //           description={cartItem.item.description}
+    //         />
+    //         <div>Delivery in next year</div>
+    //       </List.Item>
+    //     )}
+    //   />
+    // </main>
     <main>
-      <List
-        className="demo-loadmore-list"
-        itemLayout="vertical"
-        dataSource={cartItems}
-        renderItem={(cartItem) => (
-          <List.Item
-            actions={[
-              <a
-                key="list-loadmore-edit"
-                onClick={() => {
-                  handleQuantity(cartItem.id, cartItem.quantity - 1);
-                }}
-              >
-                -
-              </a>,
-              <Typography key="count">{cartItem.quantity}</Typography>,
-              <a
-                key="list-loadmore-more"
-                onClick={() => {
-                  handleQuantity(cartItem.id, cartItem.quantity + 1);
-                }}
-              >
-                +
-              </a>,
-            ]}
-          >
-            <List.Item.Meta
-              avatar={<Avatar src={cartItem.item.image} />}
-              title={<Link href={"/"}>{cartItem.item.name}</Link>}
-              description={cartItem.item.description}
-            />
-            <div>Delivery in next year</div>
-          </List.Item>
-        )}
-      />
+      <Cart />
     </main>
   );
 }
