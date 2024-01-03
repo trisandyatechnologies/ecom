@@ -49,25 +49,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          {/* <Header style={{ ...headerStyle, background: colorBgContainer }}>
-            <Flex justify="space-between" align="center">
-              <Typography.Title level={4}>Meesho</Typography.Title>
-              <Link href="/cart">Cart</Link>
-            </Flex>
-          </Header> */}
-          <Layout>
-            {/* <Sider
-              width="15%"
-              style={{ ...siderStyle, background: colorBgContainer }}
-            ></Sider> */}
-            <ProductPage />
-            <Content style={contentStyle}>{children}
-              
-            </Content>
-          </Layout>
-          <Footer style={footerStyle}>
-            <Typography>&copy; Meesho </Typography>
-          </Footer>
+          <ProductPage />
+          <Content style={contentStyle}>{children}
+          </Content>
         </Layout>
       </body>
     </html>
