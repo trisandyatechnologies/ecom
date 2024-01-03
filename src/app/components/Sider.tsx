@@ -6,6 +6,7 @@ import {
   Collapse,
   Divider,
   Flex,
+  Layout,
   Select,
   Space,
   Typography,
@@ -38,7 +39,7 @@ export default function Sider() {
 
   const { Panel } = Collapse;
   return (
-    <main className="sideresponsive">
+    <Layout.Sider className="sideresponsive">
       <h1>Products For You</h1>
 
       <Select
@@ -104,12 +105,13 @@ export default function Sider() {
       </Space>
       <Collapse
         expandIconPosition="right"
+        size="large"
         defaultActiveKey={["1"]}
         style={{ borderTop: "1px solid grey", borderRadius: 0 }}
         ghost
       >
         <Panel header="Price" key="1">
-          <Space style={{ flexWrap: "wrap" }}>
+          <Space style={{ flexWrap: "wrap", maxWidth: "100%" }}>
             <Button style={{ borderRadius: "22px" }}>under $ 234</Button>
             <Button style={{ borderRadius: "22px" }}>under $ 111</Button>
             <Button style={{ borderRadius: "22px" }}>under $ 456</Button>
@@ -135,6 +137,6 @@ export default function Sider() {
           />
         </Panel>
       </Collapse>
-    </main>
+    </Layout.Sider>
   );
 }

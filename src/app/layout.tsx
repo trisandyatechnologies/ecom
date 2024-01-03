@@ -57,12 +57,7 @@ export default function RootLayout({
 
           <Layout>
             <Flex className="siderView">
-              <Layout.Sider
-                width="35%"
-                style={{ ...siderStyle, background: colorBgContainer }}
-              >
-                <Sider />
-              </Layout.Sider>
+              <Sider />
               <Content style={contentStyle}>{children}</Content>
             </Flex>
           </Layout>
