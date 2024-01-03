@@ -10,15 +10,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Category {
+  RiceAttaAndDals
+  OilsMasalasAndSauces
+  BeakfastFoods
+  Biscuits
+  HealthAndNutrition
+  CleaningAndHouseholds
+  HygineAndPersonalcare
+  BodyAndBath
+  BabyCare
+  PetSuplies
+}
+
 model Item {
   id                  String  @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   price               Float
+  discount            Float
   image               String
   description         String?
   brand               String?
   quantity            Int     @default(1)
+  details             ProductDetails
   cartItems           CartItem[]
+  category            Category
+}
+
+type ProductDetails{
+soldBy              String?
+size                Int?
+type                String?
+capcity             Float?
+origin              String
+features            String?
+weight              Int?
+pattern             String?
+units               Int?
+flavour             String?
+style               String?
 }
 
 model CartItem {
