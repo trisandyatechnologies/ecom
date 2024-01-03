@@ -3,7 +3,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-
+// import Rating from "./components/Rating";
 const { Header, Footer, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -55,16 +55,23 @@ export default function RootLayout({
             </Flex>
           </Header>
           <Layout>
+          
             <Sider
               width="15%"
               style={{ ...siderStyle, background: colorBgContainer }}
             ></Sider>
-            <Content style={contentStyle}>{children}</Content>
+            {/* <Rating/> */}
+            <Content style={contentStyle}>{children}
+            
+            
+            </Content>
           </Layout>
           <Footer style={footerStyle}>
             <Typography>&copy; Meesho </Typography>
           </Footer>
+          
         </Layout>
+
       </body>
     </html>
   );
