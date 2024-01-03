@@ -5,10 +5,9 @@ import { getCartItems, updateCartItemQuantity } from "@/lib/api";
 import { Avatar, Button, List, Skeleton, Typography } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import { CartItem } from "@prisma/client";
 export default function Home() {
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-
   const handleQuantity = (cartItemId: string, updatedQuantity: number) => {
     updateCartItemQuantity(cartItemId, updatedQuantity).then(
       (updatedCartItem) => {
@@ -23,7 +22,6 @@ export default function Home() {
       }
     );
   };
-
   useEffect(() => {
     getCartItems().then((items) => {
       setCartItems(items);
