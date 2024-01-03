@@ -6,7 +6,7 @@ const ProductPage: React.FC = () => {
     return (
         <main className="meesho-promotion" style={{ background: "white" }} >
             <Row justify={"space-around"}>
-                
+                <Col span={3}></Col>
                 <Col span={1} style={{ marginTop: "30px" }}>
                     <Flex id="sideImages" style={{ flexDirection: "column", gap: "10px" }}>
                         <img src="https://images.meesho.com/images/products/33133883/qqsw2_64.webp" />
@@ -34,7 +34,7 @@ const ProductPage: React.FC = () => {
                             <Typography style={{ display: "flex", borderRadius: "25px", width: "50px", background: "rgb(3, 141, 99)", color: "white", justifyContent: "center", gap: "4px" }}>4.2 <StarFilled /> </Typography>
                             5402 Ratings, 1295 Reviews
                         </Typography>
-                        <Typography id="free_delivery" style={{ display: "flex", marginTop: "10px", justifyContent: "center", borderRadius: "10px",maxWidth: "130px", background: "rgb(245 245 245)", color: "black", gap: "4px" }}>Free Delivery  </Typography>
+                        <Typography id="free_delivery" style={{ display: "flex", marginTop: "10px", justifyContent: "center", borderRadius: "10px", maxWidth: "130px", background: "rgb(245 245 245)", color: "black", gap: "4px" }}>Free Delivery  </Typography>
 
                     </Flex>
                     <Flex flex={1} className="secoend_column" style={{ flexDirection: "column", border: "0.5px solid gray", background: "white", borderRadius: "5px", gap: "10px", padding: "30px", margin: "15px auto" }}>
