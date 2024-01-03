@@ -31,31 +31,34 @@ export default function Sider() {
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
+
   const onChange = (checkedValues: CheckboxValueType[]) => {
     console.log("checked = ", checkedValues);
   };
+
+  function callback() {
+    // console.log(key);
+  }
 
   const { Panel } = Collapse;
   return (
     <main className="sideresponsive">
       <h1>Products For You</h1>
 
-      <Space wrap>
-        <Select
-          defaultValue="Sort by :"
-          style={{ width: 90 }}
-          onChange={handleChange}
-          options={[
-            { value: "Relevance", label: "Sort by: Relevance" },
-            { value: "New Arrivals", label: "New Arrivals" },
-            { value: "Price (High to Low)", label: "Price (High to Low)" },
-            { value: "Price (Low to High)", label: "Price (Low to High)" },
-            { value: "Ratings", label: "Ratings" },
+      <Select
+        defaultValue="Sort by :"
+        style={{ width: 120 }}
+        onChange={handleChange}
+        options={[
+          { value: "Relevance", label: "Sort by: Relevance" },
+          { value: "New Arrivals", label: "New Arrivals" },
+          { value: "Price (High to Low)", label: "Price (High to Low)" },
+          { value: "Price (Low to High)", label: "Price (Low to High)" },
+          { value: "Ratings", label: "Ratings" },
 
-            { value: "Discount", label: "Discount", disabled: true },
-          ]}
-        />
-      </Space>
+          { value: "Discount", label: "Discount", disabled: true },
+        ]}
+      />
 
       <Divider />
 
@@ -74,8 +77,6 @@ export default function Sider() {
           mode="multiple"
           style={{ width: "100%" }}
           placeholder="search"
-          // defaultValue={['apple']}
-
           onChange={onChange}
           optionLabelProp="label"
           options={options}
