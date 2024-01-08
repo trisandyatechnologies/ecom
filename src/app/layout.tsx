@@ -1,38 +1,29 @@
 "use client";
-
 import Link from "next/link";
 import { Layout, Flex, Typography, theme } from "antd";
 import Sider from "./components/Sider";
 import Footer from "./components/Footer";
 import Productpage from "./components/ItemCard";
-
 const { Header, Content } = Layout;
-
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
   height: 64,
   paddingInline: 48,
   lineHeight: "64px",
 };
-
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
   minHeight: `calc(100vh - 128px)`,
 };
-
 const siderStyle: React.CSSProperties = {
   textAlign: "center",
   maxWidth: "10%",
 };
-
-const footerStyle: React.CSSProperties = {};
-
 const layoutStyle = {
   borderRadius: 8,
   overflow: "hidden",
   width: "100%",
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -55,6 +46,7 @@ export default function RootLayout({
             <Flex className="siderView">
               <Sider />
               <Content style={contentStyle}>{children}
+              <Productpage />
               </Content>
             </Flex>
           </Layout>

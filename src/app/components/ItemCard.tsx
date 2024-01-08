@@ -67,7 +67,7 @@ const ItemCard = [
   }
 ];
 const { Meta } = Card;
-export default function Cart() {
+export default function Itemcard() {
   return (
     <main style={{ background: "white" }}>
       <Divider />
@@ -97,17 +97,18 @@ export default function Cart() {
                   }
                 />
               </Flex>
-              <Flex gap={10}>
                 <Typography>{name}</Typography>
-              </Flex>
-               <Typography style={{ fontSize: "24px",display: "flex", gap: "5px" }}>{price}  <Typography style={{paddingTop:"13px"}}>onwards</Typography></Typography>
-              <Typography style={{ fontSize: 15, display: "flex", textAlign: "start", justifyContent: "center", color: "rgb(97, 97, 115)", background: "rgb(248, 248, 255)", width: "90px", borderRadius: "27px", padding: 0, margin: 0 }}>
+               <Flex>
+               <Typography style={{fontSize:"24px"}}>{price}</Typography>
+               <Typography style={{paddingTop:"10px"}}>onwards</Typography>
+               </Flex>
+              <Typography style={{ color: "rgb(97, 97, 115)", background: "rgb(248, 248, 255)",padding: 0, margin: 0,textAlign:"left",width:"90px",borderRadius:"14px"}}>
                 Free Delivery
               </Typography>
-              <Typography style={{ display: "flex", gap: "10px" }} id="rating">
-                <Typography style={{ display: "flex", borderRadius: "25px", width: "50px", background: "rgb(3, 141, 99)", color: "white", justifyContent: "center", gap: "4px" }}>4.2 <StarFilled /> </Typography>
-                {reviews} reviews
-              </Typography>
+              <Flex style={{gap:"7px"}}> 
+              <Typography style={{ background: "rgb(3, 141, 99)", color: "white", borderRadius:"8px",}}>4.2 <StarFilled /> </Typography>
+              <Typography>  {reviews} reviews</Typography>
+              </Flex>
             </Card>
           ))}
         </Row>
