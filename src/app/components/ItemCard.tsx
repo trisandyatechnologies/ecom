@@ -90,7 +90,7 @@ export default function Itemcard() {
                 border: "1px solid black",
                 margin: "5px 15px",
                 justifyContent:"center",
-                flex:1
+                flex:1  
               }}
             >
               <Flex vertical >
