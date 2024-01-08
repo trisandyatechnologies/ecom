@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Layout, Flex, Typography, theme } from "antd";
 import Sider from "./components/Sider";
 import Footer from "./components/Footer";
-import Productpage from "./components/ItemCard";
 const { Header, Content } = Layout;
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
@@ -44,9 +43,8 @@ export default function RootLayout({
           </Header>
           <Layout>
             <Flex className="siderView">
-              {/* <Sider /> */}
+              <Sider />
               <Content style={contentStyle}>{children}
-              <Productpage />
               </Content>
             </Flex>
           </Layout>

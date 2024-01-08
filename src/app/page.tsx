@@ -4,6 +4,7 @@ import { addCartItem, getItems } from "@/lib/api";
 import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme, App } from "antd";
 import { Component, useEffect, useState } from "react";
+import ItemCard from "./components/ItemCard";
 
 
 
@@ -42,29 +43,7 @@ export default function Home() {
         dataSource={items}
         renderItem={(item) => (
           <List.Item>
-            <Card cover={<Image alt={item.name} src={item.image} />}>
-              <Card.Meta
-                title={
-                  <Space>
-                    <Typography>{item.brand}</Typography>
-                    <Typography>{item.name}</Typography>
-                  </Space>
-                }
-                description={
-                  <Space>
-                    <Typography>{item.price}</Typography>
-                    <Typography>onwards</Typography>
-                  </Space>
-                }
-              />
-              <Button
-                style={{ marginTop: padding }}
-                type="primary"
-                onClick={() => addToCart(item.id)}
-              >
-                Add to Cart
-              </Button>
-            </Card>
+           <ItemCard {...item}/>
           </List.Item>
         )}
       />
