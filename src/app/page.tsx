@@ -5,8 +5,6 @@ import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme, App } from "antd";
 import { Component, useEffect, useState } from "react";
 
-
-
 const userId = "6582d402c4e753141edcd9be";
 
 export default function Home() {
@@ -68,8 +66,6 @@ export default function Home() {
           </List.Item>
         )}
       />
-      
-      
     </main>
   );
 }

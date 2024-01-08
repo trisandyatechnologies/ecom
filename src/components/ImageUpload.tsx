@@ -1,10 +1,11 @@
 "use client";
 
-import { Button, Card, Flex } from "antd";
+import { Button, Card, Flex, theme } from "antd";
 import { CldUploadWidget } from "next-cloudinary";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { getImage } from "@/utils/util";
 
 interface ImageUploadProps {
   disabled?: boolean;
@@ -19,13 +20,17 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [images, setImages] = useState(value);
+  const {
+    token: { padding },
+  } = theme.useToken();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   const onUpload = (result: any) => {
-    const newImages = [...images, result.info.secure_url];
+    console.log(result);
+    const newImages = [...images, result.info.path];
     setImages(newImages);
     onChange?.(newImages);
   };
@@ -41,42 +46,34 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   }
 
   return (
-    <>
-      <Flex>
-        {images.map((url, i) => (
-          <Card
-            key={url}
-            hoverable
-            style={{ width: 240 }}
-            cover={
-              <Image fill className="object-cover" alt="Image" src={url} />
-            }
-            actions={[
-              <Button
-                key="delete"
-                icon={<DeleteOutlined />}
-                onClick={() => onRemove(i, url)}
-              ></Button>,
-            ]}
-          ></Card>
-        ))}
-      </Flex>
+    <Flex gap={padding / 2} style={{ padding }} className="image-upload">
+      {images.map((path, i) => (
+        <Flex key={path} className="thumbnail">
+          <Image fill alt="Image" src={getImage(path)} />
+          <Button
+            key="delete"
+            icon={<DeleteOutlined />}
+            onClick={() => onRemove(i, path)}
+          ></Button>
+        </Flex>
+      ))}
       <CldUploadWidget onUpload={onUpload} uploadPreset="cazyiuln">
         {({ open }) => {
-          const onClick = () => {
-            open();
-          };
-
           return (
-            <Button disabled={disabled} onClick={onClick}>
-              <Button icon={<UploadOutlined />} onClick={() => open()}>
+            <Flex>
+              <Button
+                disabled={disabled}
+                icon={<UploadOutlined />}
+                onClick={() => open()}
+                className="upload-btn"
+              >
                 Upload Image
               </Button>
-            </Button>
+            </Flex>
           );
         }}
       </CldUploadWidget>
-    </>
+    </Flex>
   );
 };
 
