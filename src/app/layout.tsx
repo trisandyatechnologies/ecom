@@ -44,7 +44,7 @@ export default function RootLayout({
           </Header>
           <Layout>
             <Flex className="siderView">
-              <Sider />
+              {/* <Sider /> */}
               <Content style={contentStyle}>{children}
               <Productpage />
               </Content>
