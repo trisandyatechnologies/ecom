@@ -18,7 +18,7 @@ model Item {
   description         String?
   brand               String?
   quantity            Int     @default(1)
-  cartItems           CartItem[]
+  cartItems           CartItem[]  
 }
 
 model CartItem {
