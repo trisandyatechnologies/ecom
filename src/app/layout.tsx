@@ -3,11 +3,11 @@
 import Link from "next/link";
 // import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-import Headerr from "./Components/Header";
+import Header from "./components/Header";
 import Sider from "./components/Sider";
 import Footer from "./components/Footer";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
@@ -46,15 +46,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Headerr />
-        
         <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header style={{ ...headerStyle, background: colorBgContainer }}>
-            <Flex justify="space-between" align="center">
-              <Typography.Title level={4}>Meesho</Typography.Title>
-              <Link href="/cart">Cart</Link>
-            </Flex>
-          </Header>
+          <Header />
 
           <Layout>
             <Flex className="siderView">
