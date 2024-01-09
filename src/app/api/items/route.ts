@@ -6,6 +6,10 @@ export async function GET(req: Request, res: Response) {
   return NextResponse.json(items);
 }
 
-export function POST(req: Request, res: Response) {
+export async function POST(req: Request, res: Response) {
+  const itemBody = req.json();
+  const item = await prisma.item.create({
+    data: itemBody
+  });
   return NextResponse.json([]);
 }

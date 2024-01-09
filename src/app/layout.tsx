@@ -50,6 +50,7 @@ export default function RootLayout({
             <Flex justify="space-between" align="center">
               <Typography.Title level={4}>Meesho</Typography.Title>
               <Link href="/cart">Cart</Link>
+              <Link href="/admin">Admin</Link>
             </Flex>
           </Header>
 
