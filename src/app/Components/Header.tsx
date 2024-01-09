@@ -225,9 +225,6 @@ const Header: React.FC = () => {
   const menuStyle: React.CSSProperties = {
     width: "90vw",
     display: "flex",
-
-    // justifyContent: "space-between",
-
     boxShadow: "none",
   };
 
@@ -235,7 +232,6 @@ const Header: React.FC = () => {
     <Layout.Header
       style={{
         display: "flex",
-        // alignItems: "center",
         width: "100%",
         background: "white",
         flexDirection: "column",
@@ -272,7 +268,6 @@ const Header: React.FC = () => {
           onSearch={onSearch}
         />
         <Menu
-          //theme="dark"
           mode="horizontal"
           defaultSelectedKeys={["2"]}
           items={items}
@@ -289,7 +284,7 @@ const Header: React.FC = () => {
       <Menu
         mode="horizontal"
         items={categoryItems}
-        style={{ padding: "0 150px", width: "100%" }}
+        style={{ padding: "0 150px ", width: "100%" }}
       />
     </Layout.Header>
   );
