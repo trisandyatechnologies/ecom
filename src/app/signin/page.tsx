@@ -1,58 +1,89 @@
-'use client';
-import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Typography } from 'antd';
-import Link from 'next/link';
-
+"use client";
+import React from "react";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Checkbox, Flex, Form, Input, Typography, theme } from "antd";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { message } from "@/lib/notify";
+import { useRouter } from "next/navigation";
 
 const Signin: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+  const router = useRouter();
+  const {
+    token: { padding },
+  } = theme.useToken();
+
+  const onFinish = async (values: any) => {
+    const { error: err, status } = (await signIn("credentials", {
+      redirect: false,
+      ...values,
+    })) ?? { error: true };
+    if (err || status === 401) {
+      message.error("Email or password incorrect.");
+    } else {
+      //TODO: check for admin role
+      router.replace("/");
+    }
   };
 
   return (
-    <Form
-      name="normal_login"
-      className="login-form"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      style={{padding:'100px 400px'}}
-    >
-      <Typography  style={{color:'blue',margin:'10px',fontSize:'30px'}} >Signin</Typography>
-      
-      <Form.Item
-        name="email"
-        rules={[{ required: true, message: 'Please input your Email! or phone number' }]}
+    <Flex justify="center" align="center" style={{ padding }}>
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        style={{ minWidth: 320 }}
+        layout="vertical"
       >
-        <Input type='emial ' typeof='number' prefix={<UserOutlined className="site-form-item-icon" />} placeholder="email" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: 'Please input your Password!' }]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-      <Form.Item >
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+        <Typography.Title level={2}>Signin</Typography.Title>
+
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Please input your Email! or phone number",
+            },
+          ]}
+        >
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="email or phone"
+          />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[{ required: true, message: "Please input your Password!" }]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Password"
+          />
+        </Form.Item>
+        <Form.Item style={{ justifyContent: "space-between" }}>
+          <Form.Item name="remember" valuePropName="checked" noStyle>
+            <Checkbox className="login-form-check">Remember me</Checkbox>
+          </Form.Item>
+
+          <a className="login-form-forgot" href="#">
+            Forgot password
+          </a>
         </Form.Item>
 
-        <a style={{margin:'10px'}} className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item>
-
-      <Form.Item>
-       <Button type="primary" htmlType="submit" className="login-form-button">
-       <Link href='/cart' > Signin </Link>
-        </Button>
-       <Link style={{margin:'5px'}} href="/Signup">  Or  signup</Link>
-      </Form.Item>
-    </Form>
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
+            Signin
+          </Button>
+          <Link href="/signup"> Or signup</Link>
+        </Form.Item>
+      </Form>
+    </Flex>
   );
 };
 
