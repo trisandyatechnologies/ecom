@@ -104,8 +104,8 @@ export default function Footer() {
           <Flex vertical>
             <Typography style={{ fontSize: 20 }}>Contact Us</Typography>
             <Typography style={{ color: "gray" }}>
-          <strong> Trisandya Technology Solutions </strong>Pvt. Ltd.,DNO: 3-13A, Jammichettu Center,
-             Pedakallepalli, AP, India - 521130 E-mail address:<a href="mailto:office@trisandya.com">[office]@[trisandya].[com]</a> © 2015-2023 Trisandya.com
+         <Typography> <strong> Trisandya Technology Solutions Pvt. Ltd</strong></Typography>,DNO: 3-13A, Jammichettu Center,
+             Pedakallepalli, AP, India - 521130  <Typography><a href="mailto:office@trisandya.com">[office]@[trisandya].[com]</a></Typography> © 2024 Trisandya.com
             </Typography>
           </Flex>
         </Col>
