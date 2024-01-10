@@ -1,5 +1,6 @@
 "use client";
 
+import Itemcard from "@/components/ItemCard";
 import { addCartItem, getItems } from "@/lib/api";
 import { getImage } from "@/utils/util";
 import { Item } from "@prisma/client";
@@ -41,29 +42,7 @@ export default function Home() {
         dataSource={items}
         renderItem={(item) => (
           <List.Item>
-            <Card cover={<Image alt={item.name} src={getImage(item.images[0])} />}>
-              <Card.Meta
-                title={
-                  <Space>
-                    <Typography>{item.brand}</Typography>
-                    <Typography>{item.name}</Typography>
-                  </Space>
-                }
-                description={
-                  <Space>
-                    <Typography>{item.price}</Typography>
-                    <Typography>onwards</Typography>
-                  </Space>
-                }
-              />
-              <Button
-                style={{ marginTop: padding }}
-                type="primary"
-                onClick={() => addToCart(item.id)}
-              >
-                Add to Cart
-              </Button>
-            </Card>
+           <Itemcard {...item}/>
           </List.Item>
         )}
       />
