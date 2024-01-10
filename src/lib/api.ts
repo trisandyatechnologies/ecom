@@ -46,3 +46,4 @@ export const updateCartItemQuantity = async (
   }).then((res) => res.json());
   return item;
 };
+
