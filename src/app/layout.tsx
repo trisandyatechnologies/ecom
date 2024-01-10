@@ -5,6 +5,9 @@ import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
 import Footer from "../components/Footer";
 
+import Address from "@/components/AddressForm";
+import Profile from "@/components/UserProfile";
+
 const { Header, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -43,7 +46,10 @@ export default function RootLayout({
             </Flex>
           </Header>
           <Layout>
-            <Content style={contentStyle}>{children}</Content>
+            <Content style={contentStyle}>
+              {children}
+              <Profile />
+            </Content>
           </Layout>
           <Footer />
         </Layout>
