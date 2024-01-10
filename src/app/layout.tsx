@@ -3,9 +3,10 @@
 import Link from "next/link";
 // import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-import Header from "./components/Header";
-import Sider from "./components/Sider";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Sider from "../components/Sider";
+import Footer from "../components/Footer";
+import { SessionProvider } from "next-auth/react";
 
 const { Content } = Layout;
 
@@ -46,17 +47,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header />
+        <SessionProvider>
+          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+            <Header />
 
-          <Layout>
-            <Flex className="siderView">
-              <Sider />
-              <Content style={contentStyle}>{children}</Content>
-            </Flex>
+            <Layout>
+              <Flex className="siderView">
+                <Sider />
+                <Content style={contentStyle}>{children}</Content>
+              </Flex>
+            </Layout>
+            <Footer />
           </Layout>
-          <Footer />
-        </Layout>
+        </SessionProvider>
       </body>
     </html>
   );

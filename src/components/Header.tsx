@@ -1,6 +1,6 @@
 "use client";
 
-import "../globals.css";
+import "../app/globals.css";
 import React from "react";
 import { SearchProps } from "antd/es/input/Search";
 import {

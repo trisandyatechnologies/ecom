@@ -95,7 +95,6 @@ a {
   }
 }
 
-<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -163,8 +162,8 @@ body {
     .search {
       width: "15%"
     }
+  }
   
-=======
 .image-upload .thumbnail {
   width: 150px;
   height: 150px;
@@ -194,5 +193,4 @@ body {
 }
 .login-form .login-form-button {
   width: 100%;
->>>>>>> main
 }
