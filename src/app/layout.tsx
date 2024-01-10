@@ -1,29 +1,20 @@
 "use client";
-import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
 import Header from "../components/Header";
-import Sider from "../components/Sider";
 import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
 const { Content } = Layout;
 
-const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-};
 const contentStyle: React.CSSProperties = {
-  textAlign: "center",
   minHeight: `calc(100vh - 128px)`,
-  // lineHeight: "120px",
 };
+
 const layoutStyle = {
-  borderRadius: 8,
   overflow: "hidden",
   width: "100%",
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -35,16 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script>0</script>
         <SessionProvider>
           <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
             <Header />
-
-            <Content>
-              <Flex className="siderView">
-                <Sider />
-                <Content style={contentStyle}>{children}</Content>
-              </Flex>
-            </Content>
+            <Content style={contentStyle}>{children}</Content>
             <Footer />
           </Layout>
         </SessionProvider>
