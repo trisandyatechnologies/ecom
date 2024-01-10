@@ -33,28 +33,28 @@ export default function Footer() {
       >
         <Col xs={24}  md={12} xl={8} >
           <Flex vertical>
-            <Typography style={{ fontFamily: "sans-serif", fontSize: 30 }}>
-              Shop Non-Stop on Meesho
+            <Typography style={{ fontFamily: "sans-serif", fontSize: 20 }}>
+              Shop Non-Stop on Trisandya mart
             </Typography>
             <Typography style={{ fontSize: 15, color: "gray" }}>
-              Trusted by more than 1 Crore Indians
+              Trusted by more than 1 more Indians
             </Typography>
             <Typography style={{ fontSize: 15, color: "gray" }}>
               Cash on Delivery | Free Delivery
             </Typography>
             <Flex style={{ height: "fit-content" }}>
-              <Link href="" target="_blank">
+              {/* <Link href="" target="_blank">
                 <img
                   style={{ width: 200, paddingRight: 10, marginTop: 6 }}
                   src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 />
-              </Link>
-              <Link href="" target="_blank">
+              </Link> */}
+              {/* <Link href="" target="_blank">
                 <img
                   style={{ width: 160 }}
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt4QcOwLdFYst6geIybh_PnL38ci6zL8fb1w&usqp=CAU"
                 />
-              </Link>
+              </Link> */}
             </Flex>
           </Flex>
         </Col>
@@ -69,7 +69,7 @@ export default function Footer() {
         <Col className="footer_col" xs={12}  md={6} xl={4}>
           <Flex vertical>
             <FooterLink name="Legal and Policies" href="" />
-            <FooterLink name="Meesho Tech Blog" href="" />
+            <FooterLink name="Trisandya Tech Blog" href="" />
             <FooterLink name="Notices and Returns" href="" />
           </Flex>
         </Col>
@@ -104,10 +104,8 @@ export default function Footer() {
           <Flex vertical>
             <Typography style={{ fontSize: 20 }}>Contact Us</Typography>
             <Typography style={{ color: "gray" }}>
-              Fashnear Technologies Private Limited, CIN: U74900KA2015PTC082263
-              06-105-B, 06-102, (138 Wu) Vaishnavi Signature, No. 78/9, Outer
-              Ring Road, Bellandur, Varthur Hobli, Bengaluru-560103, Karnataka,
-              India E-mail address: query@meesho.com © 2015-2023 Meesho.com
+          <strong> Trisandya Technology Solutions </strong>Pvt. Ltd.,DNO: 3-13A, Jammichettu Center,
+             Pedakallepalli, AP, India - 521130 E-mail address:<a href="mailto:office@trisandya.com">[office]@[trisandya].[com]</a> © 2015-2023 Trisandya.com
             </Typography>
           </Flex>
         </Col>
