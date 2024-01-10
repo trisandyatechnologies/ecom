@@ -28,8 +28,8 @@ export default function Profile() {
       <Col xs={24} lg={12}>
         <Form
           name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
+          // labelCol={{ span: 8 }}
+          // wrapperCol={{ span: 16 }}
           style={{
             alignItems: "center",
             justifyContent: "center",
@@ -38,6 +38,7 @@ export default function Profile() {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
+          layout="vertical"
         >
           <Form.Item<FieldType>
             label="Name"
