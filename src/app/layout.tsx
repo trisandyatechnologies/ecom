@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
@@ -7,24 +6,20 @@ import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
 
 const { Header, Content } = Layout;
-
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
   height: 64,
   paddingInline: 48,
   lineHeight: "64px",
 };
-
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
   minHeight: `calc(100vh - 128px)`,
 };
-
 const layoutStyle = {
   overflow: "hidden",
   width: "100%",
 };
-
 export default function RootLayout({
   children,
 }: {
