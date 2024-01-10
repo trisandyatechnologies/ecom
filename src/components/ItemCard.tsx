@@ -1,75 +1,55 @@
+"use client";
+
 import React from "react";
-import { Flex, Typography } from "antd";
+import { Flex, Space, Typography, theme } from "antd";
 import { Avatar, Card } from "antd";
 import { StarFilled } from "@ant-design/icons";
 import { Item } from "@prisma/client";
-import { getImage } from "@/utils/util";
-const { Meta } = Card;
+import { getImage, getThumbnail } from "@/utils/util";
+import Image from "next/image";
+import AddToCart from "./AddToCart";
 
-export default function Itemcard({ images, name, price }: Item) {
+export default function Itemcard(props: Item) {
+  const { images, name, brand, price, mrp } = props;
+  const {
+    token: { padding },
+  } = theme.useToken();
   return (
     <Card
       style={{
-        background: "white",
-        border: "1px solid black",
-        margin: "5px 15px",
-        justifyContent: "center",
-        flex: 1,
+        minWidth: 240,
       }}
+      cover={
+        <Image
+          src={getThumbnail(images[0])}
+          width={400}
+          height={400}
+          alt={name}
+          style={{ height: "100%", padding: padding / 4 }}
+        />
+      }
+      bodyStyle={{ padding: padding }}
     >
-      <Meta
-        style={{
-          background: "white",
-          display: "flex",
-          padding: "auto",
-        }}
-        avatar={
-          <Avatar
-            src={getImage(images[0])}
-            style={{
-              display: "flex",
-              maxWidth: "190px",
-              borderRadius: 0,
-              paddingLeft: "30px",
-              margin: "0px",
-            }}
-          />
-        }
-      />
-      <Typography
-        style={{ textAlign: "left", paddingTop: "5px", fontSize: "15px" }}
-      >
+      <Typography.Title level={4}>{brand}</Typography.Title>
+      <Typography.Text strong style={{ fontSize: padding }}>
         {name}
-      </Typography>
-      <Flex style={{ gap: "5px" }}>
-        <Typography style={{ fontSize: "24px" }}>{price}</Typography>
-        <Typography style={{ paddingTop: "10px" }}>onwards</Typography>
-      </Flex>
-      <Typography
-        style={{
-          color: "rgb(97, 97, 115)",
-          background: "rgb(248, 248, 255)",
-          padding: 0,
-          margin: 0,
-          textAlign: "left",
-          width: "90px",
-          borderRadius: "14px",
-        }}
-      >
-        Free Delivery
-      </Typography>
-      <Flex style={{ gap: "7px", paddingTop: "6px" }}>
-        <Typography
-          style={{
-            background: "rgb(3, 141, 99)",
-            color: "white",
-            borderRadius: "8px",
-            width: "45px",
-          }}
-        >
-          <StarFilled />{" "}
+      </Typography.Text>
+      <Flex gap={padding / 2} align="center" style={{ width: "100%" }}>
+        <Typography style={{ fontSize: 24 }}>
+          <sup style={{ fontSize: padding }}>₹</sup>
+          {price}
         </Typography>
+        <Typography.Text type="secondary">M.R.P: ₹{mrp}</Typography.Text>
+        <Typography.Text type="success">
+          ({Math.ceil(((mrp - price) / mrp) * 100)}% off)
+        </Typography.Text>
       </Flex>
+      <Typography>Free Delivery, on orders above ₹ 500/-</Typography>
+      <Typography.Text type="secondary">
+        Same day delivery if ordered before 12 PM
+      </Typography.Text>
+
+      <AddToCart item={props} />
     </Card>
   );
 }

@@ -6,10 +6,6 @@ import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
 const { Content } = Layout;
 
-const contentStyle: React.CSSProperties = {
-  minHeight: `calc(100vh - 128px)`,
-};
-
 const layoutStyle = {
   overflow: "hidden",
   width: "100%",
@@ -21,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer, padding },
   } = theme.useToken();
   return (
     <html lang="en">
@@ -30,7 +26,14 @@ export default function RootLayout({
         <SessionProvider>
           <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
             <Header />
-            <Content style={contentStyle}>{children}</Content>
+            <Content
+              style={{
+                minHeight: `calc(100vh - 128px)`,
+                padding: padding,
+              }}
+            >
+              {children}
+            </Content>
             <Footer />
           </Layout>
         </SessionProvider>

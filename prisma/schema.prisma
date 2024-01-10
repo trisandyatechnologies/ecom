@@ -28,7 +28,6 @@ model Item {
   name        String
   mrp         Float
   price       Float
-  discount    Float
   images      String[]
   description String?
   brand       String?

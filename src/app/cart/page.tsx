@@ -1,12 +1,11 @@
 "use client";
 
 import { getCartItems, updateCartItemQuantity } from "@/lib/api";
-
-import { Avatar, Button, List, Skeleton, Typography } from "antd";
+import { Avatar, List, Typography } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CartItem } from "@prisma/client";
-export default function Home() {
+
+export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
 
   const handleQuantity = (cartItemId: string, updatedQuantity: number) => {

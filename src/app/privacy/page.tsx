@@ -156,7 +156,7 @@ export default function Privacy() {
         Usage Data is collected automatically when using the Service.
       </Typography>
       <Typography>
-        Usage Data may include information such as Your Device's Internet
+        Usage Data may include information such as Your Device&apos;s Internet
         Protocol address (e.g. IP address), browser type, browser version, the
         pages of our Service that You visit, the time and date of Your visit,
         the time spent on those pages, unique device identifiers and other
@@ -192,14 +192,14 @@ export default function Privacy() {
       <Typography>
         If You decide to register through or otherwise grant us access to a
         Third-Party Social Media Service, We may collect Personal data that is
-        already associated with Your Third-Party Social Media Service's account,
-        such as Your name, Your email address, Your activities or Your contact
-        list associated with that account.
+        already associated with Your Third-Party Social Media Service&apos;s
+        account, such as Your name, Your email address, Your activities or Your
+        contact list associated with that account.
       </Typography>
       <Typography>
         You may also have the option of sharing additional information with the
-        Company through Your Third-Party Social Media Service's account. If You
-        choose to provide such information and Personal Data, during
+        Company through Your Third-Party Social Media Service&apos;s account. If
+        You choose to provide such information and Personal Data, during
         registration or otherwise, You are giving the Company permission to use,
         share, and store it in a manner consistent with this Privacy Policy.
       </Typography>
@@ -321,10 +321,11 @@ export default function Privacy() {
           <Typography>
             <strong>To contact You:</strong> To contact You by email, telephone
             calls, SMS, or other equivalent forms of electronic communication,
-            such as a mobile application's push notifications regarding updates
-            or informative communications related to the functionalities,
-            products or contracted services, including the security updates,
-            when necessary or reasonable for their implementation.
+            such as a mobile application&apos;s push notifications regarding
+            updates or informative communications related to the
+            functionalities, products or contracted services, including the
+            security updates, when necessary or reasonable for their
+            implementation.
           </Typography>
         </li>
         <li>
@@ -428,12 +429,13 @@ export default function Privacy() {
         Transfer of Your Personal Data
       </Typography>
       <Typography>
-        Your information, including Personal Data, is processed at the Company's
-        operating offices and in any other places where the parties involved in
-        the processing are located. It means that this information may be
-        transferred to — and maintained on — computers located outside of Your
-        state, province, country or other governmental jurisdiction where the
-        data protection laws may differ than those from Your jurisdiction.
+        Your information, including Personal Data, is processed at the
+        Company&apos;s operating offices and in any other places where the
+        parties involved in the processing are located. It means that this
+        information may be transferred to — and maintained on — computers
+        located outside of Your state, province, country or other governmental
+        jurisdiction where the data protection laws may differ than those from
+        Your jurisdiction.
       </Typography>
       <Typography>
         Your consent to this Privacy Policy followed by Your submission of such
@@ -515,7 +517,9 @@ export default function Privacy() {
         means to protect Your Personal Data, We cannot guarantee its absolute
         security.
       </Typography>
-      <Typography style={{ fontSize: "30px" }}>Children's Privacy</Typography>
+      <Typography style={{ fontSize: "30px" }}>
+        Children&apos;s Privacy
+      </Typography>
       <Typography>
         Our Service does not address anyone under the age of 13. We do not
         knowingly collect personally identifiable information from anyone under
@@ -528,7 +532,7 @@ export default function Privacy() {
       <Typography>
         If We need to rely on consent as a legal basis for processing Your
         information and Your country requires consent from a parent, We may
-        require Your parent's consent before We collect and use that
+        require Your parent&apos;s consent before We collect and use that
         information.
       </Typography>
       <Typography style={{ fontSize: "30px" }}>
@@ -537,8 +541,8 @@ export default function Privacy() {
       <Typography>
         Our Service may contain links to other websites that are not operated by
         Us. If You click on a third party link, You will be directed to that
-        third party's site. We strongly advise You to review the Privacy Policy
-        of every site You visit.
+        third party&apos;s site. We strongly advise You to review the Privacy
+        Policy of every site You visit.
       </Typography>
       <Typography>
         We have no control over and assume no responsibility for the content,
