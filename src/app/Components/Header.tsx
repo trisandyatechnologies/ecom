@@ -5,12 +5,14 @@ import React from "react";
 import { SearchProps } from "antd/es/input/Search";
 import {
   Button,
+  Col,
   Divider,
   Dropdown,
   Flex,
   Input,
   List,
   Popover,
+  Row,
   Space,
   Typography,
 } from "antd";
@@ -280,12 +282,18 @@ const Header: React.FC = () => {
           }}
         />
       </Flex>
-
-      <Menu
-        mode="horizontal"
-        items={categoryItems}
-        style={{ padding: "0 150px ", width: "100%" }}
-      />
+      <Row>
+        <Col xs={24} lg={12}>
+          <Menu
+            mode="horizontal"
+            items={categoryItems}
+            style={{
+               padding: "0 150px ", 
+              width: "100%",
+            }}
+          />
+        </Col>
+      </Row>
     </Layout.Header>
   );
 };
