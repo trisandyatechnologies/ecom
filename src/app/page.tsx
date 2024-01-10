@@ -1,12 +1,11 @@
 "use client";
 
+import Itemcard from "@/components/ItemCard";
 import { addCartItem, getItems } from "@/lib/api";
+import { getImage } from "@/utils/util";
 import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme, App } from "antd";
 import { Component, useEffect, useState } from "react";
-import ItemCard from "./components/ItemCard";
-
-
 
 const userId = "6582d402c4e753141edcd9be";
 
@@ -43,12 +42,10 @@ export default function Home() {
         dataSource={items}
         renderItem={(item) => (
           <List.Item>
-           <ItemCard {...item}/>
+           <Itemcard {...item}/>
           </List.Item>
         )}
       />
-      
-      
     </main>
   );
 }
