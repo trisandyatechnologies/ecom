@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-// import "./globals.css";
+import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
 import Header from "../components/Header";
 import Sider from "../components/Sider";

@@ -162,6 +162,9 @@ body {
     .search {
       width: "15%"
     }
+    #search-bar{
+      width: "500px";
+    }
   }
   
 .image-upload .thumbnail {
