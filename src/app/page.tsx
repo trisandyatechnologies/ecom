@@ -1,6 +1,7 @@
 "use client";
 
 import { addCartItem, getItems } from "@/lib/api";
+import { getImage } from "@/utils/util";
 import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme, App } from "antd";
 import { Component, useEffect, useState } from "react";
@@ -40,7 +41,7 @@ export default function Home() {
         dataSource={items}
         renderItem={(item) => (
           <List.Item>
-            <Card cover={<Image alt={item.name} src={item.image} />}>
+            <Card cover={<Image alt={item.name} src={getImage(item.images[0])} />}>
               <Card.Meta
                 title={
                   <Space>

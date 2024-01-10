@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from 'react';
-import { Button, Flex, Form, Input, InputNumber } from 'antd';
+import { Button, Dropdown, Flex, Form, Input, InputNumber, MenuProps, Select, Space } from 'antd';
 import { addItem } from '@/lib/api';
+import ImageUpload from '@/components/ImageUpload';
+import { DownOutlined } from '@ant-design/icons';
+import { Category } from '@prisma/client';
 
 const layout = {
   labelCol: { span: 8 },
@@ -26,6 +29,8 @@ const onFinish = (values: any) => {
   
 };
 
+
+
 const Admin: React.FC = () => (
   <Flex >
   <Form
@@ -36,19 +41,28 @@ const Admin: React.FC = () => (
     validateMessages={validateMessages}
     
   >
-    <Form.Item name='item' label="Item Name" rules={[{ required: true }]}>
+    <Form.Item name='name' label="Item Name" rules={[{ required: true }]}>
       <Input />
     </Form.Item>
+    <Form.Item name='images'>
+    <ImageUpload/>
+    </Form.Item>
     <Form.Item name='price' label="Item Price" rules={[{ required: true }]} >
-        <Input placeholder="Enter Price" />
+        <InputNumber placeholder="Enter Price" type='number' />
       </Form.Item>
       <Form.Item name='mrp' label="Item MRP" rules={[{ required: true }]} >
-        <Input  />
+        <InputNumber />
       </Form.Item>
       <Form.Item label="Discount" name='discount'>
-        <Input  />
+        <InputNumber  />
       </Form.Item>
-      
+      <Form.Item label="Category" name='category'>
+        <Select>
+          {
+            Object.keys(Category).map(cat => <Select.Option value={cat}>{cat.replaceAll('_', ' ')}</Select.Option>)
+          }
+        </Select>
+      </Form.Item>
       <Form.Item label="Description" name='description'>
         <Input  />
       </Form.Item>
@@ -58,34 +72,34 @@ const Admin: React.FC = () => (
       <Form.Item label="Quantity" name='quantity'>
         <Input  />
       </Form.Item>
-      <Form.Item label="Sold By" name='sold_by'>
+      <Form.Item label="Sold By"name={['details', 'soldBy']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Size" name='size'>
+      <Form.Item label="Size" name={['details', 'size']}>
         <Input />
       </Form.Item>
-      <Form.Item label="Type" name='type'>
+      <Form.Item label="Type" name={['details', 'type']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Capacity" name='capacity'>
+      <Form.Item label="Capacity" name={['details', 'capacity']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Origin" name='origin'>
+      <Form.Item label="Origin" name={['details', 'origin']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Weight" name='weight'>
+      <Form.Item label="Weight" name={['details', 'weight']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Pattern" name='pattern'>
+      <Form.Item label="Pattern" name={['details', 'pattern']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Units" name='units'>
+      <Form.Item label="Units" name={['details', 'units']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Flavour" name='flavour'>
+      <Form.Item label="Flavour" name={['details', 'flavour']}>
         <Input  />
       </Form.Item>
-      <Form.Item label="Style" name='style'>
+      <Form.Item label="Style" name={['details', 'style']}>
         <Input  />
       </Form.Item>
     
