@@ -31,8 +31,7 @@ export default function Itemcard({
             src={image}
             style={{
               display: "flex",
-              width: "190px",
-              height: "168px",
+              maxWidth: "190px",
               borderRadius: 0,
               paddingLeft: "30px",
               margin: "0px",
