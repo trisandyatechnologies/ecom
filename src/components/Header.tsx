@@ -142,21 +142,6 @@ const Profile: MenuProps["items"] = [
 ];
 
 const items: MenuProps["items"] = [
-  // {
-  //   key: "Download App",
-  //   label: (
-  //     <Flex style={{ display: "flex", gap: "10px" }}>
-  //       <Dropdown menu={{ items: Downloadapp }}>
-  //         <Typography style={{ display: "flex", gap: "10px" }}>
-  //           <MobileOutlined />
-  //           Download App
-  //         </Typography>
-  //       </Dropdown>{" "}
-  //     </Flex>
-  //   ),
-  // },
-  // { key: "Become a Supplier", label: "Become a Supplier" },
-  // { key: "Newsroom", label: "Newsroom" },
   {
     key: "profile",
     label: (
@@ -216,19 +201,9 @@ const categoryMenuItems: MenuProps["items"] = categoryItems.map(
 );
 
 const Header: React.FC = () => {
-  const { token } = useToken();
-  const contentStyle: React.CSSProperties = {
-    backgroundColor: token.colorBgElevated,
-    borderRadius: token.borderRadiusLG,
-    boxShadow: token.boxShadowSecondary,
-    minWidth: "850px",
-  };
-
-  const menuStyle: React.CSSProperties = {
-    width: "90vw",
-    display: "flex",
-    boxShadow: "none",
-  };
+  const {
+    token: { padding },
+  } = useToken();
 
   return (
     <Layout.Header
@@ -238,13 +213,17 @@ const Header: React.FC = () => {
         background: "white",
         flexDirection: "column",
         minHeight: 128,
+        padding,
       }}
     >
       <Flex align="center">
-        <Typography.Title level={3} style={{fontWeight:700}}>{appName}</Typography.Title>
+        <Typography.Title level={3} style={{ fontWeight: 700, margin: 0 }}>
+          {appName}
+        </Typography.Title>
 
-        <Search id="search-bar"
-          style={{ width: "50%", paddingLeft: "15px" }}
+        <Search
+          id="search-bar"
+          style={{ width: "50%", marginLeft: padding }}
           placeholder="Search items here"
           allowClear
           size="large"
@@ -252,28 +231,23 @@ const Header: React.FC = () => {
         />
         <Menu
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
           items={items}
           style={{
             flex: 1,
             width: "100%",
-            minWidth: 0,
             justifyContent: "end",
-            alignItems: "center",
-            borderBottom:0,
-            margin:"10px auto"
+            border: "none",
           }}
         />
       </Flex>
       <Row>
-        <Col xs={24} lg={24}>
+        <Col xs={24}>
           <Menu
             mode="horizontal"
             items={categoryMenuItems}
             style={{
               width: "100%",
               maxWidth: "100%",
-              
             }}
           />
         </Col>

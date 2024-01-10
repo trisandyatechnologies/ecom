@@ -1,15 +1,12 @@
-"use client";
 import React from "react";
-import {Flex, Typography } from "antd";
+import { Flex, Typography } from "antd";
 import { Avatar, Card } from "antd";
 import { StarFilled } from "@ant-design/icons";
 import { Item } from "@prisma/client";
+import { getImage } from "@/utils/util";
 const { Meta } = Card;
-export default function Itemcard({
-  image,
-  name,
-  price,
-}: Item) {
+
+export default function Itemcard({ images, name, price }: Item) {
   return (
     <Card
       style={{
@@ -28,7 +25,7 @@ export default function Itemcard({
         }}
         avatar={
           <Avatar
-            src={image}
+            src={getImage(images[0])}
             style={{
               display: "flex",
               maxWidth: "190px",
