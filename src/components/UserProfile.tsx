@@ -45,19 +45,19 @@ export default function Profile() {
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, message: "Please Enter your Email" }]}
+            rules={[{ required: true, message: "Please enter your Email" }]}
           >
-            <Input />
+            <Input type="email" />
           </Form.Item>
 
           <Form.Item
-            label="phone No"
+            label="Phone No"
             name="phone"
             rules={[
-              { required: true, message: "Please Enter your phone number" },
+              { required: true, message: "Please enter your phone number" },
             ]}
           >
-            <Input />
+            <Input type="phone" />
           </Form.Item>
 
           <Form.Item>

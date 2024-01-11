@@ -1,42 +1,29 @@
-"use client";
 import "./globals.css";
-import { Layout, Flex, Typography, theme } from "antd";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { SessionProvider } from "next-auth/react";
-const { Content } = Layout;
+import { Metadata } from "next";
+import { DEFAULT_METADATA, ORG_SCHEMA } from "@/utils/config";
+import { GoogleTagManager } from "@next/third-parties/google";
+import Head from "next/head";
+import StyledComponentsRegistry from "@/lib/AntdRegistry";
 
-const layoutStyle = {
-  overflow: "hidden",
-  width: "100%",
-};
+export const metadata: Metadata = DEFAULT_METADATA;
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const {
-    token: { colorBgContainer, padding },
-  } = theme.useToken();
   return (
     <html lang="en">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={ORG_SCHEMA}
+        />
+      </Head>
       <body>
         <script>0</script>
-        <SessionProvider>
-          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-            <Header />
-            <Content
-              style={{
-                minHeight: `calc(100vh - 128px)`,
-                padding: padding,
-              }}
-            >
-              {children}
-            </Content>
-            <Footer />
-          </Layout>
-        </SessionProvider>
+        <GoogleTagManager gtmId="G-JBE3H2HL25" />
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   );

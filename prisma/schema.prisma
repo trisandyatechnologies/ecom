@@ -34,7 +34,6 @@ model Item {
   brand       String?
   quantity    Int            @default(1)
   details     ProductDetails
-  cartItems   CartItem[]
   category    Category
 }
 
@@ -42,7 +41,7 @@ type ProductDetails {
   soldBy   String?
   size     Int?
   type     String?
-  capcity  Float?
+  capacity  Float?
   origin   String?
   features String?
   weight   Float?
