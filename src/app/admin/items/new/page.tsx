@@ -123,7 +123,7 @@ const NewItem: React.FC = () => {
           </Col>
           <Col xs={24} lg={8}>
             <Form.Item label="Units" name={["details", "units"]}>
-              <InputNumber style={{ width: "100%" }} />
+              <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col xs={12} lg={8}>
