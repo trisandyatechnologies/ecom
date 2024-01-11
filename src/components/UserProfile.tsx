@@ -20,20 +20,20 @@ export default function Profile() {
   const { data: session } = useSession();
 
   return (
-    <Row gutter={padding * 2}>
-      <Col xs={24} lg={12}>
-        <Form
-          name="basic"
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          initialValues={session?.user}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-          layout="vertical"
-        >
+    <Form
+      name="basic"
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      initialValues={session?.user}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      autoComplete="off"
+      layout="vertical"
+    >
+      <Row gutter={padding * 2} style={{ padding }}>
+        <Col xs={24} lg={12}>
           <Form.Item
             label="Name"
             name="name"
@@ -61,15 +61,15 @@ export default function Profile() {
           </Form.Item>
 
           <Form.Item>
-            <Button style={{ marginLeft: 24 }} type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit">
               Submit
             </Button>
           </Form.Item>
-        </Form>
-      </Col>
-      <Col xs={24} lg={12}>
-        <Address />
-      </Col>
-    </Row>
+        </Col>
+        <Col xs={24} lg={12}>
+          <Address />
+        </Col>
+      </Row>
+    </Form>
   );
 }
