@@ -1,4 +1,5 @@
-import ItemList from "@/components/ItemList";
+
+import ItemsList from "@/components/ItemsList";
 import service from "@/lib/service";
 
 export default async function Items() {
@@ -6,7 +7,7 @@ export default async function Items() {
 
   return (
     <main>
-      <ItemList data={items} />
+      <ItemsList data={items} />
     </main>
   );
 }
