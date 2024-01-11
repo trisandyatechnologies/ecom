@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Sider from "../components/Sider";
 import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
+import ProductPage from "./components/ProductPage/Page";
 const { Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -39,14 +40,12 @@ export default function RootLayout({
           <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
             <Header />
 
-            <Content>
-              <Flex className="siderView">
-                <Sider />
+            
                 <Content style={contentStyle}>{children}</Content>
-              </Flex>
-            </Content>
+              
             <Footer />
           </Layout>
+
         </SessionProvider>
       </body>
     </html>
