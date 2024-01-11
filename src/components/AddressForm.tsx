@@ -1,6 +1,6 @@
 import React from "react";
 import { CloseCircleFilled, PlusOutlined } from "@ant-design/icons";
-import { Button, Flex, Form, Input, Space, theme } from "antd";
+import { Button, Flex, Form, Input, theme } from "antd";
 
 const onFinish = (values: any) => {
   console.log("Received values of form:", values);
@@ -16,7 +16,6 @@ const Address: React.FC = () => {
       onFinish={onFinish}
       autoComplete="off"
       layout="vertical"
-      style={{ maxWidth: 600 }}
     >
       <Form.List name="users">
         {(fields, { add, remove, ...restField }) => (
@@ -25,13 +24,15 @@ const Address: React.FC = () => {
               <Flex
                 vertical
                 key={key}
-                align="center"
-                style={{ border: `1px solid ${colorBorder}`, padding }}
+                style={{
+                  border: `1px solid ${colorBorder}`,
+                  padding: padding * 2,
+                }}
               >
                 <Form.Item
                   {...restField}
-                  label="FullName"
-                  name={[name, "FullName"]}
+                  label="Full Name"
+                  name={[name, "name"]}
                   rules={[
                     { required: true, message: "Please input your Name!" },
                   ]}
@@ -41,7 +42,7 @@ const Address: React.FC = () => {
 
                 <Form.Item
                   {...restField}
-                  label="mobile Number"
+                  label="Mobile Number"
                   name={[name, "mobile"]}
                   rules={[{ required: true }]}
                 >
@@ -50,7 +51,7 @@ const Address: React.FC = () => {
 
                 <Form.Item
                   {...restField}
-                  label="pincode"
+                  label="Pincode"
                   name={[name, "pincode"]}
                   rules={[{ required: true }]}
                 >
@@ -60,44 +61,21 @@ const Address: React.FC = () => {
                 <Form.Item
                   {...restField}
                   label="Flat, House no."
-                  name={[name, "house"]}
+                  name={[name, "address"]}
                   rules={[{ required: true }]}
                 >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  {...restField}
-                  label="Area"
-                  name={[name, "Area"]}
-                  rules={[{ required: true }]}
-                >
-                  <Input />
+                  <Input.TextArea rows={4} />
                 </Form.Item>
 
                 <Form.Item
                   {...restField}
-                  label="landmark"
-                  name={[name, "landmark"]}
-                  rules={[{ required: true }]}
+                  label="Map Location"
+                  name={[name, "map"]}
+                  rules={[{ required: false }]}
                 >
                   <Input />
                 </Form.Item>
-                <Form.Item
-                  {...restField}
-                  label="Town"
-                  name={[name, "Town"]}
-                  rules={[{ required: true }]}
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  {...restField}
-                  label="State"
-                  name={[name, "state"]}
-                  rules={[{ required: true }]}
-                >
-                  <Input />
-                </Form.Item>
+
                 <Form.Item>
                   <CloseCircleFilled
                     style={{ fontSize: 23 }}

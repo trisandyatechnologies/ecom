@@ -3,6 +3,7 @@ import React from "react";
 
 import { Button, Col, Form, Input, Row, theme } from "antd";
 import Address from "./AddressForm";
+import { useSession } from "next-auth/react";
 
 const onFinish = (values: any) => {
   console.log("Success:", values);
@@ -12,53 +13,46 @@ const onFinishFailed = (errorInfo: any) => {
   console.log("Failed:", errorInfo);
 };
 
-type FieldType = {
-  Email?: string;
-  Name?: string;
-  mobile?: string;
-};
-
 export default function Profile() {
   const {
     token: { padding },
   } = theme.useToken();
+  const { data: session } = useSession();
 
   return (
-    <Row gutter={padding}>
+    <Row gutter={padding * 2}>
       <Col xs={24} lg={12}>
         <Form
           name="basic"
-          // labelCol={{ span: 8 }}
-          // wrapperCol={{ span: 16 }}
           style={{
             alignItems: "center",
             justifyContent: "center",
           }}
-          initialValues={{ remember: true }}
+          initialValues={session?.user}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           layout="vertical"
         >
-          <Form.Item<FieldType>
+          <Form.Item
             label="Name"
-            name="Name"
+            name="name"
             rules={[{ required: true, message: "Please input your Name!" }]}
           >
             <Input />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             label="Email"
-            name="Email"
+            name="email"
             rules={[{ required: true, message: "Please Enter your Email" }]}
           >
             <Input />
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             label="phone No"
-            name="mobile"
+            name="phone"
             rules={[
               { required: true, message: "Please Enter your phone number" },
             ]}
