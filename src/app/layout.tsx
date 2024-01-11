@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Metadata } from "next";
-import { DEFAULT_METADATA, ORG_SCHEMA } from "@/utils/config";
+import { DEFAULT_METADATA } from "@/utils/config";
 import { GoogleTagManager } from "@next/third-parties/google";
-import StyledComponentsRegistry from "@/lib/AntdRegistry";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 export const metadata: Metadata = DEFAULT_METADATA;
 
@@ -16,7 +16,7 @@ export default function RootLayout({
       <body>
         <script>0</script>
         <GoogleTagManager gtmId="G-JBE3H2HL25" />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>
   );

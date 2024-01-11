@@ -1,4 +1,4 @@
-import ItemGrid from "@/components/ItemGrid";
+import Landing from "@/components/Landing";
 import service from "@/lib/service";
 
 export const dynamic = "force-dynamic"; // 👈🏽
@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <main>
-      <ItemGrid data={items} />
+      <Landing data={items} />
     </main>
   );
 }

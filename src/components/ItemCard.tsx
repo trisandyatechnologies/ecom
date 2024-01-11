@@ -1,20 +1,18 @@
 "use client";
 
 import React from "react";
-import { Flex, Space, Tag, Typography, theme } from "antd";
-import { Avatar, Card } from "antd";
-import { StarFilled } from "@ant-design/icons";
+import { Space, Tag, Typography, theme } from "antd";
+import { Card } from "antd";
 import { Item } from "@prisma/client";
-import { getImage, getThumbnail } from "@/utils/util";
+import { getThumbnail } from "@/utils/util";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
 import { RUPEE } from "@/utils/config";
 
-export default function Itemcard(props: Item) {
+export default function ItemCard(props: Item) {
   const {
     images,
     name,
-    brand,
     price,
     mrp,
     details: { weight, capacity, units },
@@ -33,7 +31,11 @@ export default function Itemcard(props: Item) {
           width={200}
           height={200}
           alt={name}
-          style={{ height: "50%", padding }}
+          style={{
+            padding,
+            width: "100%",
+            height: "auto",
+          }}
         />
       }
       bodyStyle={{ padding: padding, paddingTop: 0 }}
