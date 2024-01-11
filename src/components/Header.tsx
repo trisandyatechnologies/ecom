@@ -43,7 +43,7 @@ const profileMenuItems: MenuProps["items"] = [
   {
     key: "account",
     label: (
-      <Link rel="noopener noreferrer" href="/orders">
+      <Link rel="noopener noreferrer" href="/account">
         <BankOutlined /> Account
       </Link>
     ),
