@@ -33,22 +33,20 @@ export default function Template({ children }: { children: React.ReactNode }) {
     >
       <App>
         <Notify />
-        <Skeleton loading={status === "loading"}>
-          <SessionProvider>
-            <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-              <Header />
-              <Content
-                style={{
-                  minHeight: `calc(100vh - ${padding * 8}px)`,
-                  padding,
-                }}
-              >
-                {children}
-              </Content>
-              <Footer />
-            </Layout>
-          </SessionProvider>
-        </Skeleton>
+        <SessionProvider>
+          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+            <Header />
+            <Content
+              style={{
+                minHeight: `calc(100vh - ${padding * 8}px)`,
+                padding,
+              }}
+            >
+              {children}
+            </Content>
+            <Footer />
+          </Layout>
+        </SessionProvider>
       </App>
     </ConfigProvider>
   );
