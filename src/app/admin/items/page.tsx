@@ -1,13 +1,18 @@
+"use client";
+import ItemList from "@/components/ItemList";
+import { getItems } from "@/lib/api";
+import { useEffect, useState } from "react";
 
-import ItemsList from "@/components/ItemsList";
-import service from "@/lib/service";
+export default function Items() {
+  const [items, setItems] = useState([]);
 
-export default async function Items() {
-  const items = await service.getItems();
+  useEffect(() => {
+    getItems().then(setItems);
+  }, []);
 
   return (
     <main>
-      <ItemsList data={items} />
+      <ItemList data={items} />
     </main>
   );
 }
