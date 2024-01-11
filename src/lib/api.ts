@@ -1,4 +1,5 @@
 import { API_ROOT } from "@/utils/config";
+import { Item } from "@prisma/client";
 
 export const getItems = async () => {
   const items = await fetch(`${API_ROOT}items`).then((res) => res.json());
@@ -21,6 +22,17 @@ export const addCartItem = async (itemId: string) => {
   return item;
 };
 
+export const addItem = async (item: Item ) => {
+  const product = await fetch(`${API_ROOT}/items`, {
+    method: "POST",
+    body: JSON.stringify(item),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+  return product;
+};
+
 export const updateCartItemQuantity = async (
   cartItemId: string,
   quantity: number
@@ -34,3 +46,4 @@ export const updateCartItemQuantity = async (
   }).then((res) => res.json());
   return item;
 };
+

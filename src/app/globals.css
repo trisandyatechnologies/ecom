@@ -108,6 +108,75 @@ a {
   }
 }
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Header */
+.header-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  padding-left: 10px;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.search {
+  border: 0.5px solid black;
+  border-radius: 10px;
+}
+
+/* Additional styling for the navigation links */
+
+@media only screen and (max-width: 768px) {
+  /* Media query for smaller screens */
+  .header-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header-list li {
+    flex: 0 0 50%;
+    /* Two items per row */
+  }
+
+  /* .sc-csDkEv fVBIaS {
+    width: 30%;
+    padding: auto 3px;
+  } */
+  .search {
+    width: "15%";
+  }
+  #search-bar {
+    width: 100%;
+    padding: 0;
+  }
+}
+
 .image-upload .thumbnail {
   width: 150px;
   height: 150px;
@@ -120,3 +189,21 @@ a {
   border: 1px dashed grey;
 }
 
+.login-form {
+  max-width: 300px;
+}
+.login-form .login-form-forgot {
+  float: right;
+}
+.login-form .ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form .login-form-check {
+  float: left;
+}
+.login-form .ant-col-rtl .login-form-check {
+  float: right;
+}
+.login-form .login-form-button {
+  width: 100%;
+}

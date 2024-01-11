@@ -1,26 +1,10 @@
 "use client";
-
-import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-import Address from "@/components/AddressForm";
-import Profile from "@/components/UserProfile";
-
-const { Header, Content } = Layout;
-
-const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-};
-
-const contentStyle: React.CSSProperties = {
-  textAlign: "center",
-  minHeight: `calc(100vh - 128px)`,
-};
+import { SessionProvider } from "next-auth/react";
+const { Content } = Layout;
 
 const layoutStyle = {
   overflow: "hidden",
@@ -33,26 +17,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer, padding },
   } = theme.useToken();
   return (
     <html lang="en">
       <body>
-        <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header style={{ ...headerStyle, background: colorBgContainer }}>
-            <Flex justify="space-between" align="center">
-              <Typography.Title level={4}>Meesho</Typography.Title>
-              <Link href="/cart">Cart</Link>
-            </Flex>
-          </Header>
-          <Layout>
-            <Content style={contentStyle}>
+        <script>0</script>
+        <SessionProvider>
+          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+            <Header />
+            <Content
+              style={{
+                minHeight: `calc(100vh - 128px)`,
+                padding: padding,
+              }}
+            >
               {children}
-              <Profile />
             </Content>
+            <Footer />
           </Layout>
-          <Footer />
-        </Layout>
+        </SessionProvider>
       </body>
     </html>
   );
