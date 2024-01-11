@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import {
@@ -11,8 +11,11 @@ import {
   EditOutlined,
   FileDoneOutlined,
 } from "@ant-design/icons";
+import OrderedItemList from "./OrderedItemList";
+import { CartItem } from "@prisma/client";
 
 export default function OrderList({ data }: { data: OrderType[] }) {
+  const [cart, setCart] = useState<CartItem[] | undefined>();
   const columns: ColumnsType<OrderType> = [
     {
       title: "User",
@@ -40,10 +43,19 @@ export default function OrderList({ data }: { data: OrderType[] }) {
       title: "Cart",
       key: "cart",
       render: (_, record) => (
-        <Button icon={<ReadOutlined />} size="small" onClick={() => null} />
+        <Button
+          icon={<ReadOutlined />}
+          size="small"
+          onClick={() => setCart(record.items)}
+        />
       ),
     },
   ];
 
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <>
+      <Table columns={columns} dataSource={data} />
+      <OrderedItemList data={cart} onClose={() => setCart(undefined)} />
+    </>
+  );
 }
