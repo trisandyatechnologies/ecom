@@ -1,13 +1,12 @@
 "use client";
-
 import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-import ProductPage from "./components/ProductPage/Page";
-
-
-
-const { Header, Footer, Sider, Content } = Layout;
+import Header from "../components/Header";
+import Sider from "../components/Sider";
+import Footer from "../components/Footer";
+import { SessionProvider } from "next-auth/react";
+const { Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
@@ -15,31 +14,16 @@ const headerStyle: React.CSSProperties = {
   paddingInline: 48,
   lineHeight: "64px",
 };
-
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
   minHeight: `calc(100vh - 128px)`,
-  lineHeight: "120px",
-  display:"none",
+  // lineHeight: "120px",
 };
-
-const siderStyle: React.CSSProperties = {
-  textAlign: "center",
-  lineHeight: "120px",
-  maxWidth: "10%",
-};
-
-const footerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-};
-
 const layoutStyle = {
   borderRadius: 8,
   overflow: "hidden",
   width: "100%",
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -51,26 +35,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header style={{ ...headerStyle, background: colorBgContainer }}>
-            <Flex justify="space-between" align="center">
-              <Typography.Title level={4}>Meesho</Typography.Title>
-              <Link href="/cart">Cart</Link>
-            </Flex>
-          </Header>
-          <Layout>
-            <Sider
-              width="15%"
-              style={{ ...siderStyle, background: colorBgContainer }}
-            ></Sider>
-            <Content style={contentStyle}>{children}</Content>
-          </Layout>
-          <ProductPage />
-          <Footer style={footerStyle}>
-            <Typography>&copy; Meesho </Typography>
-          </Footer>
-        </Layout>
+        <SessionProvider>
+          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+            <Header />
 
+            <Content>
+              <Flex className="siderView">
+                <Sider />
+                <Content style={contentStyle}>{children}</Content>
+              </Flex>
+            </Content>
+            <Footer />
+          </Layout>
+        </SessionProvider>
       </body>
     </html>
   );
