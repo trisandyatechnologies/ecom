@@ -1,14 +1,12 @@
 "use client";
 
 import { getCartItems, updateCartItemQuantity } from "@/lib/api";
-import { CartItem } from "@prisma/client";
-import { Avatar, Button, List, Skeleton, Typography } from "antd";
-import { Main } from "next/document";
+import { Avatar, List, Typography } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Cart from "../components/Cart";
+// import Cart from "../components/Cart";
 
-export default function Home() {
+export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
 
   const handleQuantity = (cartItemId: string, updatedQuantity: number) => {
@@ -71,7 +69,7 @@ export default function Home() {
     //   />
     // </main>
     <main>
-      <Cart />
+      <Cart/>
     </main>
   );
 }

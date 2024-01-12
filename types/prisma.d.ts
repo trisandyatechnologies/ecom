@@ -3,3 +3,9 @@ type CartItemType = Prisma.CartItemGetPayload<{
     item: true;
   };
 }>;
+
+type OrderType = Prisma.OrderGetPayload<{
+  include: {
+    user: true;
+  };
+}>;

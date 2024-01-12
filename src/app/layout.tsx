@@ -1,35 +1,12 @@
 "use client";
-
-import Link from "next/link";
 import "./globals.css";
 import { Layout, Flex, Typography, theme } from "antd";
-
-const { Header, Footer, Sider, Content } = Layout;
-
-const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-};
-
-const contentStyle: React.CSSProperties = {
-  minHeight: `calc(100vh - 128px)`,
-};
-
-const siderStyle: React.CSSProperties = {
-  textAlign: "center",
-  lineHeight: "120px",
-  maxWidth: "10%",
-};
-
-const footerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-};
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { SessionProvider } from "next-auth/react";
+const { Content } = Layout;
 
 const layoutStyle = {
-  borderRadius: 8,
   overflow: "hidden",
   width: "100%",
 };
@@ -40,29 +17,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer, padding },
   } = theme.useToken();
   return (
     <html lang="en">
       <body>
-        <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header style={{ ...headerStyle, background: colorBgContainer }}>
-            <Flex justify="space-between" align="center">
-              <Typography.Title level={4}>Meesho</Typography.Title>
-              <Link href="/cart">Cart</Link>
-            </Flex>
-          </Header>
-          <Layout>
-            <Sider
-              width="15%"
-              style={{ ...siderStyle, background: colorBgContainer }}
-            ></Sider>
-            <Content style={contentStyle}>{children}</Content>
+        <script>0</script>
+        <SessionProvider>
+          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+            <Header />
+            <Content
+              style={{
+                minHeight: `calc(100vh - 128px)`,
+                padding: padding,
+              }}
+            >
+              {children}
+            </Content>
+            <Footer />
           </Layout>
-          <Footer style={footerStyle}>
-            <Typography>&copy; Meesho </Typography>
-          </Footer>
-        </Layout>
+        </SessionProvider>
       </body>
     </html>
   );
