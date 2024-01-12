@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Space, Tag, Typography, theme } from "antd";
+import { Flex, Space, Tag, Typography, theme } from "antd";
 import { Card } from "antd";
 import { Item } from "@prisma/client";
 import { getThumbnail } from "@/utils/util";
@@ -20,6 +20,7 @@ export default function ItemCard(props: Item) {
   const {
     token: { padding },
   } = theme.useToken();
+  const offer = Math.ceil(((mrp - price) / mrp) * 100);
   return (
     <Card
       style={{
@@ -33,8 +34,8 @@ export default function ItemCard(props: Item) {
           alt={name}
           style={{
             padding,
-            width: "100%",
-            height: "auto",
+            maxWidth: "fit-content",
+            margin: "0 auto",
           }}
         />
       }
@@ -67,10 +68,11 @@ export default function ItemCard(props: Item) {
         </Typography.Text>
       </Space>
 
-      <Tag style={{ marginBottom: padding / 2 }} color="purple">
-        {Math.ceil(((mrp - price) / mrp) * 100)}% off
-      </Tag>
-
+      {offer && (
+        <Tag style={{ marginBottom: padding / 2 }} color="purple">
+          {offer}% off
+        </Tag>
+      )}
       <AddToCart item={props} />
     </Card>
   );

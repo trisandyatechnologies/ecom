@@ -14,7 +14,7 @@ import {
 import { List } from "antd";
 import { Item } from "@prisma/client";
 import { getThumbnail } from "@/utils/util";
-import { StrikethroughOutlined } from "@ant-design/icons";
+import { StrikethroughOutlined, EditOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { RUPEE } from "@/utils/config";
 
@@ -60,6 +60,8 @@ export default function ItemList({ data }: { data: Item[] }) {
               {RUPEE} {item.price}
             </Typography>
             <Typography.Text strong>{item.quantity}</Typography.Text>
+
+            <Button icon={<EditOutlined />} />
           </Flex>
         </List.Item>
       )}
