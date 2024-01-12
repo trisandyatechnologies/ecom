@@ -1,54 +1,78 @@
 "use client";
 
 import React from "react";
-import { Flex, Space, Typography, theme } from "antd";
-import { Avatar, Card } from "antd";
-import { StarFilled } from "@ant-design/icons";
+import { Flex, Space, Tag, Typography, theme } from "antd";
+import { Card } from "antd";
 import { Item } from "@prisma/client";
-import { getImage, getThumbnail } from "@/utils/util";
+import { getThumbnail } from "@/utils/util";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
+import { RUPEE } from "@/utils/config";
 
-export default function Itemcard(props: Item) {
-  const { images, name, brand, price, mrp } = props;
+export default function ItemCard(props: Item) {
+  const {
+    images,
+    name,
+    price,
+    mrp,
+    details: { weight, capacity, units },
+  } = props;
   const {
     token: { padding },
   } = theme.useToken();
+  const offer = Math.ceil(((mrp - price) / mrp) * 100);
   return (
     <Card
       style={{
-        minWidth: 240,
+        maxWidth: 240,
       }}
       cover={
         <Image
           src={getThumbnail(images[0])}
-          width={400}
-          height={400}
+          width={200}
+          height={200}
           alt={name}
-          style={{ height: "100%", padding: padding / 4 }}
+          style={{
+            padding,
+            maxWidth: "fit-content",
+            margin: "0 auto",
+          }}
         />
       }
-      bodyStyle={{ padding: padding }}
+      bodyStyle={{ padding: padding, paddingTop: 0 }}
     >
-      <Typography.Title level={4}>{brand}</Typography.Title>
-      <Typography.Text strong style={{ fontSize: padding }}>
+      <Typography.Paragraph
+        style={{ fontSize: 12, marginBottom: 0 }}
+        ellipsis={{ rows: 2, tooltip: name }}
+      >
         {name}
+      </Typography.Paragraph>
+      <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+        {weight ?? capacity} {units}
       </Typography.Text>
-      <Flex gap={padding / 2} align="center" style={{ width: "100%" }}>
-        <Typography style={{ fontSize: 24 }}>
-          <sup style={{ fontSize: padding }}>₹</sup>
+      <Space
+        split=""
+        align="center"
+        style={{
+          width: "100%",
+          fontSize: padding,
+        }}
+      >
+        <Typography.Text strong>
+          {RUPEE}
           {price}
-        </Typography>
-        <Typography.Text type="secondary">M.R.P: ₹{mrp}</Typography.Text>
-        <Typography.Text type="success">
-          ({Math.ceil(((mrp - price) / mrp) * 100)}% off)
         </Typography.Text>
-      </Flex>
-      <Typography>Free Delivery, on orders above ₹ 500/-</Typography>
-      <Typography.Text type="secondary">
-        Same day delivery if ordered before 12 PM
-      </Typography.Text>
+        <Typography.Text type="secondary" delete>
+          {RUPEE}
+          {mrp}
+        </Typography.Text>
+      </Space>
 
+      {offer && (
+        <Tag style={{ marginBottom: padding / 2 }} color="purple">
+          {offer}% off
+        </Tag>
+      )}
       <AddToCart item={props} />
     </Card>
   );
