@@ -40,6 +40,20 @@ export const addItem = async (item: Item) => {
   return product;
 };
 
+export const editItem = async (itemId: string,updateBody: Partial<Item>) => {
+  const item = await fetch(`${API_ROOT}/items/${itemId}`, {
+    method: "PUT",
+    body: JSON.stringify(updateBody),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+  return item;
+};
+
+
+
+
 export const updateCartItemQuantity = async (
   cartItemId: string,
   quantity: number
