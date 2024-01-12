@@ -1,51 +1,14 @@
-"use client";
+import ItemGrid from "@/components/ItemGrid";
+import service from "@/lib/service";
 
-import Itemcard from "@/components/ItemCard";
-import { addCartItem, getItems } from "@/lib/api";
-import { getImage } from "@/utils/util";
-import { Item } from "@prisma/client";
-import { Card, List, Space, Typography, Image, Button, theme, App } from "antd";
-import { Component, useEffect, useState } from "react";
+export const dynamic = "force-dynamic"; // 👈🏽
 
-const userId = "6582d402c4e753141edcd9be";
-
-export default function Home() {
-  const {
-    token: { padding },
-  } = theme.useToken();
-  const [items, setItems] = useState<Item[]>([]);
-
-  const addToCart = (itemId: string) => {
-    addCartItem(itemId).then((item) => {
-      console.log({ item });
-    });
-  };
-
-  useEffect(() => {
-    getItems().then((items) => {
-      setItems(items);
-    });
-  }, []);
+export default async function Home() {
+  const items = await service.getItems();
 
   return (
     <main>
-      <List
-        grid={{
-          gutter: 16,
-          xs: 1,
-          sm: 2,
-          md: 4,
-          lg: 4,
-          xl: 4,
-          xxl: 5,
-        }}
-        dataSource={items}
-        renderItem={(item) => (
-          <List.Item>
-           <Itemcard {...item}/>
-          </List.Item>
-        )}
-      />
+      <ItemGrid data={items} />
     </main>
   );
 }

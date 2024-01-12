@@ -1,6 +1,6 @@
 export const MOCK_DATA = [
     {
-      
+      "id":"0",
       "name":"salt",
       "price":"30",
       "discount":"5",
@@ -10,6 +10,7 @@ export const MOCK_DATA = [
      "category":"Rice_Atta_And_Dals"
     },
     {
+      "id":"1",
         "name":"fortune sunflower oil",
         "price":"150",
         "discount":"15",
@@ -19,6 +20,7 @@ export const MOCK_DATA = [
        "category":"Oils_Masalas_And_Sauces"
       },
       {
+        "id":"2",
         "name":"Good Day",
         "price":"15",
         "discount":"1",
@@ -28,6 +30,7 @@ export const MOCK_DATA = [
        "category":"Biscuits"
       },
       {
+        "id":"3",
         "name":"Tata Tea",
         "price":"255",
         "discount":"5",

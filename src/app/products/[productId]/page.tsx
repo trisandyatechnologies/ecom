@@ -1,3 +1,4 @@
+"use client";
 import {
   DoubleRightOutlined,
   InfoCircleOutlined,
@@ -13,10 +14,13 @@ import {
   Button,
   Col,
   Flex,
+  Menu,
   MenuProps,
   Rate,
   Row,
   Space,
+  Tabs,
+  TabsProps,
   Typography,
 } from "antd";
 import "../.././globals.css";
@@ -36,6 +40,43 @@ import Link from "next/link";
 
 const productPageData = MOCK_DATA;
 
+const onChange = (key: string) => {
+  console.log(key);
+};
+
+const items: TabsProps["items"] = [
+  {
+    key: "1",
+    label: (
+      <img
+        src="https://images-eu.ssl-images-amazon.com/images/I/61-zRoFrfqL.AC_SL240_.jpg"
+        style={{ height: "40px", width: "40px" }}
+      />
+    ),
+    children: (
+      <img src="https://images-eu.ssl-images-amazon.com/images/I/61-zRoFrfqL.AC_SL240_.jpg" />
+    ),
+  },
+  {
+    key: "2",
+    label: (
+      <img src="https://images.meesho.com/images/products/33133883/5is5o_64.webp" />
+    ),
+    children: (
+      <img src="https://images.meesho.com/images/products/33133883/5is5o_64.webp" />
+    ),
+  },
+  {
+    key: "3",
+    label: (
+      <img src="https://images.meesho.com/images/products/33133883/zhzlo_64.webp" />
+    ),
+    children: (
+      <img src="https://images.meesho.com/images/products/33133883/zhzlo_64.webp" />
+    ),
+  },
+];
+
 const ProductPage: React.FC = () => {
   const product = {
     name: "TATA salt",
@@ -52,33 +93,52 @@ const ProductPage: React.FC = () => {
   return (
     <main className="meesho-promotion" style={{ background: "white" }}>
       <Row justify={"space-around"}>
-        <Col span={3}></Col>
+        <Col span={2}></Col>
         <Col span={1} style={{ marginTop: "30px" }}>
           <Flex
             id="sideImages"
             style={{ flexDirection: "column", gap: "10px" }}
           >
-            <img src="https://images.meesho.com/images/products/33133883/qqsw2_64.webp" />
+            {/* <img src="https://images.meesho.com/images/products/33133883/qqsw2_64.webp" />
             <img src="https://images.meesho.com/images/products/33133883/5is5o_64.webp" />
             <img src="https://images.meesho.com/images/products/33133883/zhzlo_64.webp" />
-            <img src="https://images.meesho.com/images/products/33133883/srxov_64.webp" />
+            <img src="https://images.meesho.com/images/products/33133883/srxov_64.webp" /> */}
           </Flex>
         </Col>
 
         <Col lg={6} xs={24} style={{ maxWidth: "100%", margin: "30px" }}>
           <Space>
-            <img src={product.images[0]} />
+            <Tabs
+              defaultActiveKey="1"
+              items={items}
+              onChange={onChange}
+              tabPosition="left"
+            />
+            {/* <img src={product.images[0]} /> */}
             {/* <img src="https://images.meesho.com/images/products/21914499/83fac_512.webp" style={{ width: "100%" }} /> */}
-            <Typography>{}</Typography>
-            
+            <Typography>
+              {productPageData.map((product) => (
+                <div key={`/products/${product.id}`} className="card card-deck">
+                  {/* <div className="product_image"> */}
+                  {/* <a href={`/products/${product.id}`}> */}
+                  {/* <img
+                    className="image"
+                    src={product.image}
+                    alt={product.name}
+                    style={{ textAlign: "center" }}
+                  /> */}
+                  {/* </a> */}
+                </div>
+                // </div>
+              ))}
+            </Typography>
           </Space>
           <Flex
             justify="center"
             style={{
               width: "100%",
-              marginTop: "20px",
-              padding: "0 30px",
-              gap: "10px",
+              marginTop: "30px",
+              margin: "30px 50px 0px 50px",
             }}
           >
             <Button
@@ -94,7 +154,7 @@ const ProductPage: React.FC = () => {
               <ShoppingCartOutlined />
               Add to Cart
             </Button>
-            <Button
+            {/* <Button
               style={{
                 background: "purple",
                 width: "200px",
@@ -106,7 +166,7 @@ const ProductPage: React.FC = () => {
             >
               <DoubleRightOutlined />
               Buy Now
-            </Button>
+            </Button> */}
           </Flex>
         </Col>
 
@@ -123,15 +183,15 @@ const ProductPage: React.FC = () => {
             }}
           >
             <Typography>
-              {product.name}
               {/* STLYZ Polyresin Baby Hat Monk Buddha Idols Standard Multicolour, 4
               Pieces-Home Decor */}
+              TATA salt
             </Typography>
             <Typography style={{ display: "flex", gap: "5px" }} id="rate">
               <Typography style={{ fontSize: "24px" }}>₹ 278 </Typography>
               <InfoCircleOutlined />
             </Typography>
-            <Typography style={{ display: "flex", gap: "10px" }} id="rating">
+            {/* <Typography style={{ display: "flex", gap: "10px" }} id="rating">
               <Typography
                 style={{
                   display: "flex",
@@ -146,7 +206,7 @@ const ProductPage: React.FC = () => {
                 4.2 <StarFilled />{" "}
               </Typography>
               5402 Ratings, 1295 Reviews
-            </Typography>
+            </Typography> */}
             <Typography
               id="free_delivery"
               style={{
@@ -154,16 +214,16 @@ const ProductPage: React.FC = () => {
                 marginTop: "10px",
                 justifyContent: "center",
                 borderRadius: "10px",
-                maxWidth: "130px",
+                // maxWidth: "220px",
                 background: "rgb(245 245 245)",
                 color: "black",
                 gap: "4px",
               }}
             >
-              Free Delivery{" "}
+              <b>Free Delivery on orders above 500</b>{" "}
             </Typography>
           </Flex>
-          <Flex
+          {/* <Flex
             flex={1}
             className="secoend_column"
             style={{
@@ -193,7 +253,7 @@ const ProductPage: React.FC = () => {
             >
               Free Size{" "}
             </Typography>
-          </Flex>
+          </Flex> */}
           <Flex
             className="third_column"
             style={{
@@ -203,6 +263,7 @@ const ProductPage: React.FC = () => {
               borderRadius: "5px",
               gap: "10px",
               padding: "30px",
+              margin: "10px auto",
             }}
           >
             <Typography>
