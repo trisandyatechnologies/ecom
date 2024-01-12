@@ -1,28 +1,24 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter, redirect } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { App, ConfigProvider, Grid, Skeleton, theme } from "antd";
 import Notify from "@/lib/notify";
 import { useEffect } from "react";
+import { Layout, Flex, Typography } from "antd";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { SessionProvider } from "next-auth/react";
+const { Content } = Layout;
 
-const AUTH_PATHS = ["/signin", "/signup"];
+const layoutStyle = {
+  overflow: "hidden",
+  width: "100%",
+};
 
 export default function Template({ children }: { children: React.ReactNode }) {
-  const { data: session, status } = useSession();
-  const pathname = usePathname();
-  const router = useRouter();
-
   const {
     token: { borderRadiusSM, colorBgContainer, padding },
   } = theme.useToken();
-
-  useEffect(() => {
-    if (status === "authenticated") {
-      if (AUTH_PATHS.includes(pathname)) {
-        router.replace("/");
-      }
-    }
-  }, [status, pathname, router]);
 
   const { md } = Grid.useBreakpoint();
 
@@ -37,7 +33,20 @@ export default function Template({ children }: { children: React.ReactNode }) {
     >
       <App>
         <Notify />
-        <Skeleton loading={status === "loading"}>{children}</Skeleton>
+        <SessionProvider>
+          <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
+            <Header />
+            <Content
+              style={{
+                minHeight: `calc(100vh - ${padding * 8}px)`,
+                padding,
+              }}
+            >
+              {children}
+            </Content>
+            <Footer />
+          </Layout>
+        </SessionProvider>
       </App>
     </ConfigProvider>
   );

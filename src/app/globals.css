@@ -113,3 +113,34 @@ a {
     display: none;
   }
 }
+
+.image-upload .thumbnail {
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
+
+.image-upload .upload-btn {
+  width: 150px;
+  height: 150px;
+  border: 1px dashed grey;
+}
+
+.login-form {
+  max-width: 300px;
+}
+.login-form .login-form-forgot {
+  float: right;
+}
+.login-form .ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form .login-form-check {
+  float: left;
+}
+.login-form .ant-col-rtl .login-form-check {
+  float: right;
+}
+.login-form .login-form-button {
+  width: 100%;
+}

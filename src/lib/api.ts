@@ -6,6 +6,13 @@ export const getItems = async () => {
   return items;
 };
 
+export const getItemsByQuery = async (q: string) => {
+  const items = await fetch(`${API_ROOT}items?q=${q}`).then((res) =>
+    res.json()
+  );
+  return items;
+};
+
 export const getCartItems = async () => {
   const user = await fetch(`${API_ROOT}cart`).then((res) => res.json());
   return user.cart;
@@ -22,7 +29,7 @@ export const addCartItem = async (itemId: string) => {
   return item;
 };
 
-export const addItem = async (item: Item ) => {
+export const addItem = async (item: Item) => {
   const product = await fetch(`${API_ROOT}/items`, {
     method: "POST",
     body: JSON.stringify(item),
@@ -46,4 +53,3 @@ export const updateCartItemQuantity = async (
   }).then((res) => res.json());
   return item;
 };
-

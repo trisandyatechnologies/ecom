@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3003",
     "lint": "next lint"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "@next/third-parties": "^14.0.4",
     "@prisma/client": "^5.8.0",
     "antd": "^5.12.4",
     "bcrypt": "^5.1.1",
