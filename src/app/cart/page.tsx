@@ -1,5 +1,4 @@
 "use client";
-
 import { getCartItems, updateCartItemQuantity } from "@/lib/api";
 import { Avatar, List, Typography } from "antd";
 import Link from "next/link";

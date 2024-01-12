@@ -1,34 +1,58 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import {
+  Avatar,
   Button,
+  Col,
+  Drawer,
   Flex,
   Form,
   Input,
   InputNumber,
-  Select,
+  List,
   Row,
-  Col,
+  Select,
+  Skeleton,
+  Space,
+  Typography,
   message,
 } from "antd";
-import { addItem } from "@/lib/api";
-import ImageUpload from "@/components/ImageUpload";
-import { categoryItems } from "@/utils/util";
+import { categoryItems, getThumbnail } from "@/utils/util";
+import Link from "antd/es/typography/Link";
+import { Item} from "@prisma/client";
+import ImageUpload from "./ImageUpload";
+import { editItem } from "@/lib/api";
 
-const NewItem: React.FC = () => {
-  const [form] = Form.useForm();
-  const onFinish = async (values: any) => {
-    const postedItem = await addItem(values);
-    if (postedItem?.id) {
-      message.success("Item added");
-      form.resetFields();
-    } else {
-      message.error("Failed to add the item");
-    }
-  };
+export default function EditItem({
+  data,
+  onClose,
+}: {
+  data?: Item[];
+  onClose: () => void;
+}) {
+    const [item, setItem] = useState<Item>();
+    const [form] = Form.useForm();
+    const onFinish = async (formValues: Partial<Item>) => {
+        if (!item?.id) return;
+        const updatedUser = await editItem(item.id, formValues);
+        if (updatedUser) {
+          setItem(updatedUser);
+          message.success("Updated successfully.");
+        } else {
+          message.error("Update failed.");
+        }
+      };
+
 
   return (
-    <Flex>
+    <Drawer
+      title="Edit Items"
+      placement="right"
+      onClose={onClose}
+      open={!!data}
+    >
+      <Flex>
       <Form
         name="nest-messages"
         onFinish={onFinish}
@@ -156,7 +180,6 @@ const NewItem: React.FC = () => {
         </Form.Item>
       </Form>
     </Flex>
+    </Drawer>
   );
-};
-
-export default NewItem;
+}
