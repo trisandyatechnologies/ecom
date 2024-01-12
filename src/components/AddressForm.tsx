@@ -1,6 +1,6 @@
 import React from "react";
 import { CloseCircleFilled, PlusOutlined } from "@ant-design/icons";
-import { Button, Flex, Form, Input, theme } from "antd";
+import { Button, Flex, Form, Input, InputNumber, theme } from "antd";
 
 const Address: React.FC = () => {
   const {
@@ -44,7 +44,7 @@ const Address: React.FC = () => {
                 name={[name, "pincode"]}
                 rules={[{ required: true }]}
               >
-                <Input />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
 
               <Form.Item

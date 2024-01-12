@@ -24,10 +24,11 @@ import {
   ShoppingFilled,
   UserOutlined,
   BankOutlined,
+  PoweroffOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { categoryItems } from "@/utils/util";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useCartStore } from "@/lib/cartStore";
 import ItemSearch from "./ItemSearch";
 
@@ -48,6 +49,14 @@ const profileMenuItems: MenuProps["items"] = [
       <Link rel="noopener noreferrer" href="/orders">
         <ShoppingFilled /> My Orders
       </Link>
+    ),
+  },
+  {
+    key: "signout",
+    label: (
+      <Space onClick={() => signOut()}>
+        <PoweroffOutlined /> Sign out
+      </Space>
     ),
   },
 ];

@@ -1,23 +1,40 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Col, Form, Input, Row, theme } from "antd";
 import Address from "./AddressForm";
 import { useSession } from "next-auth/react";
-
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
-};
+import { getUser, updateUser } from "@/lib/api";
+import { User } from "@prisma/client";
+import { message } from "@/lib/notify";
 
 export default function Profile() {
   const {
     token: { padding },
   } = theme.useToken();
   const { data: session } = useSession();
+  const [user, setUser] = useState<User>();
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    if (!session?.user.id) return;
+    getUser(session?.user.id).then(setUser);
+  }, [session?.user.id]);
+
+  useEffect(() => {
+    form.setFieldsValue(user);
+  }, [user]);
+
+  const onSubmit = async (formValues: Partial<User>) => {
+    if (!user?.id) return;
+    const updatedUser = await updateUser(user.id, formValues);
+    if (updatedUser) {
+      setUser(updatedUser);
+      message.success("Updated successfully.");
+    } else {
+      message.error("Update failed.");
+    }
+  };
 
   return (
     <Form
@@ -26,11 +43,11 @@ export default function Profile() {
         alignItems: "center",
         justifyContent: "center",
       }}
-      initialValues={session?.user}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      initialValues={user}
+      onFinish={onSubmit}
       autoComplete="off"
       layout="vertical"
+      form={form}
     >
       <Row gutter={padding * 2} style={{ padding }}>
         <Col xs={24} lg={12}>
