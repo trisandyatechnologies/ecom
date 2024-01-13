@@ -1,146 +1,166 @@
 "use client";
 import React from "react";
-import { Affix, Button, Divider, Flex, Typography } from "antd";
+import {
+  Affix,
+  Button,
+  Divider,
+  Empty,
+  Flex,
+  Grid,
+  Space,
+  Typography,
+} from "antd";
 import { Col, Row } from "antd";
 import { theme } from "antd";
 import { Avatar, Card } from "antd";
 import { useCartStore } from "@/lib/cartStore";
 import { getThumbnail } from "@/utils/util";
+import { DELIVERY_FEE, MINIMUM_ORDER_VALUE, RUPEE } from "@/utils/config";
+import AddToCart from "@/components/AddToCart";
+import Link from "next/link";
+import { red } from "@ant-design/colors";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 export default function CartPage() {
-  const { token } = theme.useToken();
+  const {
+    token: { padding, colorBorderSecondary },
+  } = theme.useToken();
+  const { lg } = Grid.useBreakpoint();
 
   const cart = useCartStore((s) => s.cart);
+  const total = useCartStore((s) => s.total);
+
   const cartItems = Object.values(cart);
+
+  const isCartEmpty = cartItems.length === 0;
+
+  if (isCartEmpty) {
+    return (
+      <Flex
+        gap={padding}
+        vertical
+        align="center"
+        justify="center"
+        style={{ height: "60vh" }}
+      >
+        <ShoppingCartOutlined
+          style={{ color: red.primary, fontSize: padding * 4 }}
+        />
+        <Typography.Text style={{ fontSize: padding * 2 }}>
+          Your Cart is <span style={{ color: red.primary }}>Empty!</span>
+        </Typography.Text>
+        <Link href="/" type="primary">
+          <Button type="primary">Continue shopping</Button>
+        </Link>
+      </Flex>
+    );
+  }
+
   return (
-    <main style={{ background: "white" }}>
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-        <Col lg={12} xs={24}>
-          <Flex>
-            <Typography>Cart</Typography>
-            <Divider
-              type="vertical"
-              style={{ borderLeft: "1px solid black", height: "30px" }}
-            />
-            <Typography> {cartItems.length} Items</Typography>
-          </Flex>
+    <main>
+      <Row gutter={padding * 3} style={{ padding }}>
+        <Col lg={16} xs={24}>
+          <Space split="">
+            <Typography.Title level={4}>Cart</Typography.Title>
+            <Typography.Title level={4}>
+              {cartItems.length} item{cartItems.length > 1 && "s"}
+            </Typography.Title>
+          </Space>
           {cartItems.map((item, i) => (
-            <Card
-              key={item.id}
-              style={{
-                background: "white",
-                border: "1px solid black",
-                margin: 20,
-              }}
-              actions={[
-                <Typography> Above 500/- purchase Free Delivery</Typography>,
-              ]}
-            >
-              <Flex vertical>
+            <Card key={item.id} style={{ marginBottom: padding / 2 }}>
+              <Flex justify="space-between" align="flex-start">
                 <Meta
-                  style={{
-                    background: "white",
-                    display: "flex",
-                    flexWrap: "wrap",
-                  }}
                   avatar={
                     <Avatar
                       src={getThumbnail(item.image)}
                       style={{ width: 100, height: 100, borderRadius: 0 }}
                     />
                   }
-                  title={item.name}
-                  description={item.price}
+                  title={
+                    <Typography.Paragraph ellipsis={{ tooltip: item.name }}>
+                      {item.name}
+                    </Typography.Paragraph>
+                  }
+                  description={<AddToCart id={item.id} />}
+                  style={{ maxWidth: "60%", minWidth: 200 }}
                 />
-              </Flex>
-              <Typography
-                style={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                Update Quantity
-              </Typography>
-              <Typography>All issue easy returns allowed</Typography>
-              <Flex gap={10}>
-                <Typography>Qty : {item.quantity}</Typography>
+                <Space>
+                  <Typography.Text strong>
+                    {RUPEE}
+                    {item.price * item.quantity}
+                  </Typography.Text>
+                  <Typography.Text delete type="secondary">
+                    {RUPEE}
+                    {item.mrp * item.quantity}
+                  </Typography.Text>
+                </Space>
               </Flex>
             </Card>
           ))}
         </Col>
         <Col
-          lg={12}
+          lg={8}
           xs={24}
           style={{
-            borderLeft: "1px solid gray",
-            background: "white",
+            borderLeft: lg ? `1px solid ${colorBorderSecondary}` : "none",
           }}
         >
           <Affix offsetTop={10}>
-            <Typography style={{ fontSize: 20 }}>ProductDetails</Typography>
-
-            <Row>
+            <Typography.Title level={4}>Cart Summary</Typography.Title>
+            <Row gutter={padding}>
               <Col span={12}>
-                <Typography style={{ textDecoration: "underline dotted" }}>
-                  Total Product Price :{" "}
-                </Typography>
+                <Typography.Text>Total Price :</Typography.Text>
               </Col>
-              <Col span={12}>
-                <Typography> +700</Typography>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col span={12}>
-                <Typography
-                  style={{
-                    color: "#0DC46C",
-                    textDecoration: "underline dotted",
-                  }}
-                >
-                  Total Discounts :
-                </Typography>
-              </Col>
-              <Col span={12}>
-                <Typography> -70</Typography>
+              <Col span={12} style={{ textAlign: "right" }}>
+                <Typography.Text>
+                  {RUPEE}
+                  {total.mrp}
+                </Typography.Text>
               </Col>
             </Row>
 
-            <Row>
+            <Row gutter={padding}>
               <Col span={12}>
-                <Typography style={{ textDecoration: "underline dotted" }}>
-                  Additional Fees :
-                </Typography>
+                <Typography.Text>Discount :</Typography.Text>
               </Col>
+              <Col span={12} style={{ textAlign: "right" }}>
+                <Typography.Text type="success">
+                  -{RUPEE}
+                  {total.discount}
+                </Typography.Text>
+              </Col>
+            </Row>
+
+            <Row gutter={padding}>
               <Col span={12}>
-                <Typography> +100</Typography>
+                <Typography.Text>Delivery Fee :</Typography.Text>
+              </Col>
+              <Col span={12} style={{ textAlign: "right" }}>
+                <Typography.Text delete={total.price > MINIMUM_ORDER_VALUE}>
+                  {RUPEE}
+                  {DELIVERY_FEE}
+                </Typography.Text>
               </Col>
             </Row>
 
             <Divider />
 
-            <Row>
+            <Row gutter={padding}>
               <Col span={12}>
-                <Typography>Order Total :</Typography>
+                <Typography.Text>Order Total :</Typography.Text>
               </Col>
-              <Col span={12}>
-                <Typography> 730</Typography>
+              <Col span={12} style={{ textAlign: "right" }}>
+                <Typography.Text strong>
+                  {RUPEE}
+                  {total.amount}
+                </Typography.Text>
               </Col>
             </Row>
-            <Row>
+            <Row style={{ marginTop: padding }}>
               <Col span={24}>
-                <Typography style={{ marginLeft: 40 }}>
-                  Clicking on ‘Continue’ will not deduct any money
-                </Typography>
-                <Button
-                  style={{
-                    background: "#832E71",
-                    marginLeft: 20,
-                    width: "60%",
-                    height: 50,
-                    color: "white",
-                    fontSize: 20,
-                  }}
-                >
-                  Continue
+                <Button size="large" type="primary" block>
+                  Checkout
                 </Button>
               </Col>
             </Row>

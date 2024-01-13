@@ -11,6 +11,8 @@ export const IMAGE_CDN_ROOT = `https://res.cloudinary.com/${process.env.NEXT_PUB
 export const CN_THUMBNAIL_CONF = "c_thumb,w_200,g_face"; // For Thumbnails
 
 export const RUPEE = "₹";
+export const DELIVERY_FEE = 50;
+export const MINIMUM_ORDER_VALUE = 500;
 
 export const SITE_DESCRIPTION = `Welcome to ${appName} – your one-stop solution for fresh and convenient grocery shopping from the comfort of your home! Discover a hassle-free way to stock up on essentials with our easy-to-navigate online platform. Choose from a wide selection of high-quality produce, pantry staples, and household items, all sourced locally to ensure freshness. Our dedicated team works tirelessly to handpick and deliver your order promptly, bringing the grocery store experience to your doorstep. Enjoy the convenience of stress-free shopping, timely deliveries, and support local businesses. Embrace the future of grocery shopping with ${appName} - Where Freshness Meets Convenience!`;
 

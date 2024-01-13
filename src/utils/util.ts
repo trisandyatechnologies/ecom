@@ -1,4 +1,4 @@
-import { Category } from "@prisma/client";
+import { CartItem, Category, Item } from "@prisma/client";
 import { CN_THUMBNAIL_CONF, IMAGE_CDN_ROOT } from "./config";
 
 export const getImage = (path: string) => `${IMAGE_CDN_ROOT}${path}`;
@@ -22,3 +22,24 @@ export function debounce<Params extends any[]>(
     }, timeout);
   };
 }
+
+export const cartItemFromItem = ({
+  id,
+  name,
+  images,
+  description,
+  mrp,
+  price,
+  brand,
+  details: { weight },
+}: Item): CartItem => ({
+  id,
+  name,
+  image: images[0],
+  description: description ?? "",
+  mrp,
+  price,
+  quantity: 1,
+  brand: brand ?? "Generic",
+  weight,
+});

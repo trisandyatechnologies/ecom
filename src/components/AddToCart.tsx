@@ -2,59 +2,54 @@
 
 import React from "react";
 import { CartItem, Item } from "@prisma/client";
-import { Button, Flex, Typography } from "antd";
+import { Button, ButtonProps, Flex, Typography } from "antd";
 import { useCartStore } from "@/lib/cartStore";
-import { MinusOutlined, PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  MinusOutlined,
+  PlusOutlined,
+  DeleteOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
+import { cartItemFromItem } from "@/utils/util";
 
-const cartItemFromItem = ({
-  id,
-  name,
-  images,
-  description,
-  mrp,
-  price,
-  brand,
-  details: { weight },
-}: Item): CartItem => ({
-  id,
-  name,
-  image: images[0],
-  description: description ?? "",
-  mrp,
-  price,
-  quantity: 1,
-  brand: brand ?? "Generic",
-  weight,
-});
+interface Props {
+  id: string;
+  item?: Item;
+  buttonProps?: ButtonProps;
+}
 
-export default function AddToCart({ item }: { item: Item }) {
+export default function AddToCart({ item, id, buttonProps }: Props) {
   const cart = useCartStore((s) => s.cart);
   const addItem = useCartStore((s) => s.addItem);
   const removeItem = useCartStore((s) => s.removeItem);
-  if (!cart[item.id]) {
+
+  if (!cart[id] && item) {
     return (
       <Button
         type="primary"
         block
-        onClick={() => addItem(cartItemFromItem(item))}
+        onClick={() => addItem(id, cartItemFromItem(item))}
+        {...(buttonProps ?? {})}
       >
+        <ShoppingCartOutlined />
         Add to Cart
       </Button>
     );
   }
 
-  const quantity = cart[item.id].quantity;
+  const quantity = cart[id].quantity;
 
   return (
     <Flex gap={16} align="center">
       <Button
+        danger={quantity === 1}
         icon={quantity === 1 ? <DeleteOutlined /> : <MinusOutlined />}
-        onClick={() => removeItem(item.id)}
+        onClick={() => removeItem(id)}
       />
-      <Typography>{quantity}</Typography>
+      <Typography.Text strong>{quantity}</Typography.Text>
       <Button
         icon={<PlusOutlined />}
-        onClick={() => addItem(cartItemFromItem(item))}
+        onClick={() => addItem(id)}
         disabled={quantity > 4}
       />
     </Flex>
