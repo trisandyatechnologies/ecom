@@ -43,3 +43,29 @@ export const cartItemFromItem = ({
   brand: brand ?? "Generic",
   weight,
 });
+
+export const diff = (
+  newObj: Record<string, any>,
+  baseObj: Record<string, any>
+) => {
+  const result: Record<string, any> = {};
+  if (Object.is(newObj, baseObj)) {
+    return undefined;
+  }
+  if (!baseObj || typeof baseObj !== "object") {
+    return baseObj;
+  }
+
+  Object.keys(newObj || {}).forEach((key) => {
+    if (baseObj[key] !== newObj[key] && !Object.is(newObj[key], baseObj[key])) {
+      result[key] = newObj[key];
+    }
+    // if (typeof baseObj[key] === "object" && typeof newObj[key] === "object") {
+    //   const value = diff(newObj[key], baseObj[key]);
+    //   if (value !== undefined) {
+    //     result[key] = value;
+    //   }
+    // }
+  });
+  return result;
+};
