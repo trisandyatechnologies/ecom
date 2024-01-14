@@ -78,7 +78,7 @@ export default function CartPage() {
                     />
                   }
                   title={
-                    <Typography.Paragraph ellipsis={{ tooltip: item.name }}>
+                    <Typography.Paragraph style={{ textWrap: "balance" }}>
                       {item.name}
                     </Typography.Paragraph>
                   }

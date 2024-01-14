@@ -69,7 +69,7 @@ const categoryMenuItems: MenuProps["items"] = categoryItems.map(
 
 const Header: React.FC = () => {
   const {
-    token: { padding },
+    token: { padding, colorBgContainer },
   } = useToken();
   const { md } = Grid.useBreakpoint();
 
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
       style={{
         display: "flex",
         width: "100%",
-        background: "white",
+        background: colorBgContainer,
         flexDirection: "column",
         minHeight: 144,
         paddingLeft: padding,
