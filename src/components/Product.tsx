@@ -1,11 +1,10 @@
 "use client";
-import { InfoCircleOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import {
   Button,
   Col,
   Divider,
   Flex,
-  Grid,
   Row,
   Space,
   Tabs,
@@ -13,11 +12,10 @@ import {
   Typography,
   theme,
 } from "antd";
-import { MOCK_DATA } from "@/utils/mock";
 import Link from "next/link";
 import { Item } from "@prisma/client";
 import Image from "next/image";
-import { cartItemFromItem, getImage, getThumbnail } from "@/utils/util";
+import { getImage, getThumbnail } from "@/utils/util";
 import AddToCart from "./AddToCart";
 import { useCartStore } from "@/lib/cartStore";
 import { RUPEE } from "@/utils/config";

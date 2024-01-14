@@ -36,13 +36,18 @@ export default function ItemCard(props: Item) {
           height={200}
           alt={name}
           style={{
-            padding,
+            padding: padding,
             maxWidth: "fit-content",
             margin: "0 auto",
           }}
         />
       }
-      bodyStyle={{ padding: padding, paddingTop: 0 }}
+      bodyStyle={{
+        paddingBottom: padding,
+        paddingLeft: padding,
+        paddingRight: padding,
+        paddingTop: 0,
+      }}
     >
       <Link href={`/products/${id}`}>
         <Typography.Paragraph

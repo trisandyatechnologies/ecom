@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
       <Flex vertical>
         <Divider>Similar Products</Divider>
         <ItemGrid
-          data={itemsWithCategory.filter(
+          data={itemsWithCategory?.filter(
             (item) => item.id !== params.productId
           )}
         />

@@ -1,9 +1,6 @@
 "use client";
-
-import "../app/globals.css";
 import React from "react";
 import { appLogo, appName } from "@/utils/config";
-import { SearchProps } from "antd/es/input/Search";
 import {
   Badge,
   Col,
@@ -11,13 +8,11 @@ import {
   Flex,
   Grid,
   Image,
-  Input,
   Row,
   Space,
   Typography,
 } from "antd";
 import type { MenuProps } from "antd";
-const { Search } = Input;
 import { Layout, Menu, theme } from "antd";
 import {
   ShoppingCartOutlined,
