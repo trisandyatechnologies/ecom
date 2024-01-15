@@ -99,7 +99,7 @@ export default function Checkout() {
                   >
                     <Radio.Group>
                       {user?.addresses.map((add, i) => (
-                        <Radio value={i}>
+                        <Radio value={i} key={add.name + i}>
                           <Flex
                             vertical
                             style={{
