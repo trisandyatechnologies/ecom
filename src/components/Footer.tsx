@@ -6,8 +6,7 @@ import {
   TwitterOutlined,
   YoutubeFilled,
 } from "@ant-design/icons";
-import { Col, Divider, Flex, Layout, Row, Typography } from "antd";
-import Image from "next/image";
+import { Col, Divider, Flex, Layout, Row, Typography, Image } from "antd";
 import Link from "next/link";
 
 import React from "react";
@@ -27,7 +26,13 @@ export default function Footer() {
         <Col xs={24} md={12} xl={12}>
           <Flex vertical>
             <Flex align="center">
-              <Image alt={appName} src={appLogo} width={40} height={40} />
+              <Image
+                alt={appName}
+                src={appLogo}
+                width={40}
+                height={40}
+                preview={false}
+              />
               <Typography style={{ fontFamily: "sans-serif", fontSize: 20 }}>
                 {appName}
               </Typography>

@@ -101,6 +101,7 @@ enum PaymentMode {
 
 enum OrderStatus {
   Created
+  Confirmed
   Dispatched
   OutForDelivery
   Delivered
@@ -113,7 +114,15 @@ type Address {
   mobile  String
   pincode Int
   map     String?
+  nick    String?
   address String
+}
+
+type CartTotal{
+  mrp       Float
+  price     Float
+  discount  Float
+  amount    Float
 }
 
 model Order {
@@ -122,6 +131,7 @@ model Order {
   updatedAt DateTime    @updatedAt
   payment   PaymentMode @default(COD)
   items     CartItem[]
+  total     CartTotal
   status    OrderStatus @default(Created)
   address   Address
   userId    String      @db.ObjectId

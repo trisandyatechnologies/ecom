@@ -30,17 +30,22 @@ export default function ItemCard(props: Item) {
       }}
       hoverable
       cover={
-        <Image
-          src={getThumbnail(images[0])}
-          width={200}
-          height={200}
-          alt={name}
-          style={{
-            padding: padding,
-            maxWidth: "fit-content",
-            margin: "0 auto",
-          }}
-        />
+        <Link
+          style={{ width: "100%", textAlign: "center" }}
+          href={`/products/${id}`}
+        >
+          <Image
+            src={getThumbnail(images[0])}
+            width={200}
+            height={200}
+            alt={name}
+            style={{
+              padding: padding,
+              maxWidth: "fit-content",
+              margin: "0 auto",
+            }}
+          />
+        </Link>
       }
       bodyStyle={{
         paddingBottom: padding,

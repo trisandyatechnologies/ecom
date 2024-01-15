@@ -5,7 +5,6 @@ import { Layout, Flex, Typography } from "antd";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
-import { useEffect, useState } from "react";
 const { Content } = Layout;
 
 const layoutStyle = {
@@ -19,18 +18,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   } = theme.useToken();
 
   const { md } = Grid.useBreakpoint();
-
-  /**
-   * Workaround for React Minified Error #418
-   * https://github.com/vercel/next.js/discussions/43921#discussioncomment-5614536
-   */
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) {
-    return <Skeleton />;
-  }
 
   return (
     <ConfigProvider

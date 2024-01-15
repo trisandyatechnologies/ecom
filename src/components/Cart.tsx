@@ -1,28 +1,16 @@
 "use client";
 import React from "react";
-import {
-  Affix,
-  Button,
-  Divider,
-  Empty,
-  Flex,
-  Grid,
-  Space,
-  Typography,
-} from "antd";
+import { Affix, Button, Divider, Flex, Grid, Space, Typography } from "antd";
 import { Col, Row } from "antd";
 import { theme } from "antd";
-import { Avatar, Card } from "antd";
 import { useCartStore } from "@/lib/cartStore";
-import { getThumbnail } from "@/utils/util";
 import { DELIVERY_FEE, MINIMUM_ORDER_VALUE, RUPEE } from "@/utils/config";
-import AddToCart from "@/components/AddToCart";
 import Link from "next/link";
 import { red } from "@ant-design/colors";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import CartItems from "./CartItems";
 
-const { Meta } = Card;
-export default function CartPage() {
+export default function Cart() {
   const {
     token: { padding, colorBorderSecondary },
   } = theme.useToken();
@@ -67,37 +55,7 @@ export default function CartPage() {
               {cartItems.length} item{cartItems.length > 1 && "s"}
             </Typography.Title>
           </Space>
-          {cartItems.map((item, i) => (
-            <Card key={item.id} style={{ marginBottom: padding / 2 }}>
-              <Flex justify="space-between" align="flex-start">
-                <Meta
-                  avatar={
-                    <Avatar
-                      src={getThumbnail(item.image)}
-                      style={{ width: 100, height: 100, borderRadius: 0 }}
-                    />
-                  }
-                  title={
-                    <Typography.Paragraph style={{ textWrap: "balance" }}>
-                      {item.name}
-                    </Typography.Paragraph>
-                  }
-                  description={<AddToCart id={item.id} />}
-                  style={{ maxWidth: "60%", minWidth: 200 }}
-                />
-                <Space>
-                  <Typography.Text strong>
-                    {RUPEE}
-                    {item.price * item.quantity}
-                  </Typography.Text>
-                  <Typography.Text delete type="secondary">
-                    {RUPEE}
-                    {item.mrp * item.quantity}
-                  </Typography.Text>
-                </Space>
-              </Flex>
-            </Card>
-          ))}
+          <CartItems />
         </Col>
         <Col
           lg={8}
@@ -159,9 +117,11 @@ export default function CartPage() {
             </Row>
             <Row style={{ marginTop: padding }}>
               <Col span={24}>
-                <Button size="large" type="primary" block>
-                  Checkout
-                </Button>
+                <Link href="/checkout">
+                  <Button size="large" type="primary" block>
+                    Checkout
+                  </Button>
+                </Link>
               </Col>
             </Row>
           </Affix>

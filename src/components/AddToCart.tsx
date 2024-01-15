@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CartItem, Item } from "@prisma/client";
 import { Button, ButtonProps, Flex, Typography } from "antd";
 import { useCartStore } from "@/lib/cartStore";
@@ -22,6 +22,18 @@ export default function AddToCart({ item, id, buttonProps }: Props) {
   const cart = useCartStore((s) => s.cart);
   const addItem = useCartStore((s) => s.addItem);
   const removeItem = useCartStore((s) => s.removeItem);
+
+  /**
+   * Workaround for React Minified Error #418
+   * https://github.com/vercel/next.js/discussions/43921#discussioncomment-5614536
+   */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return null;
+  }
 
   if (!cart[id] && item) {
     return (

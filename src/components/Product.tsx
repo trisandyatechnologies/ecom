@@ -19,6 +19,7 @@ import { getImage, getThumbnail } from "@/utils/util";
 import AddToCart from "./AddToCart";
 import { useCartStore } from "@/lib/cartStore";
 import { RUPEE } from "@/utils/config";
+import { useEffect, useState } from "react";
 
 export default function Product({ item }: { item: Item }) {
   const imageItems: TabsProps["items"] = item.images.map((image) => ({
@@ -48,6 +49,18 @@ export default function Product({ item }: { item: Item }) {
   } = theme.useToken();
 
   const cart = useCartStore((c) => c.cart);
+
+  /**
+   * Workaround for React Minified Error #418
+   * https://github.com/vercel/next.js/discussions/43921#discussioncomment-5614536
+   */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Row style={{ maxWidth: 1200, margin: "0 auto" }}>
