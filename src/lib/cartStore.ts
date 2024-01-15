@@ -1,14 +1,7 @@
 import { DELIVERY_FEE, MINIMUM_ORDER_VALUE } from "@/utils/config";
-import { CartItem } from "@prisma/client";
+import { CartItem, CartTotal } from "@prisma/client";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-
-type CartTotal = {
-  mrp: number;
-  price: number;
-  discount: number;
-  amount: number;
-};
 
 interface CartStore {
   count: number;

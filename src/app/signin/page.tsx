@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { message } from "@/lib/notify";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Signin: React.FC = () => {
   const router = useRouter();
@@ -23,10 +23,11 @@ const Signin: React.FC = () => {
   } = theme.useToken();
 
   const { data: session, status } = useSession();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (status === "authenticated") {
-      router.replace("/");
+      router.replace(searchParams.get("redirect") ?? "/");
     }
   }, [session, status]);
 
@@ -38,7 +39,7 @@ const Signin: React.FC = () => {
     if (err || status === 401) {
       message.error("Email or password incorrect.");
     } else {
-      router.replace("/");
+      router.replace(searchParams.get("redirect") ?? "/");
     }
   };
 

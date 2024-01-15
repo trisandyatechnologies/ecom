@@ -1,6 +1,15 @@
 "use client";
 import React from "react";
-import { Affix, Button, Divider, Flex, Grid, Space, Typography } from "antd";
+import {
+  Affix,
+  Button,
+  Divider,
+  Flex,
+  Grid,
+  Skeleton,
+  Space,
+  Typography,
+} from "antd";
 import { Col, Row } from "antd";
 import { theme } from "antd";
 import { useCartStore } from "@/lib/cartStore";
@@ -9,11 +18,13 @@ import Link from "next/link";
 import { red } from "@ant-design/colors";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import CartItems from "./CartItems";
+import { useSession } from "next-auth/react";
 
 export default function Cart() {
   const {
     token: { padding, colorBorderSecondary },
   } = theme.useToken();
+  const { data: session, status } = useSession();
   const { lg } = Grid.useBreakpoint();
 
   const cart = useCartStore((s) => s.cart);
@@ -22,6 +33,8 @@ export default function Cart() {
   const cartItems = Object.values(cart);
 
   const isCartEmpty = cartItems.length === 0;
+
+  if (status === "loading") return <Skeleton active avatar />;
 
   if (isCartEmpty) {
     return (
@@ -44,6 +57,8 @@ export default function Cart() {
       </Flex>
     );
   }
+
+  const isLoggedIn = !!session?.user.id;
 
   return (
     <main>
@@ -90,18 +105,6 @@ export default function Cart() {
               </Col>
             </Row>
 
-            <Row gutter={padding}>
-              <Col span={12}>
-                <Typography.Text>Delivery Fee :</Typography.Text>
-              </Col>
-              <Col span={12} style={{ textAlign: "right" }}>
-                <Typography.Text delete={total.price > MINIMUM_ORDER_VALUE}>
-                  {RUPEE}
-                  {DELIVERY_FEE}
-                </Typography.Text>
-              </Col>
-            </Row>
-
             <Divider />
 
             <Row gutter={padding}>
@@ -111,17 +114,26 @@ export default function Cart() {
               <Col span={12} style={{ textAlign: "right" }}>
                 <Typography.Text strong>
                   {RUPEE}
-                  {total.amount}
+                  {total.price}
                 </Typography.Text>
               </Col>
             </Row>
             <Row style={{ marginTop: padding }}>
               <Col span={24}>
-                <Link href="/checkout">
-                  <Button size="large" type="primary" block>
-                    Checkout
-                  </Button>
-                </Link>
+                {isLoggedIn && (
+                  <Link href="/checkout">
+                    <Button size="large" type="primary" block>
+                      Checkout
+                    </Button>
+                  </Link>
+                )}
+                {!isLoggedIn && (
+                  <Link href="/signin?redirect=/cart">
+                    <Button size="large" type="primary" block>
+                      Signin to Checkout
+                    </Button>
+                  </Link>
+                )}
               </Col>
             </Row>
           </Affix>

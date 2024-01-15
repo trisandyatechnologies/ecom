@@ -18,7 +18,6 @@ import {
   Result,
 } from "antd";
 import {
-  LoadingOutlined,
   SmileOutlined,
   SolutionOutlined,
   DeliveredProcedureOutlined,
@@ -36,7 +35,13 @@ import { createOrder } from "@/lib/api";
 
 export default function Checkout() {
   const {
-    token: { padding, colorBorderSecondary },
+    token: {
+      padding,
+      colorBorderSecondary,
+      colorFillAlter,
+      borderRadiusSM,
+      colorBgContainer,
+    },
   } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const { data: session, status } = useSession();
@@ -48,9 +53,9 @@ export default function Checkout() {
   const user = useUserStore((s) => s.user);
   const [order, setOrder] = useState<Order | undefined>();
 
-  if (!user) {
-    //router.push("/signin");
-    //return <Typography>Redirecting to Signin...</Typography>;
+  if (!user && status === "unauthenticated") {
+    router.push("/signin?redirect=/checkout");
+    return <Typography>Redirecting to Signin...</Typography>;
   }
 
   const next = () => {
@@ -74,6 +79,10 @@ export default function Checkout() {
     }
   };
 
+  const panelStyle: React.CSSProperties = {
+    background: colorFillAlter,
+  };
+
   const steps = [
     {
       title: "Address",
@@ -81,12 +90,13 @@ export default function Checkout() {
       content: (
         <Collapse
           defaultActiveKey="address"
+          style={panelStyle}
           items={[
             {
               key: "address",
               label: "Address",
               children: (
-                <Flex vertical gap={padding}>
+                <Flex vertical gap={padding} id="address">
                   <Form.Item
                     name="address"
                     rules={[
@@ -119,11 +129,11 @@ export default function Checkout() {
                     </Radio.Group>
                   </Form.Item>
                   <Button
-                    type="primary"
+                    type={current === 0 ? "primary" : "default"}
                     onClick={next}
                     style={{ width: "fit-content", marginLeft: "auto" }}
                   >
-                    Confirm Delivery Address
+                    <Link href="#1">Confirm Delivery Address</Link>
                   </Button>
                 </Flex>
               ),
@@ -138,10 +148,12 @@ export default function Checkout() {
       content: (
         <Collapse
           defaultActiveKey="payment"
+          style={panelStyle}
           items={[
             {
               key: "payment",
               label: "Payment",
+              style: panelStyle,
               children: (
                 <Flex vertical gap={padding}>
                   <Form.Item
@@ -157,16 +169,16 @@ export default function Checkout() {
                     <Radio.Group>
                       <Radio value={PaymentMode.COD}>Cash on delivery</Radio>
                     </Radio.Group>
-                    <Typography.Paragraph type="secondary">
-                      Other payment options will be available soon.
-                    </Typography.Paragraph>
                   </Form.Item>
+                  <Typography.Paragraph type="secondary">
+                    Other payment options will be available soon.
+                  </Typography.Paragraph>
                   <Button
-                    type="primary"
+                    type={current <= 1 ? "primary" : "default"}
                     onClick={next}
                     style={{ width: "fit-content", marginLeft: "auto" }}
                   >
-                    Confirm Payment Method
+                    <Link href="#2">Confirm Payment Method</Link>
                   </Button>
                 </Flex>
               ),
@@ -181,6 +193,7 @@ export default function Checkout() {
       content: (
         <Collapse
           defaultActiveKey={"delivery"}
+          style={panelStyle}
           items={[
             {
               key: "delivery",
@@ -193,11 +206,11 @@ export default function Checkout() {
                   <CartItems />
 
                   <Button
-                    type="primary"
+                    type={current <= 2 ? "primary" : "default"}
                     onClick={next}
                     style={{ width: "fit-content", marginLeft: "auto" }}
                   >
-                    Confirm Cart Items
+                    <Link href="#3">Confirm Cart Items</Link>
                   </Button>
                 </Flex>
               ),
@@ -212,10 +225,12 @@ export default function Checkout() {
       content: (
         <Collapse
           defaultActiveKey="summary"
+          style={panelStyle}
           items={[
             {
               key: "summary",
               label: "Order Summary",
+              style: panelStyle,
               children: (
                 <Flex vertical gap={padding}>
                   <Row gutter={padding}>
@@ -271,11 +286,11 @@ export default function Checkout() {
                   </Row>
 
                   <Button
-                    type="primary"
+                    type={current <= 3 ? "primary" : "default"}
                     htmlType="submit"
                     style={{ width: "fit-content", marginLeft: "auto" }}
                   >
-                    Place Order
+                    <Link href={"#order-status"}>Place Order</Link>
                   </Button>
                 </Flex>
               ),
@@ -287,7 +302,7 @@ export default function Checkout() {
   ];
 
   return (
-    <Skeleton loading={status !== "authenticated"}>
+    <Skeleton loading={status === "loading"}>
       <Form
         name="basic"
         style={{
@@ -309,26 +324,37 @@ export default function Checkout() {
         <Form.Item name="items" noStyle></Form.Item>
         <Form.Item name="total" noStyle></Form.Item>
         <Flex style={{ padding }} vertical gap={padding * 2}>
-          <Steps current={current} items={steps} />
+          <Affix offsetTop={0}>
+            <Steps
+              current={current}
+              items={steps}
+              style={{ background: colorBgContainer, padding }}
+            />
+          </Affix>
 
           <Flex vertical gap={padding}>
-            {steps.map((step) => step.content)}
+            {steps.map((step, i) => (
+              <Flex key={step.title} vertical id={i.toString()}>
+                {step.content}
+              </Flex>
+            ))}
           </Flex>
-
-          {order && (
-            <Result
-              status="success"
-              title="Order placed successfully."
-              subTitle={`Order number: ${order.id}, your order will reach you by end of the day.`}
-              extra={[
-                <Link href="/" key="buy">
-                  <Button type="primary" key="buy">
-                    Continue Shopping
-                  </Button>
-                </Link>,
-              ]}
-            />
-          )}
+          <Flex id="order-status">
+            {order && (
+              <Result
+                status="success"
+                title="Order placed successfully."
+                subTitle={`Order number: ${order.id}, your order will reach you by end of the day.`}
+                extra={[
+                  <Link href="/" key="buy">
+                    <Button type="primary" key="buy">
+                      Continue Shopping
+                    </Button>
+                  </Link>,
+                ]}
+              />
+            )}
+          </Flex>
         </Flex>
       </Form>
     </Skeleton>

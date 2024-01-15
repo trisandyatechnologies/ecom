@@ -43,6 +43,7 @@ export default function ItemCard(props: Item) {
               padding: padding,
               maxWidth: "fit-content",
               margin: "0 auto",
+              width: "100%",
             }}
           />
         </Link>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button, Flex, Space, Typography } from "antd";
+import { Button, Flex, Grid, Space, Typography } from "antd";
 import { theme } from "antd";
 import { Avatar, Card } from "antd";
 import { useCartStore } from "@/lib/cartStore";
@@ -14,8 +14,10 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 const { Meta } = Card;
 export default function CartItems() {
   const {
-    token: { padding, colorBorderSecondary },
+    token: { padding },
   } = theme.useToken();
+
+  const { sm } = Grid.useBreakpoint();
 
   const cart = useCartStore((s) => s.cart);
   const cartItems = Object.values(cart);
@@ -53,7 +55,11 @@ export default function CartItems() {
               avatar={
                 <Avatar
                   src={getThumbnail(item.image)}
-                  style={{ width: 100, height: 100, borderRadius: 0 }}
+                  style={{
+                    width: sm ? 100 : 64,
+                    height: sm ? 100 : 64,
+                    borderRadius: 0,
+                  }}
                 />
               }
               title={
@@ -64,7 +70,7 @@ export default function CartItems() {
               description={<AddToCart id={item.id} />}
               style={{ maxWidth: "60%", minWidth: 200 }}
             />
-            <Space>
+            <Space wrap>
               <Typography.Text strong>
                 {RUPEE}
                 {item.price * item.quantity}

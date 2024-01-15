@@ -121,9 +121,11 @@ const HeaderMenu: React.FC = () => {
     {
       key: "shoppingcart",
       icon: (
-        <Badge count={cartCount} dot size="small" status="warning">
-          <ShoppingCartOutlined />
-        </Badge>
+        <Link href="/cart">
+          <Badge count={cartCount} dot size="small" status="warning">
+            <ShoppingCartOutlined />
+          </Badge>
+        </Link>
       ),
       label: md && (
         <Badge count={cartCount} size="small" status="warning">
