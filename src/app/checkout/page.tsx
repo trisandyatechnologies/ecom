@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   message,
@@ -16,6 +16,7 @@ import {
   Skeleton,
   Form,
   Result,
+  Grid,
 } from "antd";
 import {
   SmileOutlined,
@@ -32,16 +33,11 @@ import { Order, PaymentMode } from "@prisma/client";
 import CartItems from "@/components/CartItems";
 import Link from "next/link";
 import { createOrder } from "@/lib/api";
+import NewAddressForm from "@/components/NewAddressForm";
 
 export default function Checkout() {
   const {
-    token: {
-      padding,
-      colorBorderSecondary,
-      colorFillAlter,
-      borderRadiusSM,
-      colorBgContainer,
-    },
+    token: { padding, colorFillAlter, colorBgContainer },
   } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const { data: session, status } = useSession();
@@ -52,6 +48,7 @@ export default function Checkout() {
   const total = useCartStore((s) => s.total);
   const user = useUserStore((s) => s.user);
   const [order, setOrder] = useState<Order | undefined>();
+  const { md } = Grid.useBreakpoint();
 
   if (!user && status === "unauthenticated") {
     router.push("/signin?redirect=/checkout");
@@ -96,7 +93,12 @@ export default function Checkout() {
               key: "address",
               label: "Address",
               children: (
-                <Flex vertical gap={padding} id="address">
+                <Flex
+                  vertical
+                  gap={padding}
+                  id="address"
+                  style={{ width: "auto" }}
+                >
                   <Form.Item
                     name="address"
                     rules={[
@@ -128,13 +130,8 @@ export default function Checkout() {
                       ))}
                     </Radio.Group>
                   </Form.Item>
-                  <Button
-                    type={current === 0 ? "primary" : "default"}
-                    onClick={next}
-                    style={{ width: "fit-content", marginLeft: "auto" }}
-                  >
-                    <Link href="#1">Confirm Delivery Address</Link>
-                  </Button>
+
+                  <NewAddressForm />
                 </Flex>
               ),
             },
@@ -167,19 +164,14 @@ export default function Checkout() {
                     noStyle
                   >
                     <Radio.Group>
-                      <Radio value={PaymentMode.COD}>Cash on delivery</Radio>
+                      <Radio value={PaymentMode.COD}>
+                        Cash on Delivery (COD)
+                      </Radio>
                     </Radio.Group>
                   </Form.Item>
                   <Typography.Paragraph type="secondary">
                     Other payment options will be available soon.
                   </Typography.Paragraph>
-                  <Button
-                    type={current <= 1 ? "primary" : "default"}
-                    onClick={next}
-                    style={{ width: "fit-content", marginLeft: "auto" }}
-                  >
-                    <Link href="#2">Confirm Payment Method</Link>
-                  </Button>
                 </Flex>
               ),
             },
@@ -204,14 +196,6 @@ export default function Checkout() {
                     Items ordered before 12PM will be delivered on the same day.
                   </Typography.Paragraph>
                   <CartItems />
-
-                  <Button
-                    type={current <= 2 ? "primary" : "default"}
-                    onClick={next}
-                    style={{ width: "fit-content", marginLeft: "auto" }}
-                  >
-                    <Link href="#3">Confirm Cart Items</Link>
-                  </Button>
                 </Flex>
               ),
             },
@@ -324,13 +308,15 @@ export default function Checkout() {
         <Form.Item name="items" noStyle></Form.Item>
         <Form.Item name="total" noStyle></Form.Item>
         <Flex style={{ padding }} vertical gap={padding * 2}>
-          <Affix offsetTop={0}>
-            <Steps
-              current={current}
-              items={steps}
-              style={{ background: colorBgContainer, padding }}
-            />
-          </Affix>
+          {md && (
+            <Affix offsetTop={0}>
+              <Steps
+                current={current}
+                items={steps}
+                style={{ background: colorBgContainer, padding }}
+              />
+            </Affix>
+          )}
 
           <Flex vertical gap={padding}>
             {steps.map((step, i) => (
