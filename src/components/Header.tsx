@@ -1,9 +1,6 @@
 "use client";
-
-import "../app/globals.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { appLogo, appName } from "@/utils/config";
-import { SearchProps } from "antd/es/input/Search";
 import {
   Badge,
   Col,
@@ -11,13 +8,11 @@ import {
   Flex,
   Grid,
   Image,
-  Input,
   Row,
   Space,
   Typography,
 } from "antd";
 import type { MenuProps } from "antd";
-const { Search } = Input;
 import { Layout, Menu, theme } from "antd";
 import {
   ShoppingCartOutlined,
@@ -31,6 +26,7 @@ import { categoryItems } from "@/utils/util";
 import { signOut, useSession } from "next-auth/react";
 import { useCartStore } from "@/lib/cartStore";
 import ItemSearch from "./ItemSearch";
+import { useUserStore } from "@/lib/userStore";
 
 const { useToken } = theme;
 
@@ -72,15 +68,35 @@ const categoryMenuItems: MenuProps["items"] = categoryItems.map(
   })
 );
 
-const Header: React.FC = () => {
-  const {
-    token: { padding },
-  } = useToken();
+const HeaderMenu: React.FC = () => {
   const { md } = Grid.useBreakpoint();
 
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const cartCount = useCartStore((s) => s.count);
   const isLoggedIn = session?.user.id;
+
+  const { setUser, reset, user } = useUserStore((s) => s);
+
+  useEffect(() => {
+    if (status === "loading") return;
+    if (session?.user.id && (!user || user.id !== session?.user.id)) {
+      setUser(session?.user.id);
+    } else {
+      reset();
+    }
+  }, [session?.user.id, status]);
+
+  /**
+   * Workaround for React Minified Error #418
+   * https://github.com/vercel/next.js/discussions/43921#discussioncomment-5614536
+   */
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return null;
+  }
 
   const items: MenuProps["items"] = [
     {
@@ -105,9 +121,11 @@ const Header: React.FC = () => {
     {
       key: "shoppingcart",
       icon: (
-        <Badge count={cartCount} dot size="small" status="warning">
-          <ShoppingCartOutlined />
-        </Badge>
+        <Link href="/cart">
+          <Badge count={cartCount} dot size="small" status="warning">
+            <ShoppingCartOutlined />
+          </Badge>
+        </Link>
       ),
       label: md && (
         <Badge count={cartCount} size="small" status="warning">
@@ -118,11 +136,32 @@ const Header: React.FC = () => {
   ];
 
   return (
+    <Menu
+      mode="horizontal"
+      items={items}
+      style={{
+        flex: md ? 1 : 0,
+        justifyContent: "end",
+        border: "none",
+        display: "flex",
+      }}
+      disabledOverflow
+    />
+  );
+};
+
+const Header: React.FC = () => {
+  const {
+    token: { padding, colorBgContainer },
+  } = useToken();
+  const { md } = Grid.useBreakpoint();
+
+  return (
     <Layout.Header
       style={{
         display: "flex",
         width: "100%",
-        background: "white",
+        background: colorBgContainer,
         flexDirection: "column",
         minHeight: 144,
         paddingLeft: padding,
@@ -146,17 +185,7 @@ const Header: React.FC = () => {
           )}
         </Link>
         <ItemSearch />
-        <Menu
-          mode="horizontal"
-          items={items}
-          style={{
-            flex: md ? 1 : 0,
-            justifyContent: "end",
-            border: "none",
-            display: "flex",
-          }}
-          disabledOverflow
-        />
+        <HeaderMenu />
       </Flex>
       <Row gutter={padding} align="middle">
         <Col xs={24}>

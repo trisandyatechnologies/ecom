@@ -1,5 +1,5 @@
 import { API_ROOT } from "@/utils/config";
-import { Item, User } from "@prisma/client";
+import { Item, Order, User } from "@prisma/client";
 
 export const getItems = async () => {
   const items = await fetch(`${API_ROOT}items`).then((res) => res.json());
@@ -40,6 +40,17 @@ export const addItem = async (item: Item) => {
   return product;
 };
 
+export const updateItem = async (itemId: string, updateBody: Partial<Item>) => {
+  const item = await fetch(`${API_ROOT}/items/${itemId}`, {
+    method: "PUT",
+    body: JSON.stringify(updateBody),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+  return item;
+};
+
 export const updateCartItemQuantity = async (
   cartItemId: string,
   quantity: number
@@ -73,4 +84,15 @@ export const updateUser = async (
     },
   }).then((res) => res.json());
   return user;
+};
+
+export const createOrder = async (orderBody: Partial<Order>) => {
+  const order = await fetch(`${API_ROOT}orders`, {
+    method: "POST",
+    body: JSON.stringify(orderBody),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+  return order;
 };

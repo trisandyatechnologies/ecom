@@ -6,6 +6,15 @@ const getItems = async (): Promise<Item[]> => {
   return items;
 };
 
+const getItem = async (id: string): Promise<Item | null> => {
+  const item = await prisma.item.findUnique({
+    where: {
+      id,
+    },
+  });
+  return item;
+};
+
 const getItemsByCategory = async (category: Category): Promise<Item[]> => {
   const items = await prisma.item.findMany({
     where: {
@@ -69,6 +78,7 @@ const service = {
   getOrders,
   getItemsByCategory,
   getItemsByFilter,
+  getItem,
 };
 
 export default service;

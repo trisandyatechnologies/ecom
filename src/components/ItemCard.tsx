@@ -8,9 +8,11 @@ import { getThumbnail } from "@/utils/util";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
 import { RUPEE } from "@/utils/config";
+import Link from "next/link";
 
 export default function ItemCard(props: Item) {
   const {
+    id,
     images,
     name,
     price,
@@ -26,27 +28,41 @@ export default function ItemCard(props: Item) {
       style={{
         maxWidth: 240,
       }}
+      hoverable
       cover={
-        <Image
-          src={getThumbnail(images[0])}
-          width={200}
-          height={200}
-          alt={name}
-          style={{
-            padding,
-            maxWidth: "fit-content",
-            margin: "0 auto",
-          }}
-        />
+        <Link
+          style={{ width: "100%", textAlign: "center" }}
+          href={`/products/${id}`}
+        >
+          <Image
+            src={getThumbnail(images[0])}
+            width={200}
+            height={200}
+            alt={name}
+            style={{
+              padding: padding,
+              maxWidth: "fit-content",
+              margin: "0 auto",
+              width: "100%",
+            }}
+          />
+        </Link>
       }
-      bodyStyle={{ padding: padding, paddingTop: 0 }}
+      bodyStyle={{
+        paddingBottom: padding,
+        paddingLeft: padding,
+        paddingRight: padding,
+        paddingTop: 0,
+      }}
     >
-      <Typography.Paragraph
-        style={{ fontSize: 12, marginBottom: 0 }}
-        ellipsis={{ rows: 2, tooltip: name }}
-      >
-        {name}
-      </Typography.Paragraph>
+      <Link href={`/products/${id}`}>
+        <Typography.Paragraph
+          style={{ fontSize: 12, marginBottom: 0, minHeight: 40 }}
+          ellipsis={{ rows: 2, tooltip: name }}
+        >
+          {name}
+        </Typography.Paragraph>
+      </Link>
       <Typography.Text type="secondary" style={{ fontSize: 12 }}>
         {weight ?? capacity} {units}
       </Typography.Text>
@@ -73,7 +89,7 @@ export default function ItemCard(props: Item) {
           {offer}% off
         </Tag>
       )}
-      <AddToCart item={props} />
+      <AddToCart id={props.id} item={props} />
     </Card>
   );
 }

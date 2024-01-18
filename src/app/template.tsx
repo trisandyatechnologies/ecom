@@ -1,9 +1,6 @@
 "use client";
-import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
 import { App, ConfigProvider, Grid, Skeleton, theme } from "antd";
 import Notify from "@/lib/notify";
-import { useEffect } from "react";
 import { Layout, Flex, Typography } from "antd";
 import Header from "../components/Header";
 import Footer from "../components/Footer";

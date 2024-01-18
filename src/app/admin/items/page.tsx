@@ -1,18 +1,25 @@
 "use client";
 import ItemList from "@/components/ItemList";
 import { getItems } from "@/lib/api";
+import { Skeleton } from "antd";
 import { useEffect, useState } from "react";
 
 export default function Items() {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getItems().then(setItems);
+    setLoading(true);
+    getItems()
+      .then(setItems)
+      .finally(() => setLoading(false));
   }, []);
 
   return (
     <main>
-      <ItemList data={items} />
+      <Skeleton loading={loading} active avatar>
+        <ItemList data={items} />
+      </Skeleton>
     </main>
   );
 }
