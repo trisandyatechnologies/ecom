@@ -51,6 +51,7 @@ export default function Checkout() {
   const { md } = Grid.useBreakpoint();
 
   if (!user && status === "unauthenticated") {
+    console.log("checkout", user);
     router.push("/signin?redirect=/checkout");
     return <Typography>Redirecting to Signin...</Typography>;
   }
@@ -61,6 +62,7 @@ export default function Checkout() {
 
   const onSubmit = async (values: any) => {
     if (!user) {
+      console.log("checkout", user);
       message.error("Not logged in, please sign in to place the order.");
       return;
     }
@@ -110,7 +112,7 @@ export default function Checkout() {
                     noStyle
                   >
                     <Radio.Group>
-                      {user?.addresses.map((add, i) => (
+                      {user?.addresses?.map((add, i) => (
                         <Radio value={i} key={add.name + i}>
                           <Flex
                             vertical

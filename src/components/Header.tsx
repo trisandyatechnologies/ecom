@@ -79,10 +79,13 @@ const HeaderMenu: React.FC = () => {
 
   useEffect(() => {
     if (status === "loading") return;
+    debugger;
     if (session?.user.id && (!user || user.id !== session?.user.id)) {
       setUser(session?.user.id);
+      console.log("header", setUser);
     } else {
       reset();
+      console.log("header", reset);
     }
   }, [session?.user.id, status]);
 

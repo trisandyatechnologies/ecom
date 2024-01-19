@@ -14,7 +14,6 @@ export default function NewAddressForm() {
   const {
     token: { padding },
   } = theme.useToken();
-  const { data: session } = useSession();
   const [form] = Form.useForm();
   const user = useUserStore((s) => s.user);
   const updateUser = useUserStore((s) => s.updateUser);
@@ -30,12 +29,15 @@ export default function NewAddressForm() {
   };
 
   const onSubmit = async (formValues: Address) => {
+    debugger;
     if (!user?.id) return;
+    
     const userWithNewAddress = {
       ...user,
       addresses: [...user.addresses, formValues],
     };
     updateUser(userWithNewAddress);
+
   };
 
   useEffect(() => {
