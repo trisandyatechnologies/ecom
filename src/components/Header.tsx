@@ -30,33 +30,6 @@ import { useUserStore } from "@/lib/userStore";
 
 const { useToken } = theme;
 
-const profileMenuItems: MenuProps["items"] = [
-  {
-    key: "account",
-    label: (
-      <Link rel="noopener noreferrer" href="/account">
-        <BankOutlined /> Account
-      </Link>
-    ),
-  },
-  {
-    key: "orders",
-    label: (
-      <Link rel="noopener noreferrer" href="/orders">
-        <ShoppingFilled /> My Orders
-      </Link>
-    ),
-  },
-  {
-    key: "signout",
-    label: (
-      <Space onClick={() => signOut()}>
-        <PoweroffOutlined /> Sign out
-      </Space>
-    ),
-  },
-];
-
 const categoryMenuItems: MenuProps["items"] = categoryItems.map(
   ({ label, key }) => ({
     key,
@@ -81,8 +54,6 @@ const HeaderMenu: React.FC = () => {
     if (status === "loading") return;
     if (session?.user.id && (!user || user.id !== session?.user.id)) {
       setUser(session?.user.id);
-    } else {
-      reset();
     }
   }, [session?.user.id, status]);
 
@@ -97,6 +68,38 @@ const HeaderMenu: React.FC = () => {
   if (!mounted) {
     return null;
   }
+
+  const profileMenuItems: MenuProps["items"] = [
+    {
+      key: "account",
+      label: (
+        <Link rel="noopener noreferrer" href="/account">
+          <BankOutlined /> Account
+        </Link>
+      ),
+    },
+    {
+      key: "orders",
+      label: (
+        <Link rel="noopener noreferrer" href="/orders">
+          <ShoppingFilled /> My Orders
+        </Link>
+      ),
+    },
+    {
+      key: "signout",
+      label: (
+        <Space
+          onClick={() => {
+            reset();
+            signOut();
+          }}
+        >
+          <PoweroffOutlined /> Sign out
+        </Space>
+      ),
+    },
+  ];
 
   const items: MenuProps["items"] = [
     {

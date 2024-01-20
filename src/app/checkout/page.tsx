@@ -46,6 +46,7 @@ export default function Checkout() {
 
   const cart = useCartStore((s) => s.cart);
   const total = useCartStore((s) => s.total);
+  const resetCart = useCartStore((s) => s.reset);
   const user = useUserStore((s) => s.user);
   const [order, setOrder] = useState<Order | undefined>();
   const { md } = Grid.useBreakpoint();
@@ -71,9 +72,14 @@ export default function Checkout() {
     });
     if (order) {
       setOrder(order);
+      resetCart();
     } else {
       message.error("Failed to place the order, try again.");
     }
+  };
+
+  const onSubmitFailed = async (values: any) => {
+    message.error("Add required details!");
   };
 
   const panelStyle: React.CSSProperties = {
@@ -274,7 +280,7 @@ export default function Checkout() {
                     htmlType="submit"
                     style={{ width: "fit-content", marginLeft: "auto" }}
                   >
-                    <Link href={"#order-status"}>Place Order</Link>
+                    Place Order
                   </Button>
                 </Flex>
               ),
@@ -301,6 +307,7 @@ export default function Checkout() {
           total,
         }}
         onFinish={onSubmit}
+        onFinishFailed={onSubmitFailed}
         autoComplete="off"
         layout="vertical"
         form={form}
@@ -318,13 +325,15 @@ export default function Checkout() {
             </Affix>
           )}
 
-          <Flex vertical gap={padding}>
-            {steps.map((step, i) => (
-              <Flex key={step.title} vertical id={i.toString()}>
-                {step.content}
-              </Flex>
-            ))}
-          </Flex>
+          {!order && (
+            <Flex vertical gap={padding}>
+              {steps.map((step, i) => (
+                <Flex key={step.title} vertical id={i.toString()}>
+                  {step.content}
+                </Flex>
+              ))}
+            </Flex>
+          )}
           <Flex id="order-status">
             {order && (
               <Result

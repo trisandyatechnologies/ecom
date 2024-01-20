@@ -10,6 +10,7 @@ interface CartStore {
   addItem: (itemId: string, item?: CartItem) => void;
   removeItem: (itemId: string) => void;
   deleteItem: (itemId: string) => void;
+  reset: () => void;
 }
 
 enum CALC {
@@ -74,6 +75,18 @@ export const useCartStore = create(
         }
         delete cart[itemId];
         set({ cart, count, total });
+      },
+      reset: () => {
+        set({
+          count: 0,
+          cart: {},
+          total: {
+            mrp: 0,
+            price: 0,
+            discount: 0,
+            amount: 0,
+          },
+        });
       },
     }),
     {

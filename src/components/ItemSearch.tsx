@@ -1,13 +1,5 @@
 import React, { useMemo, useState } from "react";
-import {
-  AutoComplete,
-  Avatar,
-  Flex,
-  Form,
-  Input,
-  List,
-  SelectProps,
-} from "antd";
+import { AutoComplete, Flex, Input, SelectProps } from "antd";
 import Link from "next/link";
 import { debounce } from "@/utils/util";
 import { Item } from "@prisma/client";
@@ -68,7 +60,7 @@ const ItemSearch: React.FC = () => {
           onPressEnter={onSearchHandler}
           name="q"
           placeholder={`search products ${
-            isInCategoryPage && `in ${category}`
+            isInCategoryPage ? `in ${category}` : ""
           }`}
         />
       </AutoComplete>
