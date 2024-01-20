@@ -71,6 +71,7 @@ const ItemSearch: React.FC = () => {
           placeholder={`search products ${isInCategoryPage ? `in ${category}` : ""}`}
         />
       </AutoComplete>
+      
     </Flex>
   );
 };
