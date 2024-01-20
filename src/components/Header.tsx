@@ -57,16 +57,16 @@ const profileMenuItems: MenuProps["items"] = [
   },
 ];
 
-const categoryMenuItems: MenuProps["items"] = categoryItems.map(
-  ({ label, key }) => ({
-    key,
-    label: (
-      <Link rel="noopener noreferrer" href={`/category/${key}`}>
-        {label}
-      </Link>
-    ),
-  })
-);
+// const categoryMenuItems: MenuProps["items"] = categoryItems.map(
+//   ({ label, key }) => ({
+//     key,
+//     label: (
+//       <Link rel="noopener noreferrer" href={`/category/${key}`}>
+//         {label}
+//       </Link>
+//     ),
+//   })
+// );
 
 const HeaderMenu: React.FC = () => {
   const { md } = Grid.useBreakpoint();
@@ -188,15 +188,38 @@ const Header: React.FC = () => {
         <HeaderMenu />
       </Flex>
       <Row gutter={padding} align="middle">
-        <Col xs={24}>
-          <Menu
-            mode="horizontal"
-            items={categoryMenuItems}
+        <Col
+          xs={24}
+          lg={24}
+          md={24}
+          style={{ display: "flex", flexWrap: "wrap" }}
+        >
+          <Flex
             style={{
               width: "100%",
               maxWidth: "100%",
+              // fontSize: 12,
+              justifyContent: "start",
+              lineHeight: "2",
+              margin:"auto 30px"
             }}
-          />
+            wrap="wrap"
+            gap={16}
+            
+          >
+            {categoryItems.map((cat) => (
+              <Link
+                href={`/categories/${cat.key}`}
+                style={{
+                  color: "black",
+                  justifyContent: "space-around",
+                  flexWrap: "wrap",
+                }}
+              >
+                {cat.label}
+              </Link>
+            ))}
+          </Flex>
         </Col>
       </Row>
     </Layout.Header>

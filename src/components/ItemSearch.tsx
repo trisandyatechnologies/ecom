@@ -10,7 +10,7 @@ import {
 } from "antd";
 import Link from "next/link";
 import { debounce } from "@/utils/util";
-import { Item } from "@prisma/client";
+import { $Enums, Item } from "@prisma/client";
 import { getItemsByQuery } from "@/lib/api";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -25,7 +25,7 @@ const ItemSearch: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const isInCategoryPage = pathname.startsWith("/category/");
+  const isInCategoryPage = pathname.startsWith("/categories/");
 
   const category = useMemo(
     () => pathname.split("/").pop()?.replaceAll("_", " "),
@@ -63,17 +63,17 @@ const ItemSearch: React.FC = () => {
         value={value}
         onSelect={() => setValue("")}
       >
+      
         <Input.Search
           onSearch={onSearchHandler}
           onPressEnter={onSearchHandler}
           name="q"
-          placeholder={`search products ${
-            isInCategoryPage && `in ${category}`
-          }`}
+          placeholder={`search products ${isInCategoryPage ? `in ${category}` : ""}`}
         />
       </AutoComplete>
+      
     </Flex>
   );
 };
 
-export default ItemSearch;
+export default ItemSearch; 
