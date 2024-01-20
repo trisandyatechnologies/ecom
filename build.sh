@@ -6,6 +6,10 @@ git pull origin main
 #install new deps
 npm install
 
+#prisma
+npx prisma generate
+npx prisma db push
+
 #build the repo
 npm run build
 
