@@ -17,6 +17,9 @@ import {
   Form,
   Result,
   Grid,
+  List,
+  Avatar,
+  Space,
 } from "antd";
 import {
   SmileOutlined,
@@ -34,12 +37,15 @@ import CartItems from "@/components/CartItems";
 import Link from "next/link";
 import { createOrder } from "@/lib/api";
 import NewAddressForm from "@/components/NewAddressForm";
+import { getThumbnail, isLessThan12PM } from "@/utils/util";
+import OrderCard from "@/components/OrderCard";
+import OrderSummary from "@/components/OrderSummary";
 
 export default function Checkout() {
   const {
     token: { padding, colorFillAlter, colorBgContainer },
   } = theme.useToken();
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(2);
   const { data: session, status } = useSession();
   const router = useRouter();
   const [form] = Form.useForm();
@@ -56,10 +62,6 @@ export default function Checkout() {
     return <Typography>Redirecting to Signin...</Typography>;
   }
 
-  const next = () => {
-    setCurrent(current + 1);
-  };
-
   const onSubmit = async (values: any) => {
     if (!user) {
       message.error("Not logged in, please sign in to place the order.");
@@ -72,6 +74,7 @@ export default function Checkout() {
     });
     if (order) {
       setOrder(order);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       resetCart();
     } else {
       message.error("Failed to place the order, try again.");
@@ -198,9 +201,17 @@ export default function Checkout() {
               label: "Delivery",
               children: (
                 <Flex vertical gap={padding}>
-                  <Typography.Paragraph strong type="success">
-                    Items ordered before 12PM will be delivered on the same day.
-                  </Typography.Paragraph>
+                  {isLessThan12PM() ? (
+                    <Typography.Paragraph strong type="success">
+                      Items ordered before 12PM will be delivered on the same
+                      day.
+                    </Typography.Paragraph>
+                  ) : (
+                    <Typography.Paragraph strong type="warning">
+                      Items ordered after 12PM will be delivered on the next
+                      working day.
+                    </Typography.Paragraph>
+                  )}
                   <CartItems />
                 </Flex>
               ),
@@ -223,62 +234,13 @@ export default function Checkout() {
               style: panelStyle,
               children: (
                 <Flex vertical gap={padding}>
-                  <Row gutter={padding}>
-                    <Col span={12}>
-                      <Typography.Text>Total Price :</Typography.Text>
-                    </Col>
-                    <Col span={12} style={{ textAlign: "right" }}>
-                      <Typography.Text>
-                        {RUPEE}
-                        {total.mrp}
-                      </Typography.Text>
-                    </Col>
-                  </Row>
-
-                  <Row gutter={padding}>
-                    <Col span={12}>
-                      <Typography.Text>Discount :</Typography.Text>
-                    </Col>
-                    <Col span={12} style={{ textAlign: "right" }}>
-                      <Typography.Text type="success">
-                        -{RUPEE}
-                        {total.discount}
-                      </Typography.Text>
-                    </Col>
-                  </Row>
-
-                  <Row gutter={padding}>
-                    <Col span={12}>
-                      <Typography.Text>Delivery Fee :</Typography.Text>
-                    </Col>
-                    <Col span={12} style={{ textAlign: "right" }}>
-                      <Typography.Text
-                        delete={total.price > MINIMUM_ORDER_VALUE}
-                      >
-                        {RUPEE}
-                        {DELIVERY_FEE}
-                      </Typography.Text>
-                    </Col>
-                  </Row>
-
-                  <Divider />
-
-                  <Row gutter={padding}>
-                    <Col span={12}>
-                      <Typography.Text>Order Total :</Typography.Text>
-                    </Col>
-                    <Col span={12} style={{ textAlign: "right" }}>
-                      <Typography.Text strong>
-                        {RUPEE}
-                        {total.amount}
-                      </Typography.Text>
-                    </Col>
-                  </Row>
+                  <OrderSummary total={total} />
 
                   <Button
                     type={current <= 3 ? "primary" : "default"}
                     htmlType="submit"
                     style={{ width: "fit-content", marginLeft: "auto" }}
+                    disabled={Object.keys(cart).length === 0}
                   >
                     Place Order
                   </Button>
@@ -314,8 +276,8 @@ export default function Checkout() {
       >
         <Form.Item name="items" noStyle></Form.Item>
         <Form.Item name="total" noStyle></Form.Item>
-        <Flex style={{ padding }} vertical gap={padding * 2}>
-          {md && (
+        <Flex vertical gap={padding * 2}>
+          {/* {md && (
             <Affix offsetTop={0}>
               <Steps
                 current={current}
@@ -323,7 +285,7 @@ export default function Checkout() {
                 style={{ background: colorBgContainer, padding }}
               />
             </Affix>
-          )}
+          )} */}
 
           {!order && (
             <Flex vertical gap={padding}>
@@ -334,22 +296,36 @@ export default function Checkout() {
               ))}
             </Flex>
           )}
-          <Flex id="order-status">
-            {order && (
+
+          {order && (
+            <Flex
+              vertical
+              style={{ maxWidth: 720, alignSelf: "center", width: "100%" }}
+            >
               <Result
                 status="success"
                 title="Order placed successfully."
-                subTitle={`Order number: ${order.id}, your order will reach you by end of the day.`}
+                subTitle={
+                  <span>
+                    {" "}
+                    Your order will reach you by{" "}
+                    {isLessThan12PM(order.createdAt)
+                      ? "end of the day"
+                      : "tomorrow"}
+                  </span>
+                }
                 extra={[
-                  <Link href="/" key="buy">
+                  <Link href="/orders" key="buy">
                     <Button type="primary" key="buy">
-                      Continue Shopping
+                      Check My Orders
                     </Button>
                   </Link>,
                 ]}
+                className="no-print"
               />
-            )}
-          </Flex>
+              <OrderCard order={order} />
+            </Flex>
+          )}
         </Flex>
       </Form>
     </Skeleton>

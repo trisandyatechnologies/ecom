@@ -69,3 +69,10 @@ export const diff = (
   });
   return result;
 };
+
+export const isLessThan12PM = (date?: Date) => {
+  const meridian = (date ? new Date(date) : new Date())
+    .toLocaleTimeString() // '11:02:29 PM'
+    .split(" ")[1]; // 'PM'
+  return meridian === "AM"; // Less than 12 PM
+};

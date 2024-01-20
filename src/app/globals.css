@@ -106,10 +106,9 @@ a {
   html {
     color-scheme: dark;
   }
-  
 }
-@media only screen and (max-width:400px) {
-  .cartview{
+@media only screen and (max-width: 400px) {
+  .cartview {
     display: none;
   }
 }
@@ -143,4 +142,31 @@ a {
 }
 .login-form .login-form-button {
   width: 100%;
+}
+
+/*Print Styles*/
+
+.ant-divider-horizontal.ant-divider-with-text.order-title.print {
+  display: none;
+}
+
+@media print {
+  .no-print,
+  .print .no-print,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  .print {
+    display: block;
+  }
+
+  .ant-divider-horizontal.ant-divider-with-text.order-title.print {
+    display: flex;
+  }
+
+  main {
+    min-height: 100vh;
+  }
 }
