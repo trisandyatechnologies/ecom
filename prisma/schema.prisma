@@ -141,7 +141,7 @@ model Order {
 model ItemCategory {
   id            String      @id @map("_id")
   name          String      
-  banner        String?     
+  banner        String[]     
   description   String?
 }
 

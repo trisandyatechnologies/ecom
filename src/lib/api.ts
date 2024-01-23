@@ -1,5 +1,6 @@
 import { API_ROOT } from "@/utils/config";
-import { Item, Order, User } from "@prisma/client";
+import { Item, Order, User,ItemCategory } from "@prisma/client";
+import { message } from "antd";
 
 export const getItems = async () => {
   const items = await fetch(`${API_ROOT}items`).then((res) => res.json());
@@ -96,3 +97,25 @@ export const createOrder = async (orderBody: Partial<Order>) => {
   }).then((res) => res.json());
   return order;
 };
+
+
+export const catagoriesItems = async (itemBody: ItemCategory) => {
+  const item = await fetch(`${API_ROOT}admin/categories`, {
+    method: "POST",
+    body: JSON.stringify(itemBody),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+  return item;
+};
+
+export const getcategories = async () => {
+  const catagories = await fetch(`${API_ROOT}admin/categories`).then((res) =>
+    res.json()
+  );
+  return catagories;
+};
+
+
+

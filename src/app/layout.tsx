@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { DEFAULT_METADATA } from "@/utils/config";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import SelectCategory from "@/components/SelectCategory";
 
 export const metadata: Metadata = DEFAULT_METADATA;
 
@@ -14,9 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        
         <script>0</script>
         <GoogleTagManager gtmId="G-JBE3H2HL25" />
         <AntdRegistry>{children}</AntdRegistry>
+        {/* <SelectCategory/> */}
       </body>
     </html>
   );

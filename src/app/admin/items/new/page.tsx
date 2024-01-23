@@ -11,7 +11,7 @@ import {
   Col,
   message,
 } from "antd";
-import { addItem } from "@/lib/api";
+import { addItem, catagoriesItems, getcategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import { categoryItems } from "@/utils/util";
 
@@ -24,6 +24,14 @@ const NewItem: React.FC = () => {
       form.resetFields();
     } else {
       message.error("Failed to add the item");
+    }
+  };
+
+  const getCategories = async (values: any) => {
+    try {
+      await catagoriesItems(values);
+    } catch (error) {
+      console.error("Error", error);
     }
   };
 
