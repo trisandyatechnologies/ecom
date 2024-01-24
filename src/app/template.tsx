@@ -5,6 +5,9 @@ import { Layout, Flex, Typography } from "antd";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { getcategories } from "@/lib/api";
+import { useCategoryStore } from "@/lib/categoryStore";
 const { Content } = Layout;
 
 const layoutStyle = {
@@ -18,6 +21,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
   } = theme.useToken();
 
   const { md } = Grid.useBreakpoint();
+
+  const setCategory = useCategoryStore((s) => s.setCategories);
+  const getCategory = useCategoryStore((s) => s.categories);
+
+  useEffect(() => {
+    setCategory();
+  }, []);
 
   return (
     <ConfigProvider
@@ -40,6 +50,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
               }}
             >
               {children}
+
+              {/* {getCategory.map((category: any) => (
+              <Flex>{category.name}</Flex>
+            ))} Get category items here */}         
+
             </Content>
             <Footer />
           </Layout>

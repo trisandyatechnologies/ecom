@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Flex,
@@ -10,10 +10,12 @@ import {
   Row,
   Col,
   message,
+  Typography,
 } from "antd";
 import { addItem, catagoriesItems, getcategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import { categoryItems } from "@/utils/util";
+import { useCategoryStore } from "@/lib/categoryStore";
 
 const NewItem: React.FC = () => {
   const [form] = Form.useForm();
@@ -35,6 +37,21 @@ const NewItem: React.FC = () => {
     }
   };
 
+  const catagories = useCategoryStore((s) => s.categories);
+
+  //  const [options, setOptions] = useState();
+
+  // useEffect(() => {
+  //   getcategories().then((categories) => {
+
+  //     const optionss = categories.map((category: any) => ({
+  //       label: category.name,
+  //     }));
+
+  //     // setOptions(optionss);
+  //   });
+  // }, []);
+
   return (
     <Flex>
       <Form
@@ -50,6 +67,11 @@ const NewItem: React.FC = () => {
               <Input />
             </Form.Item>
           </Col>
+          <Flex>
+            {catagories.map((category: any) => (
+              <Flex>{category.name}</Flex>
+            ))}
+          </Flex>
           <Col xs={12} lg={12}>
             <Form.Item label="Category" name="category">
               <Select>

@@ -19,7 +19,7 @@ export default function RootLayout({
         <script>0</script>
         <GoogleTagManager gtmId="G-JBE3H2HL25" />
         <AntdRegistry>{children}</AntdRegistry>
-        {/* <SelectCategory/> */}
+      
       </body>
     </html>
   );

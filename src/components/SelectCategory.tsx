@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Select, Space } from "antd";
+import { Select, Space, Typography } from "antd";
 import { getcategories } from "@/lib/api";
 
 const handleChange = (value: string) => {
@@ -11,13 +11,12 @@ const SelectCategory: React.FC = () => {
   const [options, setOptions] = useState();
   useEffect(() => {
     getcategories().then((catagories) => {
-        const optionss = catagories.map((category:any) => ({
-            label: category.name
-          }));
-    
-          setOptions(optionss);
-        });
-    
+      const optionss = catagories.map((category: any) => ({
+        label: category.name,
+      }));
+
+      setOptions(optionss);
+    });
   }, []);
 
   return (
@@ -28,8 +27,10 @@ const SelectCategory: React.FC = () => {
         onChange={handleChange}
         options={options}
       />
-      
+
+
     </Space>
+    
   );
 };
 
