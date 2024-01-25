@@ -15,11 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        
         <script>0</script>
         <GoogleTagManager gtmId="G-JBE3H2HL25" />
         <AntdRegistry>{children}</AntdRegistry>
-      
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ import {
   message,
   Typography,
 } from "antd";
-import { addItem, catagoriesItems, getcategories } from "@/lib/api";
+import { addItem, addCategory, getCategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import { categoryItems } from "@/utils/util";
 import { useCategoryStore } from "@/lib/categoryStore";
@@ -29,18 +29,6 @@ const NewItem: React.FC = () => {
     }
   };
 
-  const getCategories = async (values: any) => {
-    try {
-      await catagoriesItems(values);
-    } catch (error) {
-      console.error("Error", error);
-    }
-  };
-
-  const catagories = useCategoryStore((s) => s.categories);
-
-  
-
   return (
     <Flex>
       <Form
@@ -56,11 +44,7 @@ const NewItem: React.FC = () => {
               <Input />
             </Form.Item>
           </Col>
-          <Flex>
-            {catagories.map((category: any) => (
-              <Flex>{category.name}</Flex>
-            ))}
-          </Flex>
+
           <Col xs={12} lg={12}>
             <Form.Item label="Category" name="category">
               <Select>

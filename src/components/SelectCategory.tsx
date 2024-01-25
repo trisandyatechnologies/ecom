@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Select, Space, Typography } from "antd";
-import { getcategories } from "@/lib/api";
+import { getCategories } from "@/lib/api";
 
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
@@ -10,7 +10,7 @@ const handleChange = (value: string) => {
 const SelectCategory: React.FC = () => {
   const [options, setOptions] = useState();
   useEffect(() => {
-    getcategories().then((catagories) => {
+    getCategories().then((catagories) => {
       const optionss = catagories.map((category: any) => ({
         label: category.name,
       }));
@@ -27,10 +27,7 @@ const SelectCategory: React.FC = () => {
         onChange={handleChange}
         options={options}
       />
-
-
     </Space>
-    
   );
 };
 

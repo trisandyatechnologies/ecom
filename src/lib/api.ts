@@ -1,5 +1,5 @@
 import { API_ROOT } from "@/utils/config";
-import { Item, Order, User,ItemCategory } from "@prisma/client";
+import { Item, Order, User, ItemCategory } from "@prisma/client";
 import { message } from "antd";
 
 export const getItems = async () => {
@@ -98,8 +98,7 @@ export const createOrder = async (orderBody: Partial<Order>) => {
   return order;
 };
 
-
-export const catagoriesItems = async (itemBody: ItemCategory) => {
+export const addCategory = async (itemBody: ItemCategory) => {
   const item = await fetch(`${API_ROOT}admin/categories`, {
     method: "POST",
     body: JSON.stringify(itemBody),
@@ -110,12 +109,9 @@ export const catagoriesItems = async (itemBody: ItemCategory) => {
   return item;
 };
 
-export const getcategories = async () => {
-  const catagories = await fetch(`${API_ROOT}admin/categories`).then((res) =>
+export const getCategories = async () => {
+  const categories = await fetch(`${API_ROOT}admin/categories`).then((res) =>
     res.json()
   );
-  return catagories;
+  return categories;
 };
-
-
-
