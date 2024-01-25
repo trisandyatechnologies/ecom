@@ -1,65 +1,22 @@
-"use client";
+import "./globals.css";
+import { Metadata } from "next";
+import { DEFAULT_METADATA } from "@/utils/config";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
-import Link from "next/link";
-// import "./globals.css";
-import { Layout, Flex, Typography, theme } from "antd";
-import MyOrders from "./components/Orders";
-import Sider from "./components/Sider";
-import Footer from "./components/Footer";
-
-const { Header, Content } = Layout;
-
-const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-};
-
-const contentStyle: React.CSSProperties = {
-  
-  minHeight: `calc(100vh - 128px)`,
-  width: '100%'
-};
-
-const siderStyle: React.CSSProperties = {
-  textAlign: "center",
-  maxWidth: "10%",
-};
-
-const footerStyle: React.CSSProperties = {};
-
-const layoutStyle = {
-  borderRadius: 8,
-  overflow: "hidden",
-  width: "100%",
-};
+export const metadata: Metadata = DEFAULT_METADATA;
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   return (
     <html lang="en">
       <body>
-        <Layout style={{ ...layoutStyle, background: colorBgContainer }}>
-          <Header style={{ ...headerStyle, background: colorBgContainer }}>
-            <Flex justify="space-between" align="center">
-              <Typography.Title level={4}>Meesho</Typography.Title>
-              <Link href="/cart">Cart</Link>
-            </Flex>
-          </Header>
-
-          <Layout>
-              <Sider />
-              <Content style={contentStyle}>{children}</Content>
-          </Layout>
-          <Footer />
-        </Layout>
+        <script>0</script>
+        <GoogleTagManager gtmId="G-JBE3H2HL25" />
+        <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>
   );

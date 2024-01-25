@@ -1,5 +1,7 @@
-"use client";
+import Landing from "@/components/Landing";
+import service from "@/lib/service";
 
+<<<<<<< HEAD
 import { addCartItem, getItems } from "@/lib/api";
 import { Item } from "@prisma/client";
 import { Card, List, Space, Typography, Image, Button, theme } from "antd";
@@ -23,48 +25,16 @@ export default function Home() {
       setItems(items);
     });
   }, []);
+=======
+export const dynamic = "force-dynamic"; // 👈🏽
+
+export default async function Home() {
+  const items = await service.getItems();
+>>>>>>> main
 
   return (
     <main>
-      <List
-        grid={{
-          gutter: 16,
-          xs: 1,
-          sm: 2,
-          md: 4,
-          lg: 4,
-          xl: 4,
-          xxl: 5,
-        }}
-        dataSource={items}
-        renderItem={(item) => (
-          <List.Item>
-            <Card cover={<Image alt={item.name} src={item.image} />}>
-              <Card.Meta
-                title={
-                  <Space>
-                    <Typography>{item.brand}</Typography>
-                    <Typography>{item.name}</Typography>
-                  </Space>
-                }
-                description={
-                  <Space>
-                    <Typography>{item.price}</Typography>
-                    <Typography>onwards</Typography>
-                  </Space>
-                }
-              />
-              <Button
-                style={{ marginTop: padding }}
-                type="primary"
-                onClick={() => addToCart(item.id)}
-              >
-                Add to Cart
-              </Button>
-            </Card>
-          </List.Item>
-        )}
-      />
+      <Landing data={items} />
     </main>
   );
 }
