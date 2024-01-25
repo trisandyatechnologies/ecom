@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ItemCard from "@/components/ItemCard";
+// import ItemCard from "@/components/ItemCard";
 import { List } from "antd";
 import { Item } from "@prisma/client";
 const { Item } = List;
@@ -21,7 +21,7 @@ export default function ItemGrid({ data }: { data: Item[] }) {
       dataSource={data}
       renderItem={(item) => (
         <Item>
-          <ItemCard {...item} />
+          {/* <ItemCard {...item} /> */}
         </Item>
       )}
     />
