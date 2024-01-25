@@ -39,18 +39,7 @@ const NewItem: React.FC = () => {
 
   const catagories = useCategoryStore((s) => s.categories);
 
-  //  const [options, setOptions] = useState();
-
-  // useEffect(() => {
-  //   getcategories().then((categories) => {
-
-  //     const optionss = categories.map((category: any) => ({
-  //       label: category.name,
-  //     }));
-
-  //     // setOptions(optionss);
-  //   });
-  // }, []);
+  
 
   return (
     <Flex>
