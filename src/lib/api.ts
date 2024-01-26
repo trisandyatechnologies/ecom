@@ -96,3 +96,8 @@ export const createOrder = async (orderBody: Partial<Order>) => {
   }).then((res) => res.json());
   return order;
 };
+
+export const getOrdersList = async () => {
+  const orders = await fetch(`${API_ROOT}orders`).then((res) => res.json());
+  return orders;
+};
