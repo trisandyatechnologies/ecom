@@ -115,3 +115,19 @@ export const getCategories = async () => {
   );
   return categories;
 };
+
+export const deleteCategories = async (
+  categoryId: string,
+ 
+) => {
+  const categories = await fetch(
+    `${API_ROOT}admin/categories/${categoryId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => res.json());
+  return categories;
+};

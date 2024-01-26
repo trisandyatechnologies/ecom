@@ -11,13 +11,15 @@ import {
   Row,
   Typography,
 } from "antd";
-import React from "react";
-import { addCategory } from "@/lib/api";
+import React, { useEffect, useState } from "react";
+import { addCategory, deleteCategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import { useCategoryStore } from "@/lib/categoryStore";
 import { getThumbnail } from "@/utils/util";
+import { DeleteFilled, EditFilled } from "@ant-design/icons";
 
 const Categories: React.FC = () => {
+    
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
@@ -29,6 +31,14 @@ const Categories: React.FC = () => {
   };
 
   const getCategory = useCategoryStore((s) => s.categories);
+  const setCategories = useCategoryStore((s) => s.setCategories);
+
+  const onClickHandler = async (categoryId: string) => {
+    const deleted = await deleteCategories(categoryId);
+    if (deleted) {
+      setCategories();
+    }
+  };
 
   return (
     <Flex>
@@ -75,14 +85,17 @@ const Categories: React.FC = () => {
                 >
                   {getCategory.map((category: any) => (
                     <Flex style={{ fontSize: 18 }}>
-                      <List.Item >
+                      <List.Item>
                         <List.Item.Meta
                           title={category.name}
                           description={category.description}
                           avatar={
                             <Avatar src={getThumbnail(category.banner[0])} />
                           }
-                          style={{width:400}}
+                          style={{ width: 400 }}
+                        />
+                        <DeleteFilled
+                          onClick={() => onClickHandler(category.id)}
                         />
                       </List.Item>
                     </Flex>
