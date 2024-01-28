@@ -90,9 +90,9 @@ const Categories: React.FC = () => {
                           title={category.name}
                           description={category.description}
                           avatar={
-                            <Avatar src={getThumbnail(category.banner[0])} />
+                            <Avatar src={getThumbnail(category.banner[0])} style={{border:"1px solid black",padding:5,height:100,width:"auto",borderRadius:0}}/>
                           }
-                          style={{ width:400,display:"flex",flexWrap:"wrap"}}
+                          style={{ width:600,display:"flex",flexWrap:"wrap"}} 
                         />
                         <DeleteOutlined
                           onClick={() => onClickHandler(category.id)}
