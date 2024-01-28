@@ -16,6 +16,7 @@ import { addItem, addCategory, getCategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import { categoryItems } from "@/utils/util";
 import { useCategoryStore } from "@/lib/categoryStore";
+import SelectCategory from "@/components/SelectCategory";
 
 const NewItem: React.FC = () => {
   const [form] = Form.useForm();
@@ -47,13 +48,7 @@ const NewItem: React.FC = () => {
 
           <Col xs={12} lg={12}>
             <Form.Item label="Category" name="category">
-              <Select>
-                {categoryItems.map(({ key, label }) => (
-                  <Select.Option key={key} value={key}>
-                    {label}
-                  </Select.Option>
-                ))}
-              </Select>
+              <SelectCategory/>
             </Form.Item>
           </Col>
 

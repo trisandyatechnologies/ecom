@@ -16,10 +16,9 @@ import { addCategory, deleteCategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
 import { useCategoryStore } from "@/lib/categoryStore";
 import { getThumbnail } from "@/utils/util";
-import { DeleteFilled, EditFilled } from "@ant-design/icons";
+import { DeleteFilled, DeleteOutlined, EditFilled } from "@ant-design/icons";
 
 const Categories: React.FC = () => {
-    
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
@@ -84,17 +83,18 @@ const Categories: React.FC = () => {
                   }}
                 >
                   {getCategory.map((category: any) => (
-                    <Flex style={{ fontSize: 18 }}>
-                      <List.Item>
+                    <Flex style={{  }}>
+                      <List.Item style={{}}>
+                        
                         <List.Item.Meta
                           title={category.name}
                           description={category.description}
                           avatar={
                             <Avatar src={getThumbnail(category.banner[0])} />
                           }
-                          style={{ width: 400 }}
+                          style={{ width:400,display:"flex",flexWrap:"wrap"}}
                         />
-                        <DeleteFilled
+                        <DeleteOutlined
                           onClick={() => onClickHandler(category.id)}
                         />
                       </List.Item>

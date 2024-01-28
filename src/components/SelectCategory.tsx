@@ -21,9 +21,10 @@ const SelectCategory: React.FC = () => {
 
   return (
     <Space wrap>
+      
       <Select
         defaultValue="Select category"
-        style={{ width: 120 }}
+        style={{ width:600 }}
         onChange={handleChange}
         options={options}
       />
