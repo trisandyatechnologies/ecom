@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { DEFAULT_METADATA } from "@/utils/config";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import SelectCategory from "@/components/SelectCategory";
+
 
 export const metadata: Metadata = DEFAULT_METADATA;
 

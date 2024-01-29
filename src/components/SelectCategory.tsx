@@ -1,37 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Select, Space, Typography } from "antd";
+import { Select, SelectProps, Space, Typography } from "antd";
 import { getCategories } from "@/lib/api";
+import { DefaultOptionType } from "antd/es/select";
 
-
-const SelectCategory: React.FC = () => {
-  const [options, setOptions] = useState();
+const SelectCategory: React.FC = ({ onChange }: Partial<SelectProps>) => {
+  const [options, setOptions] = useState<DefaultOptionType[]>([]);
   useEffect(() => {
-    getCategories().then((catagories) => {
-      const optionss = catagories.map((category: any) => ({
+    getCategories().then((catagories = []) => {
+      const optionsOpt = catagories.map((category) => ({
         label: category.name,
-        value:category.name
+        value: category.id,
       }));
 
-      setOptions(optionss);
+      setOptions(optionsOpt);
     });
   }, []);
 
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
-  
-
   return (
-    <Space wrap>
       <Select
         defaultValue="Select category"
         style={{ width: 200 }}
-        onChange={handleChange}
+        onChange={onChange}
         options={options}
-        
       />
-    </Space>
   );
 };
 

@@ -34,7 +34,7 @@ model Item {
   brand       String?
   quantity    Int            @default(1)
   details     ProductDetails
-  category    Category
+  category    String
 }
 
 type ProductDetails {

@@ -14,13 +14,14 @@ import {
 } from "antd";
 import { addItem, addCategory, getCategories } from "@/lib/api";
 import ImageUpload from "@/components/ImageUpload";
-import { categoryItems } from "@/utils/util";
+
 import { useCategoryStore } from "@/lib/categoryStore";
 import SelectCategory from "@/components/SelectCategory";
 
 const NewItem: React.FC = () => {
   const [form] = Form.useForm();
   const onFinish = async (values: any) => {
+  
     const postedItem = await addItem(values);
     if (postedItem?.id) {
       message.success("Item added");
@@ -48,7 +49,7 @@ const NewItem: React.FC = () => {
 
           <Col xs={12} lg={12}>
             <Form.Item label="Category" name="category">
-              <SelectCategory/>
+              <SelectCategory />
             </Form.Item>
           </Col>
 

@@ -109,7 +109,7 @@ export const addCategory = async (itemBody: ItemCategory) => {
   return item;
 };
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<ItemCategory[]> => {
   const categories = await fetch(`${API_ROOT}admin/categories`).then((res) =>
     res.json()
   );

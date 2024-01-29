@@ -51,9 +51,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             >
               {children}
 
-              {/* {getCategory.map((category: any) => (
-              <Flex>{category.name}</Flex>
-            ))} Get category items here */}
+            
             </Content>
             <Footer />
           </Layout>
