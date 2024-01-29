@@ -3,6 +3,7 @@ import {
   OrderedListOutlined,
   ShoppingOutlined,
   PlusOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
@@ -26,7 +27,12 @@ const menuItems: MenuProps["items"] = [
     key: "/admin/items/new",
     icon: <PlusOutlined />,
     label: <Link href="/admin/items/new">New Item</Link>,
+  },{
+    key: "/admin/categories",
+    icon: <EditOutlined />,
+    label: <Link href="/admin/categories">Categories</Link>,
   },
+
 ];
 
 export default function RootLayout({
