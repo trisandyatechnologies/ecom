@@ -67,10 +67,8 @@ const ItemSearch: React.FC = () => {
           onSearch={onSearchHandler}
           onPressEnter={onSearchHandler}
           name="q"
-          placeholder={`search products ${
-            isInCategoryPage && `in ${category}`
-          }`}
-        />
+          placeholder={`search products ${isInCategoryPage ? `in ${category}` : ''}`}
+          />
       </AutoComplete>
     </Flex>
   );

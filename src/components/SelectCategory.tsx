@@ -20,7 +20,7 @@ const SelectCategory: React.FC = ({ onChange }: Partial<SelectProps>) => {
   return (
       <Select
         defaultValue="Select category"
-        style={{ width: 200 }}
+        style={{ width: "100%" }}
         onChange={onChange}
         options={options}
       />
