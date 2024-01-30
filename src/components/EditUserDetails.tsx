@@ -18,18 +18,6 @@ import { EditFilled } from "@ant-design/icons";
 
 export default function EditUserDetails() {
   const user = useUserStore((s) => s.user);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const items: DescriptionsProps["items"] = user?.addresses.map((item, i) => ({
     key: "1",
@@ -63,30 +51,12 @@ export default function EditUserDetails() {
               style={{ display: "flex", gap: 10, alignItems: "center" }}
             >
               {user?.name}
-              <Button shape="circle" onClick={showModal}>
+              <Button shape="circle">
                 <EditFilled />
               </Button>
             </Typography>
 
             <Typography>{user?.email}</Typography>
-            <Modal
-              title="Edit Profile"
-              open={isModalOpen}
-              onOk={handleOk}
-              onCancel={handleCancel}
-            >
-              <Flex vertical>
-                <img
-                  src="https://d1y78cl34ykkmt.cloudfront.net/ProfileImage/2020224131816458.png"
-                  style={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: 50,
-                  }}
-                />
-                <Typography>Change profile photo</Typography>
-              </Flex>
-            </Modal>
           </Flex>
         </Col>
         <Col xs={24} lg={12}>
