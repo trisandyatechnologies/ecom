@@ -189,7 +189,7 @@ const Header: React.FC = () => {
         <HeaderMenu />
       </Flex>
       <Row gutter={padding} align="middle">
-        <Col xs={24} lg={24} style={{ display: "flex", flexWrap: "wrap" }}>
+        <Col xs={24} lg={24} >
 
           <Menu mode="horizontal" items={categoryMenuItems} />
         </Col>
