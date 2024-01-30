@@ -10,17 +10,12 @@ import {
   Flex,
   Modal,
   Row,
-  Space,
   Typography,
 } from "antd";
 import { useUserStore } from "@/lib/userStore";
-import { EditFilled, EditOutlined } from "@ant-design/icons";
-import { theme } from "antd";
+import { EditFilled } from "@ant-design/icons";
 
 export default function EditUserDetails() {
-  const {
-    token: { padding, margin },
-  } = theme.useToken();
   const user = useUserStore((s) => s.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -53,14 +48,13 @@ export default function EditUserDetails() {
     <main>
       <Row>
         <Col xs={24} lg={12}>
-          <Flex vertical style={{ margin: margin ,alignItems:"center"}}>
+          <Flex vertical style={{ alignItems: "center" }}>
             <img
               src="https://d1y78cl34ykkmt.cloudfront.net/ProfileImage/2020224131816458.png"
               style={{
                 width: 70,
                 height: 70,
                 borderRadius: 50,
-                margin: margin,
               }}
             />
 
@@ -79,7 +73,7 @@ export default function EditUserDetails() {
               onOk={handleOk}
               onCancel={handleCancel}
             >
-              <Flex vertical style={{ padding: padding }}>
+              <Flex vertical>
                 <img
                   src="https://d1y78cl34ykkmt.cloudfront.net/ProfileImage/2020224131816458.png"
                   style={{
