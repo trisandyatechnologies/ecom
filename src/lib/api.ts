@@ -1,5 +1,5 @@
 import { API_ROOT } from "@/utils/config";
-import { Item, Order, User } from "@prisma/client";
+import { Item, Order, ServiceArea, User } from "@prisma/client";
 
 export const getItems = async () => {
   const items = await fetch(`${API_ROOT}items`).then((res) => res.json());
@@ -100,4 +100,38 @@ export const createOrder = async (orderBody: Partial<Order>) => {
 export const getOrdersList = async () => {
   const orders = await fetch(`${API_ROOT}orders`).then((res) => res.json());
   return orders;
+};
+
+export const addPincode= async (itemBody: ServiceArea ) => {
+  const area = await fetch(`${API_ROOT}admin/pincode`, {
+    method: "POST",
+    body: JSON.stringify(itemBody),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+  return area;
+};
+
+export const getPincode = async (): Promise<ServiceArea[]> => {
+  const area = await fetch(`${API_ROOT}admin/pincode`).then((res) =>
+    res.json()
+  );
+  return area;
+};
+
+export const deletePincodes = async (
+  pincodeId: number,
+ 
+) => {
+  const pincodes = await fetch(
+    `${API_ROOT}admin/pincode/${pincodeId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => res.json());
+  return pincodes;
 };
