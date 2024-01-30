@@ -6,12 +6,12 @@ import {
   appName,
   siteAddress,
 } from "@/utils/config";
-import { Category } from "@prisma/client";
+// import { Category } from "@prisma/client";
 import { Divider, Typography } from "antd";
 import { Metadata } from "next";
 
 type Props = {
-  params: { categoryId: Category };
+  params: { categoryId: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
