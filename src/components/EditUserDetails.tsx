@@ -10,6 +10,7 @@ import {
   Flex,
   Modal,
   Row,
+  Space,
   Typography,
 } from "antd";
 import { useUserStore } from "@/lib/userStore";
@@ -58,14 +59,15 @@ export default function EditUserDetails() {
               }}
             />
 
-            <Flex>
-              <Typography>
-                {user?.name}
-                <Button shape="circle" onClick={showModal}>
-                  <EditFilled />
-                </Button>
-              </Typography>
-            </Flex>
+            <Typography
+              style={{ display: "flex", gap: 10, alignItems: "center" }}
+            >
+              {user?.name}
+              <Button shape="circle" onClick={showModal}>
+                <EditFilled />
+              </Button>
+            </Typography>
+
             <Typography>{user?.email}</Typography>
             <Modal
               title="Edit Profile"
