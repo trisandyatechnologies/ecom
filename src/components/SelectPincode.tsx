@@ -21,15 +21,14 @@ const SelectPincode: React.FC = ({onChange}: Partial<SelectProps>) => {
   
 
   return (
-    <Space wrap>
+    
       <Select
         defaultValue="Select pincode"
         style={{ width: 200 }}
         onChange={onChange}
         options={options}
-        
       />
-    </Space>
+  
   );
 };
 
