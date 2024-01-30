@@ -9,6 +9,7 @@ import { getUser, updateUser } from "@/lib/api";
 import { Address, User } from "@prisma/client";
 import { message } from "@/lib/notify";
 import { useUserStore } from "@/lib/userStore";
+import SelectPincode from "./SelectPincode";
 
 export default function NewAddressForm() {
   const {
@@ -78,7 +79,7 @@ export default function NewAddressForm() {
               name="pincode"
               rules={[{ required: true }]}
             >
-              <InputNumber style={{ width: "100%" }} />
+              <SelectPincode/>
             </Form.Item>
 
             <Form.Item

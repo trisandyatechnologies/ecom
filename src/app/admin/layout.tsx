@@ -3,6 +3,7 @@ import {
   OrderedListOutlined,
   ShoppingOutlined,
   PlusOutlined,
+  EnvironmentOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
@@ -26,6 +27,11 @@ const menuItems: MenuProps["items"] = [
     key: "/admin/items/new",
     icon: <PlusOutlined />,
     label: <Link href="/admin/items/new">New Item</Link>,
+  },
+  {
+    key: "/admin/pincode",
+    icon: <EnvironmentOutlined />,
+    label: <Link href="/admin/pincode">Pincode</Link>,
   },
 ];
 
