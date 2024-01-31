@@ -41,10 +41,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     onChange?.(newImages);
   };
 
-  // useEffect(() => {
-  //   setImages(value);
-  // }, [value]);
-
   if (!isMounted) {
     return null;
   }
